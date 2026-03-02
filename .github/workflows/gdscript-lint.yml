@@ -1,0 +1,24 @@
+name: GDScript Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.gd'
+      - '.github/workflows/gdscript-lint.yml'
+
+jobs:
+  gdlint:
+    name: Lint GDScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+
+      - name: Install gdtoolkit
+        run: pip install gdtoolkit
+
+      - name: Run gdlint
+        run: gdlint .
