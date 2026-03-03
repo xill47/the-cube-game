@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bb1x6wxo7jay6"]
+
+[ext_resource type="Script" uid="uid://c7228up43felw" path="res://rooms/test_chamber.gd" id="1_bv27j"]
+[ext_resource type="Script" uid="uid://6lel78eyj5yg" path="res://rooms/room_context.gd" id="2_e0owk"]
+[ext_resource type="PackedScene" uid="uid://bas7xe8yxxn7h" path="res://interactables/plate.tscn" id="3_ku6ah"]
+[ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="4_i3p7n"]
+[ext_resource type="Script" uid="uid://8yxbfod5tsea" path="res://rooms/debug_screen.gd" id="5_i3p7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
+size = Vector2(57, 281)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv27j"]
+size = Vector2(455, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0owk"]
+size = Vector2(57, 281)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le7kl"]
+size = Vector2(439, 31)
+
+[node name="TestChamber" type="Node2D" unique_id=1590841663]
+script = ExtResource("1_bv27j")
+
+[node name="Context" type="Node" parent="." unique_id=1857365919]
+unique_name_in_owner = true
+script = ExtResource("2_e0owk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1434841937]
+offset_left = 279.0
+offset_top = 191.0
+offset_right = 715.0
+offset_bottom = 434.0
+color = Color(0.33965993, 0.25380003, 0.54, 1)
+
+[node name="Walls" type="Node2D" parent="." unique_id=1963081063]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" unique_id=403527801]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=933203999]
+position = Vector2(249, 315)
+shape = SubResource("RectangleShape2D_1o30x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls" unique_id=2098338785]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2" unique_id=460252831]
+position = Vector2(485.5, 180.75)
+shape = SubResource("RectangleShape2D_bv27j")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls" unique_id=9782177]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3" unique_id=290973380]
+position = Vector2(741, 304)
+shape = SubResource("RectangleShape2D_e0owk")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls" unique_id=258527065]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4" unique_id=686858636]
+position = Vector2(490.5, 443.5)
+shape = SubResource("RectangleShape2D_le7kl")
+
+[node name="Plate" parent="." unique_id=1183266043 instance=ExtResource("3_ku6ah")]
+position = Vector2(379, 233)
+
+[node name="Character" parent="." unique_id=337287904 instance=ExtResource("4_i3p7n")]
+unique_name_in_owner = true
+position = Vector2(341, 356)
+
+[node name="DebugScreen" type="PanelContainer" parent="." unique_id=420466616]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+custom_minimum_size = Vector2(256, 512)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 256.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_i3p7n")
+
+[node name="MarginContainer" type="MarginContainer" parent="DebugScreen" unique_id=296743550]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="DebugText" type="TextEdit" parent="DebugScreen/MarginContainer" unique_id=855431351]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+wrap_mode = 1
+autowrap_mode = 1
