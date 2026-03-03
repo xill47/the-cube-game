@@ -59,14 +59,11 @@ jobs:
       matrix:
         include:
           - preset: Windows Desktop
-            artifact_name: windows-build
-            artifact_path: build/windows
+            artifact_name: windows
           - preset: Linux
-            artifact_name: linux-build
-            artifact_path: build/linux
+            artifact_name: linux
           - preset: Web
-            artifact_name: web-build
-            artifact_path: build/web
+            artifact_name: web
     steps:
       - name: Checkout tagged commit
         uses: actions/checkout@v4
@@ -75,6 +72,7 @@ jobs:
           submodules: recursive
 
       - name: Export ${{ matrix.preset }}
+        id: export
         uses: firebelley/godot-export@v7.0.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/4.6.1-stable/Godot_v4.6.1-stable_linux.x86_64.zip
@@ -87,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact_name }}
-          path: ${{ matrix.artifact_path }}
+          path: ${{ steps.export.outputs.archive_directory }}
 
   deploy-itch:
     name: Upload to itch.io

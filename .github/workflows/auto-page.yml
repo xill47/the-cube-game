@@ -26,6 +26,7 @@ jobs:
           submodules: recursive
 
       - name: Export Web
+        id: export
         uses: firebelley/godot-export@v7.0.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/4.6.1-stable/Godot_v4.6.1-stable_linux.x86_64.zip
@@ -37,7 +38,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build/web
+          path: ${{ steps.export.outputs.build_directory }}
 
   deploy-page:
     name: Deploy to GitHub Pages
