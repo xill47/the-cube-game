@@ -1,10 +1,11 @@
+class_name BadScript
 extends Node
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var Node2d
-	add_child(Node2d)
+	var node2d
+	add_child(node2d)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
