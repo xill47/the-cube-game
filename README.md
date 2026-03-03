@@ -1,5 +1,7 @@
 # The Cube Game
 
+Live demo (built from `main`) is [here](https://xill47.github.io/the-cube-game/Web/)
+
 This project uses Godot 4.6.1. You can download it [here](https://godotengine.org/download/archive/4.6.1-stable/) 
 
 <details>
