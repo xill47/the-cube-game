@@ -1,5 +1,23 @@
 [gd_scene format=3 uid="uid://bwt7md3kf7yde"]
 
+[ext_resource type="PackedScene" uid="uid://bb1x6wxo7jay6" path="res://rooms/test_chamber.tscn" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://befxu4syw8ppl" path="res://ui_assets/cube_button.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://b8d0yrpxlfst3" path="res://ui_assets/Pistol.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://buqw662x8u801" path="res://ui_assets/Heal.png" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bvlggixwsswdm" path="res://ui_assets/Key.png" id="4_272bh"]
+[ext_resource type="Script" uid="uid://bqfit2xnf7qpi" path="res://cube_container.gd" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://c0bv1ds1wnw1m" path="res://ui_assets/Cube_test.png" id="7_272bh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dm0k"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+transparency = 1
+albedo_texture = ExtResource("7_272bh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
+material = SubResource("StandardMaterial3D_5vw27")
+
 [node name="Main" type="Node" unique_id=1149138756]
 
 [node name="MainMenu" type="Control" parent="." unique_id=1892840939]
@@ -11,3 +29,130 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="World" type="Node2D" parent="." unique_id=498056288]
+
+[node name="TestChamber" parent="World" unique_id=1590841663 instance=ExtResource("1_0xm2m")]
+
+[node name="UILayer" type="CanvasLayer" parent="World" unique_id=1612530512]
+
+[node name="Inventory" type="HBoxContainer" parent="World/UILayer" unique_id=607161968]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Weapon" type="TextureRect" parent="World/UILayer/Inventory" unique_id=1668592055]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_lquwl")
+
+[node name="BoxContainer" type="BoxContainer" parent="World/UILayer/Inventory/Weapon" unique_id=278577177]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="CurrentAmmo" type="Label" parent="World/UILayer/Inventory/Weapon/BoxContainer" unique_id=1383233988]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_7dm0k")
+
+[node name="Slash" type="Label" parent="World/UILayer/Inventory/Weapon/BoxContainer" unique_id=815037843]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_7dm0k")
+
+[node name="AllAmmo" type="Label" parent="World/UILayer/Inventory/Weapon/BoxContainer" unique_id=303939099]
+layout_mode = 2
+text = "16"
+label_settings = SubResource("LabelSettings_7dm0k")
+
+[node name="Heal" type="TextureRect" parent="World/UILayer/Inventory" unique_id=1641885767]
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("3_7mycd")
+
+[node name="KeyItems" type="HBoxContainer" parent="World/UILayer/Inventory" unique_id=1327442136]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Key1" type="TextureRect" parent="World/UILayer/Inventory/KeyItems" unique_id=500692475]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_272bh")
+
+[node name="Key2" type="TextureRect" parent="World/UILayer/Inventory/KeyItems" unique_id=1437410095]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_272bh")
+
+[node name="Key3" type="TextureRect" parent="World/UILayer/Inventory/KeyItems" unique_id=1698891216]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_272bh")
+
+[node name="CubeButton" type="TextureButton" parent="World/UILayer" unique_id=599169628]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("1_ig7tw")
+
+[node name="CubeContainer" type="SubViewportContainer" parent="World/UILayer" unique_id=373378007]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_7mycd")
+rotation_time = 0.25
+
+[node name="SubViewport" type="SubViewport" parent="World/UILayer/CubeContainer" unique_id=1683440915]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1028, 1028)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="World/UILayer/CubeContainer/SubViewport" unique_id=1007774970]
+
+[node name="Cube3D" type="MeshInstance3D" parent="World/UILayer/CubeContainer/SubViewport/Node3D" unique_id=629509559]
+unique_name_in_owner = true
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = SubResource("BoxMesh_lquwl")
+
+[node name="Camera3D" type="Camera3D" parent="World/UILayer/CubeContainer/SubViewport/Node3D" unique_id=1269689369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.987641)
+size = 1.935
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/UILayer/CubeContainer/SubViewport/Node3D" unique_id=974964157]
+transform = Transform3D(0.97584057, 0.07958121, -0.20347491, 0, 0.931304, 0.36424294, 0.21848388, -0.35544303, 0.9088042, -0.6799257, 1.7103736, 2.3295145)
