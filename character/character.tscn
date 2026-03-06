@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://cwqv27swe8kg0"]
 
-[ext_resource type="Script" uid="uid://c6xdtdth27bcn" path="res://character/character_context.gd" id="1_1l1n4"]
 [ext_resource type="Texture2D" uid="uid://dpfgi37cc4amc" path="res://icon.svg" id="1_yf0e5"]
+[ext_resource type="Script" uid="uid://dxpgv2w4e7rka" path="res://character/stance_label.gd" id="3_hx151"]
 [ext_resource type="Script" uid="uid://uxv0kn3bnd3h" path="res://character/character.gd" id="3_ugqs2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf0e5"]
 radius = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugqs2"]
+radius = 5.0
+
 [node name="Character" type="CharacterBody2D" unique_id=337287904]
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("3_ugqs2")
-
-[node name="CharacterContext" type="Node" parent="." unique_id=543274942]
-unique_name_in_owner = true
-script = ExtResource("1_1l1n4")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1559830141]
 scale = Vector2(0.25, 0.25)
@@ -21,3 +22,30 @@ texture = ExtResource("1_yf0e5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386120881]
 shape = SubResource("CircleShape2D_yf0e5")
+
+[node name="StanceLabel" type="Label" parent="." unique_id=330398775]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.5
+offset_top = -23.0
+offset_right = 28.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 3
+script = ExtResource("3_hx151")
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=1218904963]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1418704256]
+shape = SubResource("CircleShape2D_ugqs2")
+
+[connection signal="area_entered" from="InteractableArea" to="." method="_on_interactable_area_area_entered"]
+[connection signal="area_exited" from="InteractableArea" to="." method="_on_interactable_area_area_exited"]

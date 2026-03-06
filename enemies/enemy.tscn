@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://curndg2cp018j"]
+
+[ext_resource type="Script" uid="uid://cipagpoe7ndk4" path="res://enemies/enemy.gd" id="1_fw1ev"]
+[ext_resource type="Texture2D" uid="uid://dpfgi37cc4amc" path="res://icon.svg" id="2_7frlh"]
+[ext_resource type="Script" uid="uid://w2a4vlf4pc5q" path="res://enemies/stance_label.gd" id="3_orwns"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orwns"]
+radius = 16.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1154509874]
+script = ExtResource("1_fw1ev")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1682981710]
+self_modulate = Color(1, 0.27999997, 0.27999997, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7frlh")
+
+[node name="Vision" type="RayCast2D" parent="." unique_id=1676023017]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="Navigation" type="NavigationAgent2D" parent="." unique_id=1487861306]
+unique_name_in_owner = true
+
+[node name="StanceLabel" type="Label" parent="." unique_id=2042666542]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_orwns")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=73648470]
+shape = SubResource("CircleShape2D_orwns")

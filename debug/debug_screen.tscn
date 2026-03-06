@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cs4oaxl2sitb2"]
+
+[ext_resource type="Script" uid="uid://8yxbfod5tsea" path="res://debug/debug_screen.gd" id="1_althg"]
+
+[node name="DebugScreen" type="Control" unique_id=235984516]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_althg")
+
+[node name="DebugScreenPanel" type="PanelContainer" parent="." unique_id=1946699079]
+self_modulate = Color(0.5, 0.5, 0.5, 0.2)
+custom_minimum_size = Vector2(256, 512)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DebugScreenPanel" unique_id=966469006]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DebugScreenPanel/MarginContainer" unique_id=417599688]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DebugScreenPanel/MarginContainer/HBoxContainer" unique_id=1903403022]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DebugText" type="Label" parent="DebugScreenPanel/MarginContainer/HBoxContainer/ScrollContainer" unique_id=271519963]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RightHalf" type="Control" parent="DebugScreenPanel/MarginContainer/HBoxContainer" unique_id=1012097566]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bb1x6wxo7jay6"]
 
 [ext_resource type="Script" uid="uid://c7228up43felw" path="res://rooms/test_chamber.gd" id="1_bv27j"]
-[ext_resource type="Script" uid="uid://6lel78eyj5yg" path="res://rooms/room_context.gd" id="2_e0owk"]
-[ext_resource type="PackedScene" uid="uid://bas7xe8yxxn7h" path="res://interactables/plate.tscn" id="3_ku6ah"]
+[ext_resource type="PackedScene" uid="uid://bas7xe8yxxn7h" path="res://interactables/plates/plate.tscn" id="3_ku6ah"]
 [ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="4_i3p7n"]
-[ext_resource type="Script" uid="uid://8yxbfod5tsea" path="res://rooms/debug_screen.gd" id="5_i3p7n"]
+[ext_resource type="PackedScene" uid="uid://bhnp0vc2wfcld" path="res://interactables/doors/door.tscn" id="4_ku6ah"]
+[ext_resource type="PackedScene" uid="uid://curndg2cp018j" path="res://enemies/enemy.tscn" id="5_i3p7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
 size = Vector2(57, 281)
@@ -18,12 +18,23 @@ size = Vector2(57, 281)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_le7kl"]
 size = Vector2(439, 31)
 
-[node name="TestChamber" type="Node2D" unique_id=1590841663]
-script = ExtResource("1_bv27j")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3p7n"]
+size = Vector2(46, 162)
 
-[node name="Context" type="Node" parent="." unique_id=1857365919]
-unique_name_in_owner = true
-script = ExtResource("2_e0owk")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfowp"]
+size = Vector2(52, 169)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_i3p7n"]
+vertices = PackedVector2Array(699, 412.17188, 608.2578, 413.8125, 612.25, 257.14844, 699, 204.96875, 288.95313, 204.02344, 525.8672, 255.85156, 527.8672, 414.34375, 488.9297, 415.65625, 487.9375, 262.21094, 421.1328, 260.78906, 288.03906, 413.0625, 419.1172, 413.9297)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 7, 8, 5), PackedInt32Array(4, 5, 8, 9), PackedInt32Array(10, 4, 9, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(279, 194, 278, 423, 429, 424, 431, 271, 478, 272, 479, 426, 538, 424, 536, 266, 602, 267, 598, 424, 709, 422, 709, 195)])
+
+[node name="TestChamber" type="Node2D" unique_id=1590841663 node_paths=PackedStringArray("character", "plates", "interactables", "enemies")]
+script = ExtResource("1_bv27j")
+character = NodePath("Character")
+plates = [NodePath("Plate"), NodePath("Plate2")]
+interactables = [NodePath("Door")]
+enemies = [NodePath("Enemy")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1434841937]
 offset_left = 279.0
@@ -59,34 +70,57 @@ position = Vector2(490.5, 443.5)
 shape = SubResource("RectangleShape2D_le7kl")
 
 [node name="Plate" parent="." unique_id=1183266043 instance=ExtResource("3_ku6ah")]
-position = Vector2(379, 233)
+position = Vector2(319, 230)
+
+[node name="Plate2" parent="." unique_id=71858851 instance=ExtResource("3_ku6ah")]
+position = Vector2(371, 231)
 
 [node name="Character" parent="." unique_id=337287904 instance=ExtResource("4_i3p7n")]
 unique_name_in_owner = true
 position = Vector2(341, 356)
 
-[node name="DebugScreen" type="PanelContainer" parent="." unique_id=420466616]
-self_modulate = Color(0.5, 0.5, 0.5, 1)
-custom_minimum_size = Vector2(256, 512)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 256.0
-offset_bottom = 512.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_i3p7n")
+[node name="Door" parent="." unique_id=1059506860 instance=ExtResource("4_ku6ah")]
+position = Vector2(656, 202)
+starts_locked = true
+starting_leads_to = "res://rooms/test_chamber.tscn"
+leads_to_spawn = "%Spawn"
 
-[node name="MarginContainer" type="MarginContainer" parent="DebugScreen" unique_id=296743550]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+[node name="Enemy" parent="." unique_id=1662956204 instance=ExtResource("5_i3p7n")]
+position = Vector2(511, 404)
 
-[node name="DebugText" type="TextEdit" parent="DebugScreen/MarginContainer" unique_id=855431351]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1180436752]
+offset_left = 433.0
+offset_top = 269.0
+offset_right = 480.0
+offset_bottom = 432.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect2" unique_id=1882582656]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/StaticBody2D" unique_id=312613377]
+position = Vector2(24, 82)
+shape = SubResource("RectangleShape2D_i3p7n")
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1247799639]
+offset_left = 542.0
+offset_top = 270.0
+offset_right = 593.0
+offset_bottom = 439.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect3" unique_id=1820967191]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/StaticBody2D" unique_id=257363434]
+position = Vector2(26, 84.5)
+shape = SubResource("RectangleShape2D_nfowp")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=222648405]
+navigation_polygon = SubResource("NavigationPolygon_i3p7n")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
 unique_name_in_owner = true
-layout_mode = 2
-editable = false
-wrap_mode = 1
-autowrap_mode = 1
+position = Vector2(353, 397)

@@ -1,16 +1,11 @@
 [gd_scene format=3 uid="uid://bas7xe8yxxn7h"]
 
-[ext_resource type="Script" uid="uid://pc0jmsmcdnlo" path="res://interactables/plate_context.gd" id="1_n1ytx"]
-[ext_resource type="Script" uid="uid://bwakjbnwidqgj" path="res://interactables/plate.gd" id="1_o7ty8"]
+[ext_resource type="Script" uid="uid://bwakjbnwidqgj" path="res://interactables/plates/plate.gd" id="1_o7ty8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtym4"]
 
 [node name="Plate" type="Node2D" unique_id=1183266043]
 script = ExtResource("1_o7ty8")
-
-[node name="Context" type="Node" parent="." unique_id=284854845]
-unique_name_in_owner = true
-script = ExtResource("1_n1ytx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2027119314]
 custom_minimum_size = Vector2(16, 16)

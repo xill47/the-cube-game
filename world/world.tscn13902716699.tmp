@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://blbii3vfwvnlw"]
+
+[ext_resource type="Script" uid="uid://i0cuo6x83cux" path="res://world/world.gd" id="1_4717r"]
+[ext_resource type="PackedScene" uid="uid://bb1x6wxo7jay6" path="res://rooms/test_chamber.tscn" id="2_h5o24"]
+[ext_resource type="PackedScene" uid="uid://cs4oaxl2sitb2" path="res://debug/debug_screen.tscn" id="3_mmdvd"]
+
+[node name="World" type="Node2D" unique_id=2118948260]
+script = ExtResource("1_4717r")
+starting_room_scene = ExtResource("2_h5o24")
+
+[node name="DebugScreen" parent="." unique_id=1946699079 node_paths=PackedStringArray("world") instance=ExtResource("3_mmdvd")]
+visible = false
+top_level = true
+world = NodePath("..")
