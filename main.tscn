@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bwt7md3kf7yde"]
 
-[ext_resource type="PackedScene" uid="uid://bb1x6wxo7jay6" path="res://rooms/test_chamber.tscn" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://befxu4syw8ppl" path="res://ui_assets/cube_button.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://b8d0yrpxlfst3" path="res://ui_assets/Pistol.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://buqw662x8u801" path="res://ui_assets/Heal.png" id="3_7mycd"]
@@ -24,8 +23,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="World" type="Node2D" parent="." unique_id=498056288]
-
-[node name="TestChamber" parent="World" unique_id=1590841663 instance=ExtResource("1_0xm2m")]
 
 [node name="UILayer" type="CanvasLayer" parent="World" unique_id=1612530512]
 follow_viewport_enabled = true
