@@ -1,0 +1,399 @@
+[gd_scene format=3 uid="uid://64pwyxe6e6ga"]
+
+[ext_resource type="Script" uid="uid://do3bo2fu76s5q" path="res://Cube/cube_controls.gd" id="1_ny043"]
+[ext_resource type="Texture2D" uid="uid://c0bv1ds1wnw1m" path="res://ui_assets/Cube_test.png" id="2_5outt"]
+[ext_resource type="Script" uid="uid://ct0kncwaypc4l" path="res://Cube/map.gd" id="3_bhs1u"]
+[ext_resource type="Texture2D" uid="uid://c2b7ht7pm1r83" path="res://Cube/MapAssets/Room1.png" id="3_hf8u4"]
+[ext_resource type="Texture2D" uid="uid://0i4y7l18240h" path="res://Cube/MapAssets/Room2Unlooted.png" id="4_bhs1u"]
+[ext_resource type="Texture2D" uid="uid://cixf1xebiq17r" path="res://Cube/MapAssets/Room2.png" id="5_5i508"]
+[ext_resource type="Texture2D" uid="uid://dw7gwj7gaqwba" path="res://Cube/MapAssets/Room4Unlooted.png" id="6_pbb1t"]
+[ext_resource type="Texture2D" uid="uid://cakbsn0meopxs" path="res://Cube/MapAssets/Room4.png" id="7_l72b3"]
+[ext_resource type="Texture2D" uid="uid://bcuml2my6dd84" path="res://Cube/MapAssets/Room3Unlooted.png" id="8_r7q6h"]
+[ext_resource type="Texture2D" uid="uid://iigfixc80hp2" path="res://Cube/MapAssets/Room3.png" id="9_a3doy"]
+[ext_resource type="Texture2D" uid="uid://cn15nxlorqnjg" path="res://Cube/MapAssets/RoomBoss.png" id="10_8de8x"]
+[ext_resource type="Texture2D" uid="uid://d3doxol43qopd" path="res://Cube/MapAssets/Room5Unlooted.png" id="11_2850v"]
+[ext_resource type="Texture2D" uid="uid://dl2e4j7jml7qu" path="res://Cube/MapAssets/Room5.png" id="12_w4ve1"]
+[ext_resource type="Texture2D" uid="uid://dyrhek6r7ixo0" path="res://Cube/MapAssets/Room6Unlooted.png" id="13_a73hw"]
+[ext_resource type="Texture2D" uid="uid://c71hruqilwjnk" path="res://Cube/MapAssets/Room6.png" id="14_535g8"]
+[ext_resource type="Texture2D" uid="uid://e1wrat2a3lb4" path="res://Cube/MapAssets/Corridor.png" id="15_pxinn"]
+[ext_resource type="Texture2D" uid="uid://b7amcg2o64a4u" path="res://Cube/MapAssets/Tunnel.png" id="16_1ds5g"]
+[ext_resource type="Texture2D" uid="uid://ch7qg578l32xw" path="res://Cube/MapAssets/Char.png" id="17_ixfwc"]
+[ext_resource type="Texture2D" uid="uid://drv7q7mjck8se" path="res://Cube/MapAssets/DoorClosed.png" id="18_jkg2a"]
+[ext_resource type="Texture2D" uid="uid://d3htsywnm8m7v" path="res://Cube/MapAssets/DoorOpen.png" id="19_a8u54"]
+[ext_resource type="Texture2D" uid="uid://cyevvdborljox" path="res://Cube/MapAssets/DoorUnknown.png" id="21_5i508"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+transparency = 1
+albedo_texture = ExtResource("2_5outt")
+
+[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
+material = SubResource("StandardMaterial3D_5vw27")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_laciv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hf8u4")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3frq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_ixfwc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtfhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bhs1u")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5i508")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swxwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pbb1t")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_l72b3")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3k535"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_r7q6h")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_a3doy")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltqnu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_8de8x")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_a3doy")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xcpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_2850v")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_w4ve1")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqhg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_a73hw")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_535g8")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lbbk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_pxinn")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v46pa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_1ds5g")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u3eo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_jkg2a")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_a8u54")
+}],
+"loop": true,
+"name": &"Opened",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_5i508")
+}],
+"loop": true,
+"name": &"Unknown",
+"speed": 5.0
+}]
+
+[node name="CubeControls" type="SubViewportContainer" unique_id=1219466798]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ny043")
+rotation_time = 0.25
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1916281275]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=756525788]
+
+[node name="Cube3D" type="MeshInstance3D" parent="SubViewport/Node3D" unique_id=777229215]
+unique_name_in_owner = true
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+rotation_order = 0
+mesh = SubResource("BoxMesh_lquwl")
+
+[node name="Map" type="Node3D" parent="SubViewport/Node3D/Cube3D" unique_id=1793802757]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5034947, -0.05643492, -0.0193895)
+script = ExtResource("3_bhs1u")
+room_refs = {
+"Spawn": NodePath("Room1")
+}
+
+[node name="Room1" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=334086082]
+transform = Transform3D(-3.2783543e-09, 0, -0.987, 0, 0.075, 0, 0.075, 0, -4.314314e-08, 0, 0, 0)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_laciv")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room1" unique_id=788521825]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room2" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=84517166]
+transform = Transform3D(-3.9122585e-09, 0, -0.99999994, 0, 0.089502044, 0, 0.089502044, 0, -4.3711385e-08, 0, 0.15706627, 0.2023521)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_wtfhk")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room2" unique_id=673891522]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999998, 0, 1.7763568e-15, 0, 0.9999998, -0.002373457, -0.1387803, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room4" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1621183882]
+transform = Transform3D(-3.2783543e-09, 0, -1, 0, 0.075, 0, 0.075, 0, -4.371139e-08, 0, -0.0059113577, 0.16216594)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_swxwx")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room4" unique_id=1716818044]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room3" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=853527590]
+transform = Transform3D(-3.2783543e-09, 0, -1, 0, 0.075, 0, 0.075, 0, -4.371139e-08, 0, 0.15559727, -0.15839358)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_3k535")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room3" unique_id=290863386]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="RoomBoss" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1904127111]
+transform = Transform3D(-3.2783543e-09, 0, -1, 0, 0.075, 0, 0.075, 0, -4.371139e-08, 0, 0.28927547, 0.033164356)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_ltqnu")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/RoomBoss" unique_id=1597906464]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room5" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1897192881]
+transform = Transform3D(-3.867727e-09, 0, -1.4022604, 0, 0.08848328, 0, 0.08848329, 0, -6.129475e-08, 0.005153954, -0.14370729, 0.101763755)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_6xcpc")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room5" unique_id=1426546745]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room6" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1681987699]
+transform = Transform3D(-3.3136938e-09, 0, -0.99999994, 0, 0.07580847, 0, 0.07580847, 0, -4.3711385e-08, 0, 0.17017308, 0.06882095)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_nqhg0")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room6" unique_id=72024164]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Corridor" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1680924471]
+transform = Transform3D(-3.2783543e-09, 0, -1, 0, 0.075, 0, 0.075, 0, -4.371139e-08, 0, 0.086343914, 0.047940873)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_6lbbk")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Corridor" unique_id=2038937732]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Tunnel" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=155969727]
+transform = Transform3D(-3.2783543e-09, 0, -1, 0, 0.075, 0, 0.075, 0, -4.371139e-08, -0.00039482117, -0.041626796, -0.15656991)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_v46pa")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Tunnel" unique_id=698677654]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999998, 0, 1.5543122e-15, 0, 0.99999976, 0.7070937, 0.7332054, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Doors" type="Node3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=341300988]
+
+[node name="Door1" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=955874987]
+transform = Transform3D(-3.2783543e-09, 0, -1, 0, 0.075, 0, 0.075, 0, -4.371139e-08, -0.00039482117, 0.054056447, -0.0009301752)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=202975429]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.679276)
+rotation_edit_mode = 2
+size = 1.935
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D" unique_id=613921110]
+transform = Transform3D(0.97584057, 0.07958121, -0.20347491, 0, 0.931304, 0.36424294, 0.21848388, -0.35544303, 0.9088042, -0.6799257, 1.7103736, 2.3295145)
