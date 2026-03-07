@@ -1,18 +1,16 @@
 class_name CubeContainer
 extends SubViewportContainer
 
+@export var rotation_time: float
+
 @onready var cube_3d: MeshInstance3D = %Cube3D
 @onready var map: Node3D = %Map
-
-@export var rotation_time: float
 
 var rotatable: bool = true
 var rotating: bool = false
 var rotate_direction
 var start_basis: Basis = Basis.IDENTITY
 var target_basis: Basis
-
-
 
 #Adding queue sounds like a good idea, but i donno
 func _input(event: InputEvent) -> void:
