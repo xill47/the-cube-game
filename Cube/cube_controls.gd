@@ -3,7 +3,9 @@ extends SubViewportContainer
 
 @onready var cube_3d: MeshInstance3D = %Cube3D
 @onready var map: Node3D = %Map
+
 @export var rotation_time: float
+
 var rotatable: bool = true
 var rotating: bool = false
 var rotate_direction
