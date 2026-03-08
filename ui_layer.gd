@@ -9,13 +9,22 @@ func _ready() -> void:
 	last_cube_position = cube.position
 
 func _input(event: InputEvent) -> void:
-	if event.is_pressed() and event.is_action("toggle_cube"):
-		if cube_on_screen:
-			last_cube_position = cube.position
-			disappear_cube_animation()
-		else:
-			appear_cube_animation()
-		cube_on_screen = not cube_on_screen
+	if event.is_pressed():
+		if event.is_action("toggle_cube"):
+			if cube_on_screen:
+				cube.on_screen = false
+				last_cube_position = cube.position
+				disappear_cube_animation()
+			else:
+				cube.on_screen = true
+				appear_cube_animation()
+			cube_on_screen = not cube_on_screen
+		if event.is_action("open_map"):
+			if not cube_on_screen:
+				cube.on_screen = true
+				cube.open_map()
+				appear_cube_animation()
+			cube_on_screen = not cube_on_screen
 
 func appear_cube_animation():
 	var tween = create_tween()

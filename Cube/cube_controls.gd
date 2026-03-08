@@ -5,7 +5,7 @@ const controls = ["W","S","A","D","Q","E","M"]
 
 var being_dragged: bool = false
 var mouse_offset:Vector2
-var visable: bool = true
+var on_screen: bool = true
 var map_opened: bool = false
 var rotatable: bool = true
 var rotating: bool = false
@@ -28,7 +28,7 @@ func follow_mouse():
 #Adding queue, sounds like a good idea, but i donno
 #TODO For some reason stops when out of target
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and rotatable:
+	if event is InputEventKey and rotatable and on_screen:
 		if event.is_pressed() and controls.has(event.as_text()):
 			rotatable = false
 			if event.is_action("rotate_ccw"):
@@ -45,17 +45,21 @@ func _input(event: InputEvent) -> void:
 				rotate_direction = Vector3(0, 1, 0)
 			
 			if event.is_action("open_map"):
-				if map_opened:
-					target_basis = last_position
-				else:
-					target_basis = Basis.IDENTITY.rotated(Vector3.DOWN, TAU / 4)
-				map_opened = not map_opened
+				open_map()
 			else:
 				target_basis = start_basis.rotated(rotate_direction, TAU / 4)
 				last_position = target_basis
-			print(target_basis)
-			await rotation_animation()
-			rotatable = true
+				await rotation_animation()
+				rotatable = true
+
+func open_map():
+	if map_opened:
+		target_basis = last_position
+	else:
+		target_basis = Basis.IDENTITY.rotated(Vector3.DOWN, TAU / 4)
+	map_opened = not map_opened
+	await rotation_animation()
+	rotatable = true
 
 func rotation_animation() -> bool:
 	rotating = true
