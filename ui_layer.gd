@@ -4,8 +4,8 @@ extends CanvasLayer
 var cube_on_screen: bool = false
 var last_cube_position: Vector2
 
-@onready var cube: CubeControl = %CubeControl 
-@onready var cube_button: = %CubeButton 
+@onready var cube: CubeControl = %CubeControl
+@onready var cube_button: = %CubeButton
 
 func _ready() -> void:
 	last_cube_position = cube.position

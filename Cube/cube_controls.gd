@@ -1,10 +1,10 @@
 class_name CubeControl
 extends SubViewportContainer
 
-const cube_controls = ["move_up","move_down","move_left","move_right","rotate_ccw","rotate_cw","open_map"]
-
 @export var rotation_time: float
 
+var cube_controls = ["move_up","move_down","move_left",
+"move_right","rotate_ccw","rotate_cw","open_map"]
 var being_dragged: bool = false
 var mouse_offset:Vector2
 var on_screen: bool = true
@@ -59,8 +59,7 @@ func event_check(event) -> String:
 			action = input
 	if action != null:
 		return action
-	else:
-		return "Null"
+	return "Null"
 
 func open_map():
 	if map_opened:
