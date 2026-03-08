@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bwt7md3kf7yde"]
 
+[ext_resource type="Script" uid="uid://c5h53ukyffr03" path="res://ui_layer.gd" id="1_7mycd"]
 [ext_resource type="Texture2D" uid="uid://befxu4syw8ppl" path="res://ui_assets/cube_button.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://b8d0yrpxlfst3" path="res://ui_assets/Pistol.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://buqw662x8u801" path="res://ui_assets/Heal.png" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvlggixwsswdm" path="res://ui_assets/Key.png" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://64pwyxe6e6ga" path="res://Cube/cube.tscn" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://1e312y7m5ide" path="res://fakeshot-03(4x).png" id="7_272bh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7dm0k"]
 font_color = Color(0, 0, 0, 1)
@@ -26,6 +28,7 @@ grow_vertical = 2
 
 [node name="UILayer" type="CanvasLayer" parent="World" unique_id=1612530512]
 follow_viewport_enabled = true
+script = ExtResource("1_7mycd")
 
 [node name="Inventory" type="HBoxContainer" parent="World/UILayer" unique_id=607161968]
 anchors_preset = 2
@@ -103,6 +106,7 @@ size_flags_vertical = 8
 texture = ExtResource("4_272bh")
 
 [node name="CubeButton" type="TextureButton" parent="World/UILayer" unique_id=599169628]
+unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -114,7 +118,10 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("1_ig7tw")
 
-[node name="CubeControls" parent="World/UILayer" unique_id=1219466798 instance=ExtResource("6_7mycd")]
+[node name="CubeControl" parent="World/UILayer" unique_id=1219466798 instance=ExtResource("6_7mycd")]
+unique_name_in_owner = true
+pivot_offset = Vector2(2.15, 0)
+mouse_target = true
 
 [node name="rotate_direction" type="Label" parent="World/UILayer" unique_id=1658868372]
 unique_name_in_owner = true
@@ -123,3 +130,9 @@ offset_top = 67.0
 offset_right = 610.0
 offset_bottom = 118.0
 label_settings = SubResource("LabelSettings_272bh")
+
+[node name="Fakeshot03(4x)" type="Sprite2D" parent="." unique_id=1242124112]
+position = Vector2(960, 539)
+texture = ExtResource("7_272bh")
+
+[connection signal="gui_input" from="World/UILayer/CubeControl" to="World/UILayer/CubeControl" method="_on_gui_input"]
