@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjrq7wfktpx1q"
-path="res://.godot/imported/RoomBossUnlooted.png-272388b25260e3294cc363fd83b81834.ctex"
+uid="uid://pxwrxs8eio7t"
+path.s3tc="res://.godot/imported/Tunnel-unlooted.png-5637b0677c334dcdd6c9d5d7c89bd8f7.s3tc.ctex"
+path.etc2="res://.godot/imported/Tunnel-unlooted.png-5637b0677c334dcdd6c9d5d7c89bd8f7.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Cube/MapAssets/RoomBossUnlooted.png"
-dest_files=["res://.godot/imported/RoomBossUnlooted.png-272388b25260e3294cc363fd83b81834.ctex"]
+source_file="res://Cube/MapAssets/Tunnel-unlooted.png"
+dest_files=["res://.godot/imported/Tunnel-unlooted.png-5637b0677c334dcdd6c9d5d7c89bd8f7.s3tc.ctex", "res://.godot/imported/Tunnel-unlooted.png-5637b0677c334dcdd6c9d5d7c89bd8f7.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +25,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cakbsn0meopxs"
-path.s3tc="res://.godot/imported/Room4.png-47b0fc3c1840264d49b745e9e3da1c3b.s3tc.ctex"
-path.etc2="res://.godot/imported/Room4.png-47b0fc3c1840264d49b745e9e3da1c3b.etc2.ctex"
+uid="uid://dtu33680t67w1"
+path.s3tc="res://.godot/imported/Room-1sq-looted.png-e2c7a0b6f2a20e54d455a0da9c95e112.s3tc.ctex"
+path.etc2="res://.godot/imported/Room-1sq-looted.png-e2c7a0b6f2a20e54d455a0da9c95e112.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cube/MapAssets/Room4.png"
-dest_files=["res://.godot/imported/Room4.png-47b0fc3c1840264d49b745e9e3da1c3b.s3tc.ctex", "res://.godot/imported/Room4.png-47b0fc3c1840264d49b745e9e3da1c3b.etc2.ctex"]
+source_file="res://Cube/MapAssets/Room-1sq-looted.png"
+dest_files=["res://.godot/imported/Room-1sq-looted.png-e2c7a0b6f2a20e54d455a0da9c95e112.s3tc.ctex", "res://.godot/imported/Room-1sq-looted.png-e2c7a0b6f2a20e54d455a0da9c95e112.etc2.ctex"]
 
 [params]
 

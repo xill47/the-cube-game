@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7amcg2o64a4u"
-path.s3tc="res://.godot/imported/Tunnel.png-562eb1043735b8f3ef127efc3daec865.s3tc.ctex"
-path.etc2="res://.godot/imported/Tunnel.png-562eb1043735b8f3ef127efc3daec865.etc2.ctex"
+uid="uid://drry7j4mqa0fg"
+path.s3tc="res://.godot/imported/Room-3x3sq-looted.png-4533a746c44138c6de224bf4b28620b7.s3tc.ctex"
+path.etc2="res://.godot/imported/Room-3x3sq-looted.png-4533a746c44138c6de224bf4b28620b7.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cube/MapAssets/Tunnel.png"
-dest_files=["res://.godot/imported/Tunnel.png-562eb1043735b8f3ef127efc3daec865.s3tc.ctex", "res://.godot/imported/Tunnel.png-562eb1043735b8f3ef127efc3daec865.etc2.ctex"]
+source_file="res://Cube/MapAssets/Room-3x3sq-looted.png"
+dest_files=["res://.godot/imported/Room-3x3sq-looted.png-4533a746c44138c6de224bf4b28620b7.s3tc.ctex", "res://.godot/imported/Room-3x3sq-looted.png-4533a746c44138c6de224bf4b28620b7.etc2.ctex"]
 
 [params]
 

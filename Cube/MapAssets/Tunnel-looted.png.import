@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e1wrat2a3lb4"
-path.s3tc="res://.godot/imported/Corridor.png-cb24decd70ee735de6c2f9026c64c824.s3tc.ctex"
-path.etc2="res://.godot/imported/Corridor.png-cb24decd70ee735de6c2f9026c64c824.etc2.ctex"
+uid="uid://dn6322dgqckak"
+path.s3tc="res://.godot/imported/Tunnel-looted.png-9e98994a92df1258a111b70a28334405.s3tc.ctex"
+path.etc2="res://.godot/imported/Tunnel-looted.png-9e98994a92df1258a111b70a28334405.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cube/MapAssets/Corridor.png"
-dest_files=["res://.godot/imported/Corridor.png-cb24decd70ee735de6c2f9026c64c824.s3tc.ctex", "res://.godot/imported/Corridor.png-cb24decd70ee735de6c2f9026c64c824.etc2.ctex"]
+source_file="res://Cube/MapAssets/Tunnel-looted.png"
+dest_files=["res://.godot/imported/Tunnel-looted.png-9e98994a92df1258a111b70a28334405.s3tc.ctex", "res://.godot/imported/Tunnel-looted.png-9e98994a92df1258a111b70a28334405.etc2.ctex"]
 
 [params]
 
