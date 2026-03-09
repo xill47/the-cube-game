@@ -1,13 +1,13 @@
 class_name CharacterState
-extends StateBase
+extends State
 
 enum CharacterStance {
 	IDLE, MOVEMENT, AIMING, ANIMATION
 }
 
-const FIRE_COOLDOWN = 1.5
-const SPEED = 320
-const MAX_AMMO = 8
+const FIRE_COOLDOWN := 1.5
+const SPEED := 320
+const MAX_AMMO := 8
 
 var position: Vector2
 var stance: CharacterStance

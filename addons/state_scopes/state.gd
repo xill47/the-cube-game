@@ -1,4 +1,4 @@
-class_name StateBase
+class_name State
 extends RefCounted
 
 signal changed
