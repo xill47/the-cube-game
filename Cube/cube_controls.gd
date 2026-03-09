@@ -15,9 +15,13 @@ var rotate_direction
 var start_basis: Basis = Basis.IDENTITY
 var target_basis: Basis
 var last_position: Basis
+var sudoku_tiles: Array
 
 @onready var cube_3d: MeshInstance3D = %Cube3D
 @onready var map: Node3D = %Map
+
+func _ready() -> void:
+	sudoku_tiles = %Sudoku.get_children()
 
 func _process(_delta: float) -> void:
 	if being_dragged:
@@ -74,7 +78,11 @@ func rotation_animation() -> bool:
 	rotating = true
 	create_tween().tween_method(interpolate, 0.0, 1.0, rotation_time).set_trans(Tween.TRANS_EXPO)
 	await get_tree().create_timer(rotation_time + 0.1).timeout
+	cube_3d.basis.x = snapped(cube_3d.basis.x, Vector3(1, 1, 1))
+	cube_3d.basis.y = snapped(cube_3d.basis.y, Vector3(1, 1, 1))
+	cube_3d.basis.z = snapped(cube_3d.basis.z, Vector3(1, 1, 1))
 	rotating = false
+	sudoku_rotate()
 	start_basis = cube_3d.basis
 #	print(start_basis)
 	return true
@@ -89,3 +97,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			being_dragged = true
 		if event.is_released():
 			being_dragged = false
+
+func sudoku_rotate():
+	for tile in sudoku_tiles:
+		tile.sudoku_opened(cube_3d)

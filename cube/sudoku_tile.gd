@@ -1,5 +1,5 @@
 class_name SudokuTile
-extends MeshInstance3D
+extends Sprite3D
 
 var target
 var cube_basis
@@ -11,10 +11,13 @@ func _ready() -> void:
 func sudoku_opened(cube):
 	if cube.basis == Basis(Vector3.DOWN,Vector3.RIGHT,Vector3.BACK):
 		basis = Basis(Vector3.UP,Vector3.LEFT,Vector3.BACK)
+		print("rotate")
 	elif cube.basis == Basis(Vector3.UP,Vector3.LEFT,Vector3.BACK):
 		basis = Basis(Vector3.DOWN,Vector3.RIGHT,Vector3.BACK)
+		print("rotate")
 	elif cube.basis == Basis(Vector3.LEFT,Vector3.DOWN,Vector3.BACK):
 		basis = Basis(Vector3.LEFT,Vector3.DOWN,Vector3.BACK)
+		print("rotate")
 	elif cube.basis == Basis.IDENTITY:
 		basis = Basis.IDENTITY
 

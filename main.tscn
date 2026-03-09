@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b8d0yrpxlfst3" path="res://ui_assets/Pistol.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://buqw662x8u801" path="res://ui_assets/Heal.png" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvlggixwsswdm" path="res://ui_assets/Key.png" id="4_272bh"]
-[ext_resource type="PackedScene" uid="uid://64pwyxe6e6ga" path="res://Cube/cube.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://64pwyxe6e6ga" path="res://cube/cube.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b38lxcifmqdl1" path="res://rooms/locker_room/safe_puzzle/locker_room_puzzle.tscn" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://1e312y7m5ide" path="res://fakeshot-03(4x).png" id="7_272bh"]
 

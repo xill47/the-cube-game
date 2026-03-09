@@ -1,22 +1,24 @@
 [gd_scene format=3 uid="uid://64pwyxe6e6ga"]
 
-[ext_resource type="Script" uid="uid://do3bo2fu76s5q" path="res://Cube/cube_controls.gd" id="1_ny043"]
+[ext_resource type="Script" uid="uid://do3bo2fu76s5q" path="res://cube/cube_controls.gd" id="1_ny043"]
 [ext_resource type="Texture2D" uid="uid://c0bv1ds1wnw1m" path="res://ui_assets/Cube_test.png" id="2_5outt"]
-[ext_resource type="Script" uid="uid://ct0kncwaypc4l" path="res://Cube/map.gd" id="3_bhs1u"]
-[ext_resource type="Texture2D" uid="uid://b8goqxns0iewq" path="res://Cube/MapAssets/Room-1sq-unlooted.png" id="4_4cwfp"]
-[ext_resource type="Texture2D" uid="uid://dtu33680t67w1" path="res://Cube/MapAssets/Room-1sq-looted.png" id="5_81c3v"]
-[ext_resource type="Texture2D" uid="uid://c52yd5oinvjry" path="res://Cube/MapAssets/Room-2sq-unlooted.png" id="7_hf8u4"]
-[ext_resource type="Texture2D" uid="uid://d1ai2su3il262" path="res://Cube/MapAssets/Room-2sq-looted.png" id="8_bhs1u"]
-[ext_resource type="Texture2D" uid="uid://7iojcuryaqg7" path="res://Cube/MapAssets/Room-3x3sq-unlooted.png" id="9_5i508"]
-[ext_resource type="Texture2D" uid="uid://drry7j4mqa0fg" path="res://Cube/MapAssets/Room-3x3sq-looted.png" id="10_pbb1t"]
-[ext_resource type="Texture2D" uid="uid://b4sjgvc8a6ws1" path="res://Cube/MapAssets/Room-3sq-unlooted.png" id="11_l72b3"]
-[ext_resource type="Texture2D" uid="uid://52ccjk2hdmr0" path="res://Cube/MapAssets/Room-3sq-looted.png" id="12_r7q6h"]
-[ext_resource type="Texture2D" uid="uid://pxwrxs8eio7t" path="res://Cube/MapAssets/Tunnel-unlooted.png" id="13_a3doy"]
-[ext_resource type="Texture2D" uid="uid://dn6322dgqckak" path="res://Cube/MapAssets/Tunnel-looted.png" id="14_8de8x"]
-[ext_resource type="Texture2D" uid="uid://ch7qg578l32xw" path="res://Cube/MapAssets/Char.png" id="17_ixfwc"]
-[ext_resource type="Texture2D" uid="uid://drv7q7mjck8se" path="res://Cube/MapAssets/DoorClosed.png" id="18_jkg2a"]
-[ext_resource type="Texture2D" uid="uid://d3htsywnm8m7v" path="res://Cube/MapAssets/DoorOpen.png" id="19_a8u54"]
-[ext_resource type="Texture2D" uid="uid://cyevvdborljox" path="res://Cube/MapAssets/DoorUnknown.png" id="21_5i508"]
+[ext_resource type="Script" uid="uid://ct0kncwaypc4l" path="res://cube/map.gd" id="3_bhs1u"]
+[ext_resource type="Texture2D" uid="uid://b8goqxns0iewq" path="res://cube/map_assets/Room-1sq-unlooted.png" id="4_4cwfp"]
+[ext_resource type="Texture2D" uid="uid://dtu33680t67w1" path="res://cube/map_assets/Room-1sq-looted.png" id="5_81c3v"]
+[ext_resource type="Texture2D" uid="uid://c52yd5oinvjry" path="res://cube/map_assets/Room-2sq-unlooted.png" id="7_hf8u4"]
+[ext_resource type="Texture2D" uid="uid://d1ai2su3il262" path="res://cube/map_assets/Room-2sq-looted.png" id="8_bhs1u"]
+[ext_resource type="Texture2D" uid="uid://7iojcuryaqg7" path="res://cube/map_assets/Room-3x3sq-unlooted.png" id="9_5i508"]
+[ext_resource type="Texture2D" uid="uid://drry7j4mqa0fg" path="res://cube/map_assets/Room-3x3sq-looted.png" id="10_pbb1t"]
+[ext_resource type="Texture2D" uid="uid://b4sjgvc8a6ws1" path="res://cube/map_assets/Room-3sq-unlooted.png" id="11_l72b3"]
+[ext_resource type="Texture2D" uid="uid://52ccjk2hdmr0" path="res://cube/map_assets/Room-3sq-looted.png" id="12_r7q6h"]
+[ext_resource type="Texture2D" uid="uid://pxwrxs8eio7t" path="res://cube/map_assets/Tunnel-unlooted.png" id="13_a3doy"]
+[ext_resource type="Texture2D" uid="uid://dn6322dgqckak" path="res://cube/map_assets/Tunnel-looted.png" id="14_8de8x"]
+[ext_resource type="Texture2D" uid="uid://ch7qg578l32xw" path="res://cube/map_assets/Char.png" id="17_ixfwc"]
+[ext_resource type="Texture2D" uid="uid://tpb2gdj2o7bg" path="res://cube/puzzle_assets/sudoku/sudoku-atlas.png" id="18_gkcpc"]
+[ext_resource type="Texture2D" uid="uid://drv7q7mjck8se" path="res://cube/map_assets/DoorClosed.png" id="18_jkg2a"]
+[ext_resource type="Script" uid="uid://63j61im7dyd5" path="res://cube/sudoku_tile.gd" id="19_4vqgp"]
+[ext_resource type="Texture2D" uid="uid://d3htsywnm8m7v" path="res://cube/map_assets/DoorOpen.png" id="19_a8u54"]
+[ext_resource type="Texture2D" uid="uid://cyevvdborljox" path="res://cube/map_assets/DoorUnknown.png" id="21_5i508"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
 transparency = 1
@@ -234,6 +236,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vqgp"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(72, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoipa"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(0, 72, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myir2"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he6v1"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(144, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfhch"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(144, 144, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdku2"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(72, 144, 56, 55)
+
 [node name="CubeControls" type="SubViewportContainer" unique_id=1219466798]
 anchors_preset = 8
 anchor_left = 0.5
@@ -449,6 +475,234 @@ flip_h = true
 double_sided = false
 sprite_frames = SubResource("SpriteFrames_u3eo6")
 animation = &"Unknown"
+
+[node name="Sudoku" type="Node3D" parent="SubViewport/Node3D/Cube3D" unique_id=1206649994]
+unique_name_in_owner = true
+
+[node name="Tile1-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=986161316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35141423, 0.07002362, 0.5060245)
+rotation_edit_mode = 2
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1381901901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211043, 0.3500434, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1196548224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35082003, 0.2104831, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=228225391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06941462, -0.07041749, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1530910073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21066424, -0.21039788, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-6" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=719016766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07096888, -0.35072118, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1206774927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35141423, 0.21098408, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1530988130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35105684, 0.072469324, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1030803284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21048385, -0.07254413, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1826873931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06727213, -0.21119227, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1458077668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20945299, -0.34964988, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=2041909792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35141423, 0.3494673, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1536868137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20982465, 0.06831154, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1140224404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07179837, -0.07170756, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=555780956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21065351, -0.21081886, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1224249124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35167804, -0.3515426, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1293993913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35167804, -0.21109812, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=738457742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3511206, -0.0722571, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1796134386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.069416225, 0.06785952, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1097929023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21113682, 0.21102676, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=597615524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07246792, 0.34933406, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=29392304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2120406, 0.35000405, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=838234430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21036234, 0.21120521, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=458105311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069871634, 0.069827035, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1790864542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35093158, -0.06994088, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1424971410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07159862, -0.21187179, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-6" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=193484740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34971258, -0.34821504, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1900878436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34971258, -0.20988148, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=500295694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07122058, -0.34787577, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=712606001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34894755, 0.35042983, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1556858946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07127723, 0.21074271, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1975293956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2102032, 0.0709207, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=202975429]
 unique_name_in_owner = true
