@@ -5,6 +5,8 @@ enum CharacterStance {
 	IDLE, MOVEMENT, AIMING, ANIMATION
 }
 
+signal forcibly_moved
+
 const FIRE_COOLDOWN := 1.5
 const SPEED := 320
 const MAX_AMMO := 8
@@ -18,8 +20,8 @@ var is_fire_cooldown: bool
 
 var interactable_in_range: InteractableState
 
-static func init_from_character(character: Character) -> CharacterState:
-	var state = CharacterState.new()
+static func create(character: Character) -> CharacterState:
+	var state := CharacterState.new()
 	state.position = character.global_position
 	state.stance = CharacterStance.IDLE
 	state.live_ammo = MAX_AMMO
@@ -35,6 +37,12 @@ func move(new_position: Vector2) -> void:
 	else:
 		stance = CharacterStance.MOVEMENT
 	position = new_position
+	on_changed()
+
+func force_movement(new_position: Vector2) -> void:
+	stance = CharacterStance.IDLE
+	position = new_position
+	forcibly_moved.emit()
 	on_changed()
 
 func can_aim() -> bool:

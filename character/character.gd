@@ -3,15 +3,20 @@ extends CharacterBody2D
 
 var state: CharacterState
 
-func _enter_tree() -> void:
-	if state == null:
-		state = CharacterState.init_from_character(self)
-	else:
+
+func _on_state_provider_state_resolved() -> void:
+	state.forcibly_moved.connect(_on_force_movement)
+
+
+func _on_force_movement() -> void:
+	if not global_position.is_equal_approx(state.position):
 		global_position = state.position
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action(&"interact") and state.can_interact():
 		state.interact()
+
 
 func _physics_process(_delta: float) -> void:
 	if state.can_move():
@@ -20,11 +25,14 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 		state.move(global_position)
 
+
 func _on_interactable_area_area_entered(area: Area2D) -> void:
-	if area is Interactable:
-		var interactable = area as Interactable
+	var interactable := area as Interactable
+	if interactable != null:
 		state.set_interactable_in_range(interactable.state)
 
+
 func _on_interactable_area_area_exited(area: Area2D) -> void:
-	if area is Interactable and state.interactable_in_range == area.state:
+	var interactable := area as Interactable
+	if state.interactable_in_range == interactable.get_state():
 		state.set_interactable_in_range(null)

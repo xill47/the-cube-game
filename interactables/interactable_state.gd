@@ -1,5 +1,5 @@
 class_name InteractableState
-extends StateBase
+extends State
 
 func interact() -> void:
 	pass

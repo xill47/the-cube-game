@@ -1,4 +1,6 @@
+@abstract
 class_name Interactable
 extends Area2D
 
-var state: InteractableState
+@abstract
+func get_state() -> InteractableState

@@ -40,12 +40,13 @@ func require_by_constructor(script: StringName, consumer: Node, \
 func provide(script: StringName, id: StringName, state: State) -> void:
 	var instances: Dictionary = _state_instances.get_or_add(script, {})
 	instances.set(id, weakref(state))
-	var generic_instance: WeakRef = instances[&""]
+	var generic_instance: WeakRef = instances.get(&"")
 	if generic_instance == null or generic_instance.get_ref() == null:
 		instances[&""] = weakref(state)
 
 	var resolved_requests: Array[ScopeRegistryRequest] = []
 	var expired_requests: Array[ScopeRegistryRequest] = []
+	var to_call: Array[Callable] = []
 	for request: ScopeRegistryRequest in _pending_states:
 		if not is_instance_valid(request.consumer):
 			expired_requests.push_back(request)
@@ -63,12 +64,13 @@ func provide(script: StringName, id: StringName, state: State) -> void:
 			else:
 				request.consumer.set(request.property, resolved)
 				resolved_requests.push_back(request)
-				if is_instance_valid(request.on_resolve) \
-					and (request.use_constructor or _fully_resolved(request.consumer)):
-					request.on_resolve.call()
+				if request.use_constructor or _fully_resolved(request.consumer):
+					to_call.push_back(request.on_resolve)
 
 	for request: ScopeRegistryRequest in expired_requests + resolved_requests:
 		_pending_states.erase(request)
+	for to in to_call:
+		to.call()
 	if _parent_scope != null:
 		_parent_scope.provide(script, id, state)
 
@@ -134,8 +136,6 @@ func resolve_constructor(script: StringName, consumer: Node) -> State:
 				if resolved_args.size() == arguments.size():
 					var instance = script_instance.callv(&"create", resolved_args)
 					if instance != null:
-						provide(script, &"", instance)
-						provide(script, consumer.name.to_lower(), instance)
 						return instance
 	return null
 

@@ -13,7 +13,6 @@ extends StateNode
 
 func _enter_tree() -> void:
 	super()
-
 	var ignored_property := _get_provided_property_name()
 	for prop in _owner.get_property_list():
 		var klass_name: StringName = prop.get("class_name", &"")

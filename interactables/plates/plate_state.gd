@@ -1,12 +1,12 @@
 class_name PlateState
-extends StateBase
+extends State
 
 var enabled: bool
 var permanent: bool
 var pressed: bool
 
-static func init_from_plate(plate: Plate) -> PlateState:
-	var state = PlateState.new()
+static func create(plate: Plate) -> PlateState:
+	var state := PlateState.new()
 	state.enabled = plate.starts_enabled
 	state.permanent = plate.permanent
 	return state

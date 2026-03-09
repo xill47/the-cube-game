@@ -15,6 +15,9 @@ extends StateNode
 ## If not set, lowercased name of the parent node will be used.
 @export var identifier: StringName = &""
 
+## If there already exist a state, prefer it instead of creating new one.
+@export var prefer_existing: bool = false
+
 func _enter_tree() -> void:
 	super()
 	for prop in _owner.get_property_list():
@@ -22,11 +25,20 @@ func _enter_tree() -> void:
 		var prop_name = prop.get("name", &"")
 		var effective_id := identifier if identifier != &"" else _owner.name.to_lower()
 		if _extends(klass_name, &"State") :
-			var current = _owner.get(prop_name)
+			var current := _owner.get(prop_name)
+			var existing := _registry.resolve(klass_name, &"", _owner)
 			if current != null:
+				if existing != null and prefer_existing:
+					_owner.set(prop_name, existing)
+					_on_resolved(klass_name, effective_id, prop_name)
+					return
 				_registry.provide(klass_name, effective_id, current)
 				return
 			if _has_resolvable_constructor(klass_name, _owner):
+				if existing != null and prefer_existing:
+					_owner.set(prop_name, existing)
+					_on_resolved(klass_name, effective_id, prop_name)
+					return
 				_registry.require_by_constructor(klass_name, _owner, prop_name, \
 					_on_resolved.bind(klass_name, effective_id, prop_name))
 				return

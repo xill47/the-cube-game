@@ -1,28 +1,22 @@
 class_name WorldState
-extends StateBase
+extends State
 
 signal request_transition(door: DoorState)
 
 var character: CharacterState
 var current_room: RoomState
 
-static func create(room: Room) -> WorldState:
+@warning_ignore("shadowed_variable")
+static func create(character: CharacterState) -> WorldState:
 	var state := WorldState.new()
-	state.character = CharacterState.init_from_character(room.character)
-	state.move_to_room(room, room.character.position)
+	state.character = character
 	return state
 
-func move_to_room(room: Room, spawn: Vector2) -> void:
-	if current_room != null:
-		for door: DoorState in current_room.doors:
-			door.request_transition.disconnect(_on_door_request_transition)
-
-	character.position = spawn
+func move_to_room(room: RoomState, spawn: Vector2) -> void:
+	character.force_movement(spawn)
 	character.move_room()
-	current_room = RoomState.init_from_room(room, character)
-	room.state = current_room
-	for door: DoorState in current_room.doors:
-		door.request_transition.connect(_on_door_request_transition)
+	current_room = room
+	current_room.request_transition.connect(_on_room_request_transition)
 	
-func _on_door_request_transition(door: DoorState) -> void:
+func _on_room_request_transition(door: DoorState) -> void:
 	request_transition.emit(door)

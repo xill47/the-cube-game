@@ -1,14 +1,14 @@
 class_name DoorState
 extends InteractableState
 
-signal request_transition(door: DoorState)
+signal door_entered()
 
 var locked: bool
 var leads_to: PackedScene
 var spawn_point: NodePath
 
-static func init_from_door(door: Door) -> DoorState:
-	var state = DoorState.new()
+static func create(door: Door) -> DoorState:
+	var state := DoorState.new()
 	state.locked = door.starts_locked
 	state.leads_to = load(door.starting_leads_to)
 	state.spawn_point = NodePath(door.leads_to_spawn)
@@ -20,4 +20,4 @@ func unlock():
 
 func interact() -> void:
 	if not locked:
-		request_transition.emit(self)
+		door_entered.emit()

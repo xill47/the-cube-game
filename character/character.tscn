@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dpfgi37cc4amc" path="res://icon.svg" id="1_yf0e5"]
 [ext_resource type="Script" uid="uid://dxpgv2w4e7rka" path="res://character/stance_label.gd" id="3_hx151"]
 [ext_resource type="Script" uid="uid://uxv0kn3bnd3h" path="res://character/character.gd" id="3_ugqs2"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="4_hx151"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf0e5"]
 radius = 16.0
@@ -15,6 +16,11 @@ collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("3_ugqs2")
+
+[node name="StateProvider" type="Node" parent="." unique_id=746976187]
+script = ExtResource("4_hx151")
+prefer_existing = true
+metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1559830141]
 scale = Vector2(0.25, 0.25)
@@ -47,5 +53,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1418704256]
 shape = SubResource("CircleShape2D_ugqs2")
 
+[connection signal="state_resolved" from="StateProvider" to="." method="_on_state_provider_state_resolved"]
 [connection signal="area_entered" from="InteractableArea" to="." method="_on_interactable_area_area_entered"]
 [connection signal="area_exited" from="InteractableArea" to="." method="_on_interactable_area_area_exited"]

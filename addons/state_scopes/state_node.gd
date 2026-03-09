@@ -21,15 +21,15 @@ func _find_nearest_scope(create_new: bool) -> ScopeRegistry:
 	if _registry != null:
 		return _registry
 	var node: Node = get_parent()
-	var root: Node = get_tree().get_root()
-	while node != root:
+	while node != null:
 		if node.has_meta(SCOPE_REGISTRY_META_KEY):
 			return node.get_meta(SCOPE_REGISTRY_META_KEY)
 		node = node.get_parent()
 
 	if create_new:
-		var scope_registry: ScopeRegistry = ScopeRegistry.new(null, node)
-		node.set_meta(SCOPE_REGISTRY_META_KEY, scope_registry)
+		var root: Node = get_tree().get_root()
+		var scope_registry: ScopeRegistry = ScopeRegistry.new(null, root)
+		root.set_meta(SCOPE_REGISTRY_META_KEY, scope_registry)
 		return scope_registry
 	return null
 
@@ -39,7 +39,7 @@ static func _extends(klass_name: StringName, base_class_name: StringName) -> boo
 	_ensure_class_map()
 	return _state_classes_map.get(base_class_name, []).has(klass_name)
 
-static func _get_derived_classes(base_class_name: StringName) -> Array[StringName]:
+static func _get_derived_classes(base_class_name: StringName) -> Array:
 	_ensure_class_map()
 	return _state_classes_map.get(base_class_name, [])
 
@@ -88,4 +88,3 @@ static func _has_resolvable_constructor(klass_name: StringName, owner: Node) -> 
 			return true
 
 	return false
-

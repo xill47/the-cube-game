@@ -6,9 +6,6 @@ extends Node2D
 
 var state: PlateState
 
-func _enter_tree() -> void:
-	if state == null:
-		state = PlateState.init_from_plate(self)
 
 func _ready() -> void:
 	state.changed.connect(_on_plate_changed)
@@ -18,9 +15,8 @@ func _on_plate_changed() -> void:
 
 func _on_plate_area_body_entered(body: Node2D) -> void:
 	if body is Character:
-		var character = body as Character
-		var character_state = character.state
-		state.step(character_state)
+		var character := body as Character
+		state.step(character.state)
 
 func _on_plate_area_body_exited(body: Node2D) -> void:
 	if body is Character:

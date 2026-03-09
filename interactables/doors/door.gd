@@ -5,6 +5,7 @@ extends Interactable
 @export_file_path("*.tscn") var starting_leads_to: String
 @export var leads_to_spawn: String
 
-func _ready() -> void:
-	if state == null:
-		state = DoorState.init_from_door(self)
+var state: DoorState
+
+func get_state() -> InteractableState:
+	return state

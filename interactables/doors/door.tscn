@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drl15u35ajgsi" path="res://interactables/doors/door.gd" id="1_68twr"]
 [ext_resource type="Texture2D" uid="uid://dpfgi37cc4amc" path="res://icon.svg" id="2_ufcu1"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="3_1cfkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufcu1"]
 size = Vector2(24, 27)
@@ -19,3 +20,7 @@ texture = ExtResource("2_ufcu1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=920290342]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ufcu1")
+
+[node name="StateProvider" type="Node" parent="." unique_id=1540425789]
+script = ExtResource("3_1cfkp")
+metadata/_custom_type_script = "uid://dalnoy50favch"

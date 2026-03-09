@@ -1,19 +1,51 @@
 [gd_scene format=3 uid="uid://blbii3vfwvnlw"]
 
 [ext_resource type="Script" uid="uid://i0cuo6x83cux" path="res://world/world.gd" id="1_4717r"]
-[ext_resource type="PackedScene" uid="uid://bb1x6wxo7jay6" path="res://rooms/test_chamber.tscn" id="2_h5o24"]
-[ext_resource type="PackedScene" uid="uid://cs4oaxl2sitb2" path="res://debug/debug_screen.tscn" id="3_mmdvd"]
+[ext_resource type="PackedScene" uid="uid://bb1x6wxo7jay6" path="res://rooms/test_chamber/test_chamber.tscn" id="2_h5o24"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="3_4717r"]
+[ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="4_h5o24"]
+[ext_resource type="Script" uid="uid://db4ry2vnd0epc" path="res://addons/state_scopes/state_consumer.gd" id="5_mmdvd"]
+[ext_resource type="Script" uid="uid://x0qhy54hl60j" path="res://addons/state_scopes/state_debug_view.gd" id="6_fn3g3"]
+[ext_resource type="Script" uid="uid://dg6nwtwjfdm73" path="res://world/debug_view.gd" id="6_sc4t8"]
 
 [node name="World" type="Node2D" unique_id=2118948260]
 script = ExtResource("1_4717r")
 starting_room_scene = ExtResource("2_h5o24")
 
-[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=990361562]
-layer = 255
+[node name="StateScope" type="Node" parent="." unique_id=1901825925]
+script = ExtResource("4_h5o24")
+metadata/_custom_type_script = "uid://dmmo0yy6ig2lo"
 
-[node name="DebugScreen" parent="DebugLayer" unique_id=1946699079 node_paths=PackedStringArray("world") instance=ExtResource("3_mmdvd")]
-layout_direction = 1
-world = NodePath("../..")
+[node name="StateConsumer" type="Node" parent="." unique_id=1245460724]
+script = ExtResource("5_mmdvd")
+metadata/_custom_type_script = "uid://db4ry2vnd0epc"
+
+[node name="StateProvider" type="Node" parent="." unique_id=764572632]
+script = ExtResource("3_4717r")
+metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="WorldLayer" type="CanvasLayer" parent="." unique_id=435459707]
 unique_name_in_owner = true
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=17485397]
+layer = 255
+
+[node name="DebugView" type="Control" parent="DebugLayer" unique_id=1435598532]
+visible = false
+modulate = Color(1, 1, 1, 0.42745098)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_sc4t8")
+
+[node name="StateDebugView" type="Control" parent="DebugLayer/DebugView" unique_id=1042498245]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_fn3g3")
+metadata/_custom_type_script = "uid://x0qhy54hl60j"
+
+[connection signal="state_resolved" from="StateProvider" to="." method="_on_state_provider_state_resolved"]
