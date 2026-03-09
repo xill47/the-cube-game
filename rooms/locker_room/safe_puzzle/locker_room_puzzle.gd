@@ -48,17 +48,14 @@ func on_dial_reset() -> void:
 	elif cur_input == 4:
 		if cur_code == code:
 			puzzle_solved()
-			return
 		else:
 			dial_reset()
-			return
 
 func puzzle_solved():
 	animation_player.play("safe_opening")
 	$OpeningSound.play()
 	solved = true
 	$Label.text = "Done"
-	
 
 func dial_reset():
 	$ErrorResetSound.play()
