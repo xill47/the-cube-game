@@ -2,7 +2,7 @@ class_name LockerRoomPuzzle
 extends Node2D
 
 @export var code: Array[int]
-
+@export var labels: Array[Label]
 var solved: bool = false
 var cur_input: int = 0
 var rotating: bool
@@ -30,17 +30,14 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			$TurningSound.stop()
 			rotating = false
 
-func _on_grab_area_mouse_exited() -> void:
-	rotating = false
-
 func on_dial_reset() -> void:
 	cur_input += 1
-	var code_to_text : String
 	print("cur_input"+ str(cur_input))
 	cur_code.push_back(max_number)
+	var cur_label: int
 	for number in cur_code:
-		code_to_text += str(abs(number))
-	$Label.text = code_to_text
+		labels[cur_label].text = str(abs(number))
+		cur_label += 1
 	if cur_input == 1 or cur_input == 3:
 		max_number = -7
 	elif cur_input == 2:
@@ -55,11 +52,15 @@ func puzzle_solved():
 	animation_player.play("safe_opening")
 	$OpeningSound.play()
 	solved = true
-	$Label.text = "Done"
+
 
 func dial_reset():
+	animation_player.play("error")
 	$ErrorResetSound.play()
-	$Label.text = "Wrong"
+	var cur_label: int
+	for number in cur_code:
+		labels[cur_label].text = str(0)
+		cur_label += 1
 	rotating = false
 	cur_code.clear()
 	max_number = 0

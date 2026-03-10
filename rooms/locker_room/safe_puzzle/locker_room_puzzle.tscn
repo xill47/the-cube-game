@@ -110,6 +110,34 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SafeBack:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hm2f7"]
+resource_name = "error"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeBack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-15, 0), Vector2(15, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_mmac5"]
 resource_name = "safe_opening"
@@ -214,8 +242,14 @@ tracks/7/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k464b"]
 _data = {
 &"RESET": SubResource("Animation_wl2j7"),
+&"error": SubResource("Animation_hm2f7"),
 &"safe_opening": SubResource("Animation_mmac5")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ckw7"]
+line_spacing = 2.0
+font_size = 30
+font_color = Color(0.1254902, 0, 0.03529412, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k7gn0"]
 animations = [{
@@ -281,12 +315,10 @@ height = 90.34442
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ckw7"]
 radius = 256.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_4ckw7"]
-font_size = 32
-
-[node name="LockerRoomPuzzle" type="Node2D" unique_id=1411646334]
+[node name="LockerRoomPuzzle" type="Node2D" unique_id=1411646334 node_paths=PackedStringArray("labels")]
 script = ExtResource("1_4ckw7")
 code = Array[int]([3, -6, 4, -2])
+labels = [NodePath("SafeBack/SafeDoor/VBoxContainer/Number1"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number2"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number3"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number4")]
 
 [node name="SafeAnimation" type="AnimationPlayer" parent="." unique_id=575165883]
 libraries/ = SubResource("AnimationLibrary_k464b")
@@ -305,6 +337,42 @@ texture = ExtResource("3_x1enf")
 
 [node name="SafeDoor" type="Sprite2D" parent="SafeBack" unique_id=1683407738]
 texture = ExtResource("3_a83in")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SafeBack/SafeDoor" unique_id=2088537652]
+offset_left = -571.0
+offset_top = -88.0
+offset_right = -531.0
+offset_bottom = 86.0
+theme_override_constants/separation = -2
+alignment = 1
+
+[node name="Number1" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=1344398138]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
+
+[node name="Number2" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=1151246385]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
+
+[node name="Number3" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=407231186]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
+
+[node name="Number4" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=364407766]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
 
 [node name="Back" type="AnimatedSprite2D" parent="SafeBack" unique_id=1353681950]
 position = Vector2(-256, 0)
@@ -380,14 +448,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea" unique_id=1166247840]
 shape = SubResource("CircleShape2D_4ckw7")
 
-[node name="Label" type="Label" parent="." unique_id=1344398138]
-z_index = 1
-offset_left = -288.0
-offset_top = -24.0
-offset_right = -215.0
-offset_bottom = 21.0
-label_settings = SubResource("LabelSettings_4ckw7")
-
 [node name="ErrorResetSound" type="AudioStreamPlayer" parent="." unique_id=1608783707]
 bus = &"Sound"
 
@@ -408,4 +468,3 @@ bus = &"Sound"
 [connection signal="area_entered" from="SafeBack/Back/Area5" to="." method="_on_area_entered" flags=18 binds= [5]]
 [connection signal="area_entered" from="SafeBack/Back/Area6" to="." method="_on_area_entered" flags=18 binds= [6]]
 [connection signal="input_event" from="GrabArea" to="." method="_on_area_2d_input_event"]
-[connection signal="mouse_exited" from="GrabArea" to="." method="_on_grab_area_mouse_exited"]
