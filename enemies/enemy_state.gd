@@ -28,7 +28,7 @@ func update_seen(character: CharacterState) -> void:
 		on_changed()
 
 func is_chasing() -> bool:
-	return stance == EnemyStance.CHASING or stance == EnemyStance.CHECKING 
+	return stance == EnemyStance.CHASING or stance == EnemyStance.CHECKING
 
 func move(new_position: Vector2) -> void:
 	position = new_position

@@ -1,11 +1,11 @@
 class_name CharacterState
 extends State
 
+signal forcibly_moved
+
 enum CharacterStance {
 	IDLE, MOVEMENT, AIMING, ANIMATION
 }
-
-signal forcibly_moved
 
 const FIRE_COOLDOWN := 1.5
 const SPEED := 320
