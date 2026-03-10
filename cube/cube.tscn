@@ -1,0 +1,729 @@
+[gd_scene format=3 uid="uid://64pwyxe6e6ga"]
+
+[ext_resource type="Script" uid="uid://do3bo2fu76s5q" path="res://cube/cube_controls.gd" id="1_ny043"]
+[ext_resource type="Texture2D" uid="uid://c0bv1ds1wnw1m" path="res://ui_assets/Cube_test.png" id="2_5outt"]
+[ext_resource type="Script" uid="uid://ct0kncwaypc4l" path="res://cube/map.gd" id="3_bhs1u"]
+[ext_resource type="Texture2D" uid="uid://b8goqxns0iewq" path="res://cube/map_assets/Room-1sq-unlooted.png" id="4_4cwfp"]
+[ext_resource type="Texture2D" uid="uid://dtu33680t67w1" path="res://cube/map_assets/Room-1sq-looted.png" id="5_81c3v"]
+[ext_resource type="Texture2D" uid="uid://c52yd5oinvjry" path="res://cube/map_assets/Room-2sq-unlooted.png" id="7_hf8u4"]
+[ext_resource type="Texture2D" uid="uid://d1ai2su3il262" path="res://cube/map_assets/Room-2sq-looted.png" id="8_bhs1u"]
+[ext_resource type="Texture2D" uid="uid://7iojcuryaqg7" path="res://cube/map_assets/Room-3x3sq-unlooted.png" id="9_5i508"]
+[ext_resource type="Texture2D" uid="uid://drry7j4mqa0fg" path="res://cube/map_assets/Room-3x3sq-looted.png" id="10_pbb1t"]
+[ext_resource type="Texture2D" uid="uid://b4sjgvc8a6ws1" path="res://cube/map_assets/Room-3sq-unlooted.png" id="11_l72b3"]
+[ext_resource type="Texture2D" uid="uid://52ccjk2hdmr0" path="res://cube/map_assets/Room-3sq-looted.png" id="12_r7q6h"]
+[ext_resource type="Texture2D" uid="uid://pxwrxs8eio7t" path="res://cube/map_assets/Tunnel-unlooted.png" id="13_a3doy"]
+[ext_resource type="Texture2D" uid="uid://dn6322dgqckak" path="res://cube/map_assets/Tunnel-looted.png" id="14_8de8x"]
+[ext_resource type="Texture2D" uid="uid://ch7qg578l32xw" path="res://cube/map_assets/Char.png" id="17_ixfwc"]
+[ext_resource type="Texture2D" uid="uid://tpb2gdj2o7bg" path="res://cube/puzzle_assets/sudoku/sudoku-atlas.png" id="18_gkcpc"]
+[ext_resource type="Texture2D" uid="uid://drv7q7mjck8se" path="res://cube/map_assets/DoorClosed.png" id="18_jkg2a"]
+[ext_resource type="Script" uid="uid://63j61im7dyd5" path="res://cube/sudoku_tile.gd" id="19_4vqgp"]
+[ext_resource type="Texture2D" uid="uid://d3htsywnm8m7v" path="res://cube/map_assets/DoorOpen.png" id="19_a8u54"]
+[ext_resource type="Texture2D" uid="uid://cyevvdborljox" path="res://cube/map_assets/DoorUnknown.png" id="21_5i508"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+transparency = 1
+albedo_texture = ExtResource("2_5outt")
+
+[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
+material = SubResource("StandardMaterial3D_5vw27")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_laciv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4cwfp")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_81c3v")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3frq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_ixfwc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtfhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hf8u4")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bhs1u")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swxwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4cwfp")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_81c3v")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3k535"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5i508")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_pbb1t")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltqnu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hf8u4")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bhs1u")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xcpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_l72b3")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_r7q6h")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqhg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4cwfp")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_81c3v")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lbbk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hf8u4")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bhs1u")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v46pa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_a3doy")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_8de8x")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u3eo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_jkg2a")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_a8u54")
+}],
+"loop": true,
+"name": &"Opened",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_5i508")
+}],
+"loop": true,
+"name": &"Unknown",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vqgp"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnt42"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(0, 72, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoipa"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(72, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63vaj"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(144, 72, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myir2"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(144, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m54g"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(144, 72, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he6v1"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(216, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hr0h"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(288, 72, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfhch"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(288, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdku2"]
+atlas = ExtResource("18_gkcpc")
+region = Rect2(360, 0, 56, 56)
+
+[node name="CubeControls" type="SubViewportContainer" unique_id=1219466798]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(257.5, 258)
+script = ExtResource("1_ny043")
+rotation_time = 0.25
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1916281275]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(756, 756)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=756525788]
+
+[node name="Cube3D" type="MeshInstance3D" parent="SubViewport/Node3D" unique_id=777229215]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_lquwl")
+
+[node name="Map" type="Node3D" parent="SubViewport/Node3D/Cube3D" unique_id=1793802757]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.49983734, 0, 0)
+script = ExtResource("3_bhs1u")
+room_refs = {
+"Spawn": NodePath("Room1")
+}
+
+[node name="Room1" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=334086082]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 0, -0.107805245, -0.0038969256)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_laciv")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room1" unique_id=788521825]
+transform = Transform3D(0.40000004, 0, -1.7763568e-15, 0, 0.40000004, 0, 1.7763568e-15, 0, 0.40000004, 0, 0, 0.06718445)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room2" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=84517166]
+transform = Transform3D(3.8213703e-16, 8.742276e-09, -1, 0.19999997, -8.742276e-09, 0, -8.742276e-09, -0.19999997, -4.371139e-08, 0, 0.052260473, -0.2232919)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_wtfhk")
+animation = &"Looted"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room2" unique_id=673891522]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999998, 0, 1.7763568e-15, 0, 0.9999998, -0.002373457, -0.1387803, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room4" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1621183882]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, 0, -0.10972804, -0.22607452)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_swxwx")
+animation = &"Base"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room4" unique_id=1716818044]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room3" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=853527590]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, 0, 0.059613094, 0.16183184)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_3k535")
+animation = &"Looted"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room3" unique_id=290863386]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="RoomBoss" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1904127111]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, 0, 0.21832144, -0.16885199)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_ltqnu")
+animation = &"Looted"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/RoomBoss" unique_id=1597906464]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room5" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1897192881]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, 0, -0.219, -0.115)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_6xcpc")
+animation = &"Looted"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room5" unique_id=1426546745]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Room6" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1681987699]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, 0, 0.11169845, -0.11460866)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_nqhg0")
+animation = &"Looted"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Room6" unique_id=72024164]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Corridor" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=1680924471]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 0, -0.0013453364, -0.060696356)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_6lbbk")
+animation = &"Looted"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Corridor" unique_id=2038937732]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 1.9984014e-15, 0, 0.99999976, -0.0023737252, 0.06421924, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Tunnel" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=155969727]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, -0.00039482117, -0.16554216, 0.16280381)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_v46pa")
+animation = &"Looted"
+
+[node name="Char" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Tunnel" unique_id=698677654]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999998, 0, 1.5543122e-15, 0, 0.99999976, 0.7070937, 0.7332054, 0.0054599047)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_j3frq")
+
+[node name="Doors" type="Node3D" parent="SubViewport/Node3D/Cube3D/Map" unique_id=341300988]
+
+[node name="ToRoom6" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=955874987]
+transform = Transform3D(3.821371e-16, 8.742278e-09, -1.001, 0.2, -8.742278e-09, 0, -8.742278e-09, -0.2, -4.37551e-08, -0.00039482117, 0.054908972, -0.11721588)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="FromRoom1" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=1562427531]
+transform = Transform3D(3.821371e-16, 8.742278e-09, -1.001, 0.2, -8.742278e-09, 0, -8.742278e-09, -0.2, -4.37551e-08, -0.00039482117, -0.054826763, -0.004432112)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="FromRoom3" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=358163531]
+transform = Transform3D(3.821371e-16, 8.742278e-09, -1.001, 0.2, -8.742278e-09, 0, -8.742278e-09, -0.2, -4.37551e-08, -0.00039482117, -0.054826763, 0.10347556)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="ToRoom2" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=200565321]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, -0.00039482117, 0.0006329082, -0.16866016)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="ToRoom3" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=721472899]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, -0.00039482117, 0.0006329082, 0.051230095)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="ToRoom5" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=1290204305]
+transform = Transform3D(-8.742278e-09, 0, -1, 0, 0.2, 0, 0.2, 0, -4.371139e-08, -0.00039482117, -0.2150769, 0.052418843)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="ToBossRoom" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=334604368]
+transform = Transform3D(3.821371e-16, 8.742278e-09, -1, 0.2, -8.742278e-09, 0, -8.742278e-09, -0.2, -4.371139e-08, -0.00039482117, 0.16348436, -0.117446244)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="Between4And2" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=1357530377]
+transform = Transform3D(3.821371e-16, 8.742278e-09, -1, 0.2, -8.742278e-09, 0, -8.742278e-09, -0.2, -4.371139e-08, -0.00039482117, -0.056501895, -0.22610286)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="Between4And5" type="AnimatedSprite3D" parent="SubViewport/Node3D/Cube3D/Map/Doors" unique_id=854820651]
+transform = Transform3D(3.821371e-16, 8.742278e-09, -1, 0.2, -8.742278e-09, 0, -8.742278e-09, -0.2, -4.371139e-08, -0.00039482117, -0.16422191, -0.22610286)
+flip_h = true
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u3eo6")
+animation = &"Unknown"
+
+[node name="Sudoku" type="Node3D" parent="SubViewport/Node3D/Cube3D" unique_id=1206649994]
+unique_name_in_owner = true
+
+[node name="Tile1-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=986161316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35141423, 0.07002362, 0.5060245)
+rotation_edit_mode = 2
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1381901901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211043, 0.3500434, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1196548224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35082003, 0.2104831, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=228225391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06941462, -0.07041749, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1530910073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21066424, -0.21039788, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_4vqgp")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile1-6" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=719016766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07096888, -0.35072118, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wnt42")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1206774927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35141423, 0.21098408, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1530988130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35105684, 0.072469324, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1030803284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21048385, -0.07254413, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1826873931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06727213, -0.21119227, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile2-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1458077668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20945299, -0.34964988, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_xoipa")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=2041909792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35141423, 0.3494673, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_63vaj")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1536868137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20982465, 0.06831154, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1140224404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07179837, -0.07170756, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_2m54g")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=555780956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21065351, -0.21081886, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile3-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1224249124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35167804, -0.3515426, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_myir2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1293993913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35167804, -0.21109812, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=738457742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3511206, -0.0722571, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1796134386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.069416225, 0.06785952, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1097929023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21113682, 0.21102676, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile4-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=597615524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07246792, 0.34933406, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_he6v1")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=29392304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2120406, 0.35000405, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_5hr0h")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=838234430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21036234, 0.21120521, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=458105311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069871634, 0.069827035, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1790864542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35093158, -0.06994088, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1424971410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07159862, -0.21187179, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile5-6" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=193484740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34971258, -0.34821504, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_yfhch")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-1" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1900878436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34971258, -0.20988148, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-2" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=500295694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07122058, -0.34787577, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-3" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=712606001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34894755, 0.35042983, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-4" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1556858946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07127723, 0.21074271, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Tile6-5" type="Sprite3D" parent="SubViewport/Node3D/Cube3D/Sudoku" unique_id=1975293956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2102032, 0.0709207, 0.5060245)
+pixel_size = 0.002
+double_sided = false
+texture = SubResource("AtlasTexture_wdku2")
+script = ExtResource("19_4vqgp")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=202975429]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5929381)
+rotation_edit_mode = 2
+fov = 60.0
+size = 1.935
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D" unique_id=613921110]
+transform = Transform3D(0.97584057, 0.07958121, -0.20347491, 0, 0.931304, 0.36424294, 0.21848388, -0.35544303, 0.9088042, -0.6799257, 1.7103736, 2.3295145)
