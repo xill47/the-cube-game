@@ -1,0 +1,470 @@
+[gd_scene format=3 uid="uid://b38lxcifmqdl1"]
+
+[ext_resource type="Script" uid="uid://b0aqufbk7jk06" path="res://rooms/locker_room/safe_puzzle/locker_room_puzzle.gd" id="1_4ckw7"]
+[ext_resource type="Texture2D" uid="uid://b54ypeokobjp2" path="res://rooms/locker_room/safe_puzzle/back.png" id="1_hcqwy"]
+[ext_resource type="Texture2D" uid="uid://bbbvaa5aelkth" path="res://rooms/locker_room/safe_puzzle/knob.png" id="2_4ckw7"]
+[ext_resource type="Texture2D" uid="uid://dond73y3ncop5" path="res://rooms/locker_room/safe_puzzle/safe-back.png" id="2_eeq2a"]
+[ext_resource type="Texture2D" uid="uid://bohjpsa3g3o0m" path="res://rooms/locker_room/safe_puzzle/safe-door.png" id="3_a83in"]
+[ext_resource type="Texture2D" uid="uid://cq1quahiyo6y" path="res://rooms/locker_room/safe_puzzle/fuze.png" id="3_hm2f7"]
+[ext_resource type="Texture2D" uid="uid://vnew35ccaufq" path="res://rooms/locker_room/safe_puzzle/safe-door_side.png" id="3_x1enf"]
+[ext_resource type="Texture2D" uid="uid://b81p2prek6366" path="res://rooms/locker_room/safe_puzzle/safe-knob-halfopened.png" id="6_k464b"]
+[ext_resource type="Texture2D" uid="uid://dao53d2lrwfu8" path="res://rooms/locker_room/safe_puzzle/safe-knob-opened.png" id="7_hm2f7"]
+[ext_resource type="Texture2D" uid="uid://ccaxgafjmssgv" path="res://rooms/locker_room/safe_puzzle/safe-smallknob-halfopened.png" id="9_pso55"]
+[ext_resource type="Texture2D" uid="uid://dd58sxk0pdrlh" path="res://rooms/locker_room/safe_puzzle/safe-smallknob-opened.png" id="10_eqesl"]
+
+[sub_resource type="Animation" id="Animation_wl2j7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeBack/SafeDoor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeBack/SafeDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SafeBack/SafeDoorSide:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(824, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SafeBack/SafeDoorSide:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SafeBack/Back:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SafeBack/Back:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-256, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SafeBack/Back/Knob/KnobSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SafeBack/Back/Knob/KnobSprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SafeBack:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hm2f7"]
+resource_name = "error"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeBack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-15, 0), Vector2(15, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mmac5"]
+resource_name = "safe_opening"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeBack/SafeDoor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeBack/SafeDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-760, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SafeBack/SafeDoorSide:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(768, 0), Vector2(-712, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SafeBack/SafeDoorSide:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0.49, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SafeBack/Back:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SafeBack/Back:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-256, 0), Vector2(-825, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SafeBack/Back/Knob/KnobSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.11666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SafeBack/Back/Knob/KnobSprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-64.171, 0), Vector2(-92, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k464b"]
+_data = {
+&"RESET": SubResource("Animation_wl2j7"),
+&"error": SubResource("Animation_hm2f7"),
+&"safe_opening": SubResource("Animation_mmac5")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ckw7"]
+line_spacing = 2.0
+font_size = 30
+font_color = Color(0.1254902, 0, 0.03529412, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k7gn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hcqwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k464b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hm2f7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a83in"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4ckw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pso55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eqesl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ckw7"]
+size = Vector2(98, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eeq2a"]
+radius = 33.879166
+height = 90.34442
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ckw7"]
+radius = 33.879166
+height = 90.34442
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70k82"]
+radius = 33.879166
+height = 90.34442
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a83in"]
+radius = 33.879166
+height = 90.34442
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1enf"]
+radius = 33.879166
+height = 90.34442
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wl2j7"]
+radius = 33.879166
+height = 90.34442
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ckw7"]
+radius = 256.0
+
+[node name="LockerRoomPuzzle" type="Node2D" unique_id=1411646334 node_paths=PackedStringArray("labels")]
+script = ExtResource("1_4ckw7")
+code = Array[int]([3, -6, 4, -2])
+labels = [NodePath("SafeBack/SafeDoor/VBoxContainer/Number1"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number2"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number3"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number4")]
+
+[node name="SafeAnimation" type="AnimationPlayer" parent="." unique_id=575165883]
+libraries/ = SubResource("AnimationLibrary_k464b")
+
+[node name="SafeBack" type="Sprite2D" parent="." unique_id=1815195769]
+texture = ExtResource("2_eeq2a")
+
+[node name="Fuze" type="Sprite2D" parent="SafeBack" unique_id=1886041524]
+position = Vector2(0, 257)
+texture = ExtResource("3_hm2f7")
+
+[node name="SafeDoorSide" type="Sprite2D" parent="SafeBack" unique_id=900072352]
+position = Vector2(824, 0)
+scale = Vector2(1e-05, 1)
+texture = ExtResource("3_x1enf")
+
+[node name="SafeDoor" type="Sprite2D" parent="SafeBack" unique_id=1683407738]
+texture = ExtResource("3_a83in")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SafeBack/SafeDoor" unique_id=2088537652]
+offset_left = -571.0
+offset_top = -88.0
+offset_right = -531.0
+offset_bottom = 86.0
+theme_override_constants/separation = -2
+alignment = 1
+
+[node name="Number1" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=1344398138]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
+
+[node name="Number2" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=1151246385]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
+
+[node name="Number3" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=407231186]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
+
+[node name="Number4" type="Label" parent="SafeBack/SafeDoor/VBoxContainer" unique_id=364407766]
+z_index = 1
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4ckw7")
+horizontal_alignment = 1
+
+[node name="Back" type="AnimatedSprite2D" parent="SafeBack" unique_id=1353681950]
+position = Vector2(-256, 0)
+sprite_frames = SubResource("SpriteFrames_k7gn0")
+
+[node name="Knob" type="Sprite2D" parent="SafeBack/Back" unique_id=934053146]
+unique_name_in_owner = true
+
+[node name="KnobSprite" type="AnimatedSprite2D" parent="SafeBack/Back/Knob" unique_id=432714649]
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_a83in")
+offset = Vector2(16, 0)
+
+[node name="PointerArea" type="Area2D" parent="SafeBack/Back/Knob/KnobSprite" unique_id=965906899]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Knob/KnobSprite/PointerArea" unique_id=736950824]
+position = Vector2(207, 7.343513e-06)
+shape = SubResource("RectangleShape2D_4ckw7")
+
+[node name="Area0" type="Area2D" parent="SafeBack/Back" unique_id=2128478500]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Area0" unique_id=1565511428]
+position = Vector2(0, -216)
+shape = SubResource("CapsuleShape2D_eeq2a")
+
+[node name="Area1" type="Area2D" parent="SafeBack/Back" unique_id=291818734]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Area1" unique_id=781516565]
+position = Vector2(160, -144)
+rotation = 0.72496045
+shape = SubResource("CapsuleShape2D_4ckw7")
+
+[node name="Area2" type="Area2D" parent="SafeBack/Back" unique_id=1679104230]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Area2" unique_id=1359193865]
+position = Vector2(216, 40.000004)
+rotation = 1.75878
+shape = SubResource("CapsuleShape2D_70k82")
+
+[node name="Area3" type="Area2D" parent="SafeBack/Back" unique_id=488455650]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Area3" unique_id=1983112139]
+position = Vector2(104.00001, 192)
+rotation = 2.6651695
+shape = SubResource("CapsuleShape2D_a83in")
+
+[node name="Area4" type="Area2D" parent="SafeBack/Back" unique_id=752284264]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Area4" unique_id=622322747]
+position = Vector2(-104, 192)
+rotation = -2.6651177
+shape = SubResource("CapsuleShape2D_x1enf")
+
+[node name="Area5" type="Area2D" parent="SafeBack/Back" unique_id=406832812]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Area5" unique_id=1672922673]
+position = Vector2(-216, 40)
+rotation = -1.7592919
+shape = SubResource("CapsuleShape2D_70k82")
+
+[node name="Area6" type="Area2D" parent="SafeBack/Back" unique_id=2135336128]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeBack/Back/Area6" unique_id=1826246500]
+position = Vector2(-160, -144)
+rotation = -0.72431165
+shape = SubResource("CapsuleShape2D_wl2j7")
+
+[node name="GrabArea" type="Area2D" parent="." unique_id=2090291477]
+position = Vector2(-256, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea" unique_id=1166247840]
+shape = SubResource("CircleShape2D_4ckw7")
+
+[node name="ErrorResetSound" type="AudioStreamPlayer" parent="." unique_id=1608783707]
+bus = &"Sound"
+
+[node name="OpeningSound" type="AudioStreamPlayer" parent="." unique_id=1472024191]
+bus = &"Sound"
+
+[node name="NumberClickSound" type="AudioStreamPlayer" parent="." unique_id=1117231701]
+bus = &"Sound"
+
+[node name="TurningSound" type="AudioStreamPlayer" parent="." unique_id=407536264]
+bus = &"Sound"
+
+[connection signal="area_entered" from="SafeBack/Back/Knob/KnobSprite/PointerArea" to="." method="_on_pointer_area_area_entered"]
+[connection signal="area_entered" from="SafeBack/Back/Area1" to="." method="_on_area_entered" flags=18 binds= [1]]
+[connection signal="area_entered" from="SafeBack/Back/Area2" to="." method="_on_area_entered" flags=18 binds= [2]]
+[connection signal="area_entered" from="SafeBack/Back/Area3" to="." method="_on_area_entered" flags=18 binds= [3]]
+[connection signal="area_entered" from="SafeBack/Back/Area4" to="." method="_on_area_entered" flags=18 binds= [4]]
+[connection signal="area_entered" from="SafeBack/Back/Area5" to="." method="_on_area_entered" flags=18 binds= [5]]
+[connection signal="area_entered" from="SafeBack/Back/Area6" to="." method="_on_area_entered" flags=18 binds= [6]]
+[connection signal="input_event" from="GrabArea" to="." method="_on_area_2d_input_event"]

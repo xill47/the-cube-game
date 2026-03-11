@@ -1,5 +1,20 @@
 [gd_scene format=3 uid="uid://bwt7md3kf7yde"]
 
+[ext_resource type="Script" uid="uid://c5h53ukyffr03" path="res://ui_layer.gd" id="1_7mycd"]
+[ext_resource type="Texture2D" uid="uid://befxu4syw8ppl" path="res://ui_assets/cube_button.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://b8d0yrpxlfst3" path="res://ui_assets/Pistol.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://buqw662x8u801" path="res://ui_assets/Heal.png" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bvlggixwsswdm" path="res://ui_assets/Key.png" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://64pwyxe6e6ga" path="res://cube/cube.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b38lxcifmqdl1" path="res://rooms/locker_room/safe_puzzle/locker_room_puzzle.tscn" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://1e312y7m5ide" path="res://fakeshot-03(4x).png" id="7_272bh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dm0k"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_272bh"]
+font_size = 36
+
 [node name="Main" type="Node" unique_id=1149138756]
 
 [node name="MainMenu" type="Control" parent="." unique_id=1892840939]
@@ -9,5 +24,137 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="World" type="Node2D" parent="." unique_id=498056288]
+
+[node name="UILayer" type="CanvasLayer" parent="World" unique_id=1612530512]
+follow_viewport_enabled = true
+script = ExtResource("1_7mycd")
+
+[node name="InGameUI" type="Control" parent="World/UILayer" unique_id=1624286845]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Inventory" type="HBoxContainer" parent="World/UILayer/InGameUI" unique_id=607161968]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 912.0
+offset_right = 440.0
+offset_bottom = 1040.0
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Weapon" type="TextureRect" parent="World/UILayer/InGameUI/Inventory" unique_id=1668592055]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_lquwl")
+
+[node name="BoxContainer" type="BoxContainer" parent="World/UILayer/InGameUI/Inventory/Weapon" unique_id=278577177]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="CurrentAmmo" type="Label" parent="World/UILayer/InGameUI/Inventory/Weapon/BoxContainer" unique_id=1383233988]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_7dm0k")
+
+[node name="Slash" type="Label" parent="World/UILayer/InGameUI/Inventory/Weapon/BoxContainer" unique_id=815037843]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_7dm0k")
+
+[node name="AllAmmo" type="Label" parent="World/UILayer/InGameUI/Inventory/Weapon/BoxContainer" unique_id=303939099]
+layout_mode = 2
+text = "16"
+label_settings = SubResource("LabelSettings_7dm0k")
+
+[node name="Heal" type="TextureRect" parent="World/UILayer/InGameUI/Inventory" unique_id=1641885767]
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("3_7mycd")
+
+[node name="KeyItems" type="HBoxContainer" parent="World/UILayer/InGameUI/Inventory" unique_id=1327442136]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Key1" type="TextureRect" parent="World/UILayer/InGameUI/Inventory/KeyItems" unique_id=500692475]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_272bh")
+
+[node name="Key2" type="TextureRect" parent="World/UILayer/InGameUI/Inventory/KeyItems" unique_id=1437410095]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_272bh")
+
+[node name="Key3" type="TextureRect" parent="World/UILayer/InGameUI/Inventory/KeyItems" unique_id=1698891216]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_272bh")
+
+[node name="CubeButton" type="TextureButton" parent="World/UILayer/InGameUI" unique_id=599169628]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1752.0
+offset_top = 912.0
+offset_right = 1880.0
+offset_bottom = 1040.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("1_ig7tw")
+
+[node name="CubeControl" parent="World/UILayer/InGameUI" unique_id=1219466798 instance=ExtResource("6_7mycd")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 428.0
+offset_top = 8.0
+offset_right = 1452.0
+offset_bottom = 1032.0
+pivot_offset = Vector2(2.15, 0)
+
+[node name="rotate_direction" type="Label" parent="World/UILayer/InGameUI" unique_id=1658868372]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 441.0
+offset_top = 67.0
+offset_right = 610.0
+offset_bottom = 118.0
+label_settings = SubResource("LabelSettings_272bh")
+
+[node name="Fakeshot03(4x)" type="Sprite2D" parent="World" unique_id=1242124112]
+position = Vector2(960, 539)
+texture = ExtResource("7_272bh")
+
+[node name="LockerRoomPuzzle" parent="World" unique_id=740067171 instance=ExtResource("7_5vw27")]
+position = Vector2(832, 544)
+
+[connection signal="gui_input" from="World/UILayer/InGameUI/CubeControl" to="World/UILayer/InGameUI/CubeControl" method="_on_gui_input"]
