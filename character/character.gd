@@ -1,16 +1,38 @@
 class_name Character
 extends CharacterBody2D
 
-@onready var context: CharacterContext = %CharacterContext
+var state: CharacterState
+
+
+func _on_state_provider_state_resolved() -> void:
+	state.forcibly_moved.connect(_on_force_movement)
+
+
+func _on_force_movement() -> void:
+	if not global_position.is_equal_approx(state.position):
+		global_position = state.position
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action(&"interact") and state.can_interact():
+		state.interact()
+
 
 func _physics_process(_delta: float) -> void:
-	if context.character.is_movement_allowed():
-		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down") \
+	if state.can_move():
+		velocity = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down") \
 			* CharacterState.SPEED
 		move_and_slide()
+		state.move(global_position)
 
-func _process(_delta: float) -> void:
-	if context.character.is_movement_allowed():
-		context.character.move_to(global_position)
-	else:
-		global_position = context.character.position
+
+func _on_interactable_area_area_entered(area: Area2D) -> void:
+	var interactable := area as Interactable
+	if interactable != null:
+		state.set_interactable_in_range(interactable.state)
+
+
+func _on_interactable_area_area_exited(area: Area2D) -> void:
+	var interactable := area as Interactable
+	if state.interactable_in_range == interactable.get_state():
+		state.set_interactable_in_range(null)

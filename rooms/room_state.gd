@@ -1,16 +1,11 @@
+@abstract
 class_name RoomState
-extends RefCounted
+extends State
 
-signal changed
+signal request_transition(door: DoorState)
 
-var character: CharacterState
-var plates: Array[PlateState]
-
+var room_resource: PackedScene
 var solved: bool
 
-func is_fully_solved() -> bool:
-	return solved
-
-func mark_solved() -> void:
-	solved = true
-	changed.emit()
+func enter_door(door: DoorState) -> void:
+	request_transition.emit(door)

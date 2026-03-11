@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://bb1x6wxo7jay6"]
+
+[ext_resource type="Script" uid="uid://c7228up43felw" path="res://rooms/test_chamber/test_chamber.gd" id="1_bv27j"]
+[ext_resource type="PackedScene" uid="uid://bas7xe8yxxn7h" path="res://interactables/plates/plate.tscn" id="3_ku6ah"]
+[ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="4_i3p7n"]
+[ext_resource type="PackedScene" uid="uid://bhnp0vc2wfcld" path="res://interactables/doors/door.tscn" id="4_ku6ah"]
+[ext_resource type="PackedScene" uid="uid://curndg2cp018j" path="res://enemies/enemy.tscn" id="5_i3p7n"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="6_j2bpa"]
+[ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="7_63urn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
+size = Vector2(57, 281)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv27j"]
+size = Vector2(455, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0owk"]
+size = Vector2(57, 281)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le7kl"]
+size = Vector2(439, 31)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_i3p7n"]
+vertices = PackedVector2Array(416, 404.67188, 296.0703, 404.95313, 296.92188, 212.03906, 416, 252, 691, 212.95313, 498, 252, 691, 404.03906, 612, 404.21875, 612, 252, 524, 404.42188, 498, 404.47656, 524, 252)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 7, 8, 4), PackedInt32Array(9, 10, 5, 11), PackedInt32Array(11, 5, 4), PackedInt32Array(11, 4, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(279, 194, 278, 423, 709, 422, 709, 195)])
+parsed_collision_mask = 4294967041
+agent_radius = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3p7n"]
+size = Vector2(46, 162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfowp"]
+size = Vector2(52, 169)
+
+[node name="TestChamber" type="Node2D" unique_id=1590841663]
+script = ExtResource("1_bv27j")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1434841937]
+offset_left = 279.0
+offset_top = 191.0
+offset_right = 715.0
+offset_bottom = 434.0
+color = Color(0.33965993, 0.25380003, 0.54, 1)
+
+[node name="Walls" type="Node2D" parent="." unique_id=1963081063]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" unique_id=403527801]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=933203999]
+position = Vector2(249, 315)
+shape = SubResource("RectangleShape2D_1o30x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls" unique_id=2098338785]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2" unique_id=460252831]
+position = Vector2(485.5, 180.75)
+shape = SubResource("RectangleShape2D_bv27j")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls" unique_id=9782177]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3" unique_id=290973380]
+position = Vector2(741, 304)
+shape = SubResource("RectangleShape2D_e0owk")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls" unique_id=258527065]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4" unique_id=686858636]
+position = Vector2(490.5, 443.5)
+shape = SubResource("RectangleShape2D_le7kl")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=222648405]
+navigation_polygon = SubResource("NavigationPolygon_i3p7n")
+
+[node name="ColorRect2" type="ColorRect" parent="NavigationRegion2D" unique_id=1180436752]
+offset_left = 433.0
+offset_top = 269.0
+offset_right = 480.0
+offset_bottom = 432.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/ColorRect2" unique_id=1882582656]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/ColorRect2/StaticBody2D" unique_id=312613377]
+position = Vector2(24, 82)
+shape = SubResource("RectangleShape2D_i3p7n")
+
+[node name="ColorRect3" type="ColorRect" parent="NavigationRegion2D" unique_id=1247799639]
+offset_left = 542.0
+offset_top = 270.0
+offset_right = 593.0
+offset_bottom = 439.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/ColorRect3" unique_id=1820967191]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/ColorRect3/StaticBody2D" unique_id=257363434]
+position = Vector2(26, 84.5)
+shape = SubResource("RectangleShape2D_nfowp")
+
+[node name="Plate1" parent="." unique_id=1183266043 instance=ExtResource("3_ku6ah")]
+position = Vector2(319, 230)
+
+[node name="Plate2" parent="." unique_id=71858851 instance=ExtResource("3_ku6ah")]
+position = Vector2(371, 231)
+
+[node name="Character" parent="." unique_id=337287904 instance=ExtResource("4_i3p7n")]
+unique_name_in_owner = true
+position = Vector2(320, 382)
+
+[node name="Door" parent="." unique_id=1059506860 instance=ExtResource("4_ku6ah")]
+position = Vector2(656, 202)
+starts_locked = true
+starting_leads_to = "res://rooms/test_chamber/test_chamber.tscn"
+leads_to_spawn = "%Spawn"
+
+[node name="Enemy" parent="." unique_id=1662956204 instance=ExtResource("5_i3p7n")]
+position = Vector2(511, 404)
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
+unique_name_in_owner = true
+position = Vector2(401, 386)
+
+[node name="StateProvider" type="Node" parent="." unique_id=199642382]
+script = ExtResource("6_j2bpa")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="StateScope" type="Node" parent="." unique_id=1230836305]
+script = ExtResource("7_63urn")
+metadata/_custom_type_script = "uid://dmmo0yy6ig2lo"
