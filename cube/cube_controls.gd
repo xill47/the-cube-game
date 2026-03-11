@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 			if event.is_action("open_map"):
 				toggle_map()
 				return
-			elif event.is_action("rotate_ccw"):
+			if event.is_action("rotate_ccw"):
 				rotate_direction = Vector3( 0, 0, 1)
 			elif event.is_action("rotate_cw"):
 				rotate_direction = Vector3( 0, 0, -1)
