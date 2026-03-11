@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dxpgv2w4e7rka" path="res://character/stance_label.gd" id="3_hx151"]
 [ext_resource type="Script" uid="uid://uxv0kn3bnd3h" path="res://character/character.gd" id="3_ugqs2"]
 [ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="4_hx151"]
+[ext_resource type="SpriteFrames" uid="uid://dk11vct5drijq" path="res://character/assets/frames/top half.res" id="5_0rvpn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf0e5"]
 radius = 16.0
@@ -52,6 +53,26 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1418704256]
 shape = SubResource("CircleShape2D_ugqs2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1709320943]
+sprite_frames = ExtResource("5_0rvpn")
+animation = &"walk-cycle"
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"pending_changes": {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "",
+"source_uid": -1
+}
+}
 
 [connection signal="state_resolved" from="StateProvider" to="." method="_on_state_provider_state_resolved"]
 [connection signal="area_entered" from="InteractableArea" to="." method="_on_interactable_area_area_entered"]
