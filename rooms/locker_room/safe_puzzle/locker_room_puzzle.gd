@@ -8,7 +8,7 @@ var cur_input: int = 0
 var rotating: bool
 var mouse_offset: Vector2
 var cur_number: int
-var max_number: int
+var max_number: int = -16
 var cur_code: Array
 
 @onready var animation_player: AnimationPlayer = $SafeAnimation
@@ -30,7 +30,7 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			$TurningSound.stop()
 			rotating = false
 
-func on_dial_reset() -> void:
+func _on_dial_reset() -> void:
 	cur_input += 1
 	print("cur_input"+ str(cur_input))
 	cur_code.push_back(max_number)
@@ -38,23 +38,20 @@ func on_dial_reset() -> void:
 	for number in cur_code:
 		labels[cur_label].text = str(abs(number))
 		cur_label += 1
-	if cur_input == 1 or cur_input == 3:
-		max_number = -7
-	elif cur_input == 2:
-		max_number = 0
-	elif cur_input == 4:
+	max_number = -16
+	if cur_input == 4:
 		if cur_code == code:
-			puzzle_solved()
+			_puzzle_solved()
 		else:
-			dial_reset()
+			_safe_reset()
 
-func puzzle_solved():
+func _puzzle_solved():
 	animation_player.play("safe_opening")
 	$OpeningSound.play()
 	solved = true
 
 
-func dial_reset():
+func _safe_reset():
 	animation_player.play("error")
 	$ErrorResetSound.play()
 	var cur_label: int
@@ -63,7 +60,7 @@ func dial_reset():
 		cur_label += 1
 	rotating = false
 	cur_code.clear()
-	max_number = 0
+	max_number = -16
 	cur_input = 0
 	cur_number = 0
 	knob.rotation = 0
@@ -72,16 +69,13 @@ func _on_area_entered(_area: Area2D, _source, extra_arg_0: int) -> void:
 	$NumberClickSound.play()
 	if cur_input == 0 or cur_input == 2:
 		cur_number = extra_arg_0
-		if cur_number > max_number:
-			max_number = cur_number
 	elif cur_input == 1 or cur_input == 3:
 		cur_number = - extra_arg_0
-		print(cur_number)
-		if cur_number > max_number:
-			max_number = cur_number
+	if cur_number > max_number:
+		max_number = cur_number
 
 
 func _on_pointer_area_area_entered(area: Area2D) -> void:
-	if area == area_zero and max_number != 0 and -7:
+	if area == area_zero and max_number != -16:
 		$NumberClickSound.play()
-		on_dial_reset()
+		_on_dial_reset()

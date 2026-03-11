@@ -1,7 +1,6 @@
 class_name UILayer
 extends CanvasLayer
 
-var cube_on_screen: bool = false
 var last_cube_position: Vector2
 
 @onready var cube: CubeControl = %CubeControl
@@ -13,28 +12,25 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event.is_action("toggle_cube"):
-			if cube_on_screen:
-				cube.on_screen = false
+			if cube.on_screen:
 				last_cube_position = cube.position
-				disappear_cube_animation()
+				_disappear_cube_animation()
 			else:
-				cube.on_screen = true
-				appear_cube_animation()
-			cube_on_screen = not cube_on_screen
+				_appear_cube_animation()
+			cube.on_screen = not cube.on_screen
 		if event.is_action("open_map"):
-			if not cube_on_screen:
-				cube.on_screen = true
-				cube.open_map()
-				appear_cube_animation()
-			cube_on_screen = not cube_on_screen
+			if not cube.on_screen:
+				cube.toggle_map()
+				_appear_cube_animation()
+				cube.on_screen = not cube.on_screen
 
-func appear_cube_animation():
+func _appear_cube_animation():
 	var tween = create_tween()
 	tween.tween_property(cube,"position",last_cube_position, 0.25)
 	tween.parallel()
 	tween.tween_property(cube,"scale",Vector2(1,1), 0.25)
 
-func disappear_cube_animation():
+func _disappear_cube_animation():
 	var tween = create_tween()
 	tween.tween_property(cube,"position",cube_button.position, 0.25)
 	tween.parallel()

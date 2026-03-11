@@ -289,6 +289,7 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(257.5, 258)
+mouse_filter = 0
 script = ExtResource("1_ny043")
 rotation_time = 0.25
 

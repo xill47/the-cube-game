@@ -11,7 +11,7 @@ var on_screen: bool = true
 var map_opened: bool = false
 var rotatable: bool = true
 var rotating: bool = false
-var rotate_direction
+var rotate_direction: Vector3
 var start_basis: Basis = Basis.IDENTITY
 var target_basis: Basis
 var last_position: Basis
@@ -25,18 +25,19 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if being_dragged:
-		follow_mouse()
+		_follow_mouse()
 
-func follow_mouse():
+func _follow_mouse():
 	position = get_global_mouse_position() - mouse_offset
 
-#Adding queue, sounds like a good idea, but i donno
-#TODO For some reason stops when out of target
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and rotatable and on_screen:
-		if event.is_pressed() and cube_controls.has(event_check(event)):
+		if event.is_pressed() and _event_check(event):
 			rotatable = false
-			if event.is_action("rotate_ccw"):
+			if event.is_action("open_map"):
+				toggle_map()
+				return
+			elif event.is_action("rotate_ccw"):
 				rotate_direction = Vector3( 0, 0, 1)
 			elif event.is_action("rotate_cw"):
 				rotate_direction = Vector3( 0, 0, -1)
@@ -48,46 +49,41 @@ func _input(event: InputEvent) -> void:
 				rotate_direction = Vector3(0, -1, 0)
 			elif event.is_action("move_left"):
 				rotate_direction = Vector3(0, 1, 0)
-			if event.is_action("open_map"):
-				open_map()
-			else:
-				target_basis = start_basis.rotated(rotate_direction, TAU / 4)
-				last_position = target_basis
-				await rotation_animation()
-				rotatable = true
+			target_basis = start_basis.rotated(rotate_direction, TAU / 4)
+			last_position = target_basis
+			await _rotation_animation()
+			rotatable = true
+			get_viewport().set_input_as_handled()
 
-func event_check(event) -> String:
-	var action = null
-	for input in InputMap.get_actions():
-		if InputMap.event_is_action(event, input):
-			action = input
-	if action != null:
-		return action
-	return "Null"
+func _event_check(event: InputEvent) -> bool:
+	for known_event in cube_controls:
+		if event.is_action(known_event):
+			return true
+	return false
 
-func open_map():
+func toggle_map():
 	if map_opened:
 		target_basis = last_position
 	else:
 		target_basis = Basis.IDENTITY.rotated(Vector3.DOWN, TAU / 4)
 	map_opened = not map_opened
-	await rotation_animation()
+	await _rotation_animation()
 	rotatable = true
 
-func rotation_animation() -> bool:
+func _rotation_animation() -> bool:
 	rotating = true
-	create_tween().tween_method(interpolate, 0.0, 1.0, rotation_time).set_trans(Tween.TRANS_EXPO)
+	create_tween().tween_method(_interpolate, 0.0, 1.0, rotation_time).set_trans(Tween.TRANS_EXPO)
 	await get_tree().create_timer(rotation_time + 0.1).timeout
 	cube_3d.basis.x = snapped(cube_3d.basis.x, Vector3(1, 1, 1))
 	cube_3d.basis.y = snapped(cube_3d.basis.y, Vector3(1, 1, 1))
 	cube_3d.basis.z = snapped(cube_3d.basis.z, Vector3(1, 1, 1))
 	rotating = false
-	sudoku_rotate()
+	_sudoku_rotate()
 	start_basis = cube_3d.basis
 #	print(start_basis)
 	return true
 
-func interpolate(weight):
+func _interpolate(weight: float):
 	cube_3d.basis = start_basis.slerp(target_basis, weight).orthonormalized()
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -98,6 +94,6 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.is_released():
 			being_dragged = false
 
-func sudoku_rotate():
+func _sudoku_rotate():
 	for tile in sudoku_tiles:
 		tile.sudoku_opened(cube_3d)
