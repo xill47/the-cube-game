@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://bas7xe8yxxn7h"]
 
-[ext_resource type="Script" uid="uid://pc0jmsmcdnlo" path="res://interactables/plate_context.gd" id="1_n1ytx"]
-[ext_resource type="Script" uid="uid://bwakjbnwidqgj" path="res://interactables/plate.gd" id="1_o7ty8"]
+[ext_resource type="Script" uid="uid://bwakjbnwidqgj" path="res://interactables/plates/plate.gd" id="1_o7ty8"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="2_h7phu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtym4"]
 
 [node name="Plate" type="Node2D" unique_id=1183266043]
 script = ExtResource("1_o7ty8")
-
-[node name="Context" type="Node" parent="." unique_id=284854845]
-unique_name_in_owner = true
-script = ExtResource("1_n1ytx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2027119314]
 custom_minimum_size = Vector2(16, 16)
@@ -24,6 +20,10 @@ color = Color(0.16023333, 0.08050001, 0.23, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlateArea" unique_id=378440703]
 shape = SubResource("RectangleShape2D_mtym4")
+
+[node name="StateProvider" type="Node" parent="." unique_id=2043320582]
+script = ExtResource("2_h7phu")
+metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [connection signal="body_entered" from="PlateArea" to="." method="_on_plate_area_body_entered"]
 [connection signal="body_exited" from="PlateArea" to="." method="_on_plate_area_body_exited"]
