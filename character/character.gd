@@ -25,10 +25,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"shoot") and state.can_fire():
 		state.fire(get_tree())
 		animation.fire()
-	if event.is_action_pressed(&"run") and state.can_run():
-		state.start_running()
-	if event.is_action_released(&"run") and state.stance == state.CharacterStance.RUNNING:
-		state.stop_running()
 
 func _physics_process(_delta: float) -> void:
 	if state.can_move():
