@@ -31,9 +31,6 @@ static func create(character: Character) -> CharacterState:
 func can_move() -> bool:
 	return stance != CharacterStance.AIMING and stance != CharacterStance.ANIMATION
 
-func can_run() -> bool:
-	return stance == CharacterStance.MOVEMENT
-
 func move(new_position: Vector2) -> void:
 	var prev_stance: CharacterStance = stance
 	if position.is_equal_approx(new_position):
@@ -52,14 +49,6 @@ func force_movement(new_position: Vector2) -> void:
 
 func can_aim() -> bool:
 	return stance == CharacterStance.IDLE
-
-func start_running() -> void:
-	stance = CharacterStance.RUNNING
-	on_changed()
-
-func stop_running() -> void:
-	stance = CharacterStance.MOVEMENT
-	on_changed()
 
 func start_aiming() -> void:
 	stance = CharacterStance.AIMING

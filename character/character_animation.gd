@@ -75,3 +75,10 @@ func _on_dir_change():
 	animation_tree.set("parameters/Idle/transition_request", state_name_four)
 	animation_tree.set("parameters/Walk/transition_request", state_name_four)
 	animation_tree.set("parameters/Run/transition_request", state_name_four)
+
+func damaged():
+	animation_tree.set("parameters/Custom/transition_request", "damaged")
+	animation_tree.set("parameters/CustomShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+func cutscene(req_cutscene: String):
+	animation_tree.set("parameters/Custom/transition_request", req_cutscene)

@@ -232,6 +232,16 @@ _data = {
 &"up-right": SubResource("Animation_orckd")
 }
 
+[sub_resource type="Animation" id="Animation_1dqym"]
+
+[sub_resource type="Animation" id="Animation_6kuvt"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6610h"]
+_data = {
+&"damaged": SubResource("Animation_1dqym"),
+&"wake-up": SubResource("Animation_6kuvt")
+}
+
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_dy06j"]
 input_0/name = "left"
 input_0/auto_advance = false
@@ -347,6 +357,18 @@ animation = &"aim/up-left"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o6jyn"]
 animation = &"walk/right"
 
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_b4qc5"]
+input_0/name = "wake-up"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "damaged"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_hd715"]
+
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_o6jyn"]
 input_0/name = "left"
 input_0/auto_advance = false
@@ -438,6 +460,10 @@ input_3/name = "aim"
 input_3/auto_advance = false
 input_3/break_loop_at_end = false
 input_3/reset = true
+input_4/name = "custom"
+input_4/auto_advance = false
+input_4/break_loop_at_end = false
+input_4/reset = true
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_tgjim"]
 input_0/name = "left"
@@ -457,12 +483,18 @@ input_3/auto_advance = false
 input_3/break_loop_at_end = false
 input_3/reset = true
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iaewr"]
+animation = &"custom/damaged"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wy5t8"]
 animation = &"walk/left"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5tbnp"]
+animation = &"custom/wake-up"
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dy06j"]
-graph_offset = Vector2(-546.5213, -127.96239)
-nodes/output/position = Vector2(580, 0)
+graph_offset = Vector2(-310.80322, 402.12115)
+nodes/output/position = Vector2(760, 20)
 nodes/wa/node = SubResource("AnimationNodeAnimation_wy5t8")
 nodes/wa/position = Vector2(-1000, -100)
 nodes/Walk/node = SubResource("AnimationNodeTransition_tgjim")
@@ -533,7 +565,15 @@ nodes/OneShot/position = Vector2(-140, 600)
 "nodes/Animation 26/position" = Vector2(-720, 420)
 "nodes/Animation 27/node" = SubResource("AnimationNodeAnimation_h0hwg")
 "nodes/Animation 27/position" = Vector2(-860, 620)
-node_connections = [&"output", 0, &"Stance", &"Walk", 0, &"wa", &"Walk", 1, &"Animation", &"Walk", 2, &"Animation 2", &"Walk", 3, &"Animation 3", &"Stance", 0, &"Idle", &"Stance", 1, &"Walk", &"Stance", 2, &"Run", &"Stance", 3, &"OneShot", &"Idle", 0, &"Animation 6", &"Idle", 1, &"Animation 5", &"Idle", 2, &"Animation 4", &"Idle", 3, &"Animation 7", &"Run", 0, &"Animation 25", &"Run", 1, &"Animation 26", &"Run", 2, &"Animation 24", &"Run", 3, &"Animation 27", &"Aim", 0, &"Animation 11", &"Aim", 1, &"Animation 12", &"Aim", 2, &"Animation 8", &"Aim", 3, &"Animation 15", &"Aim", 4, &"Animation 9", &"Aim", 5, &"Animation 10", &"Aim", 6, &"Animation 14", &"Aim", 7, &"Animation 13", &"Shoot", 0, &"Animation 19", &"Shoot", 1, &"Animation 20", &"Shoot", 2, &"Animation 16", &"Shoot", 3, &"Animation 23", &"Shoot", 4, &"Animation 17", &"Shoot", 5, &"Animation 18", &"Shoot", 6, &"Animation 22", &"Shoot", 7, &"Animation 21", &"OneShot", 0, &"Aim", &"OneShot", 1, &"Shoot"]
+nodes/CustomShot/node = SubResource("AnimationNodeOneShot_hd715")
+nodes/CustomShot/position = Vector2(540, -20)
+nodes/Custom/node = SubResource("AnimationNodeTransition_b4qc5")
+nodes/Custom/position = Vector2(380, 540)
+nodes/damaged/node = SubResource("AnimationNodeAnimation_iaewr")
+nodes/damaged/position = Vector2(160, 700)
+nodes/wake-up/node = SubResource("AnimationNodeAnimation_5tbnp")
+nodes/wake-up/position = Vector2(160, 500)
+node_connections = [&"output", 0, &"CustomShot", &"Walk", 0, &"wa", &"Walk", 1, &"Animation", &"Walk", 2, &"Animation 2", &"Walk", 3, &"Animation 3", &"Stance", 0, &"Idle", &"Stance", 1, &"Walk", &"Stance", 2, &"Run", &"Stance", 3, &"OneShot", &"Idle", 0, &"Animation 6", &"Idle", 1, &"Animation 5", &"Idle", 2, &"Animation 4", &"Idle", 3, &"Animation 7", &"Run", 0, &"Animation 25", &"Run", 1, &"Animation 26", &"Run", 2, &"Animation 24", &"Run", 3, &"Animation 27", &"Aim", 0, &"Animation 11", &"Aim", 1, &"Animation 12", &"Aim", 2, &"Animation 8", &"Aim", 3, &"Animation 15", &"Aim", 4, &"Animation 9", &"Aim", 5, &"Animation 10", &"Aim", 6, &"Animation 14", &"Aim", 7, &"Animation 13", &"Shoot", 0, &"Animation 19", &"Shoot", 1, &"Animation 20", &"Shoot", 2, &"Animation 16", &"Shoot", 3, &"Animation 23", &"Shoot", 4, &"Animation 17", &"Shoot", 5, &"Animation 18", &"Shoot", 6, &"Animation 22", &"Shoot", 7, &"Animation 21", &"OneShot", 0, &"Aim", &"OneShot", 1, &"Shoot", &"CustomShot", 0, &"Stance", &"CustomShot", 1, &"Custom", &"Custom", 0, &"wake-up", &"Custom", 1, &"damaged"]
 
 [node name="Character" type="CharacterBody2D" unique_id=337287904]
 collision_layer = 3
@@ -587,6 +627,12 @@ Vector2(1, 1): "down-right"
 }
 
 [node name="Idle" type="Sprite2D" parent="CharacterAnimation" unique_id=832271678]
+scale = Vector2(4, 4)
+texture = ExtResource("5_o6jyn")
+vframes = 5
+
+[node name="Custom" type="Sprite2D" parent="CharacterAnimation" unique_id=1775496792]
+visible = false
 scale = Vector2(4, 4)
 texture = ExtResource("5_o6jyn")
 vframes = 5
@@ -685,6 +731,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterAnimation" unique_id=1807369541]
 libraries/ = ExtResource("10_hd715")
 libraries/aim = SubResource("AnimationLibrary_0shic")
+libraries/custom = SubResource("AnimationLibrary_6610h")
 libraries/run = ExtResource("11_hq3og")
 libraries/shoot = ExtResource("10_qkjfd")
 libraries/walk = ExtResource("13_orckd")
@@ -713,6 +760,12 @@ parameters/Shoot/current_index = -1
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
+parameters/CustomShot/active = false
+parameters/CustomShot/internal_active = false
+parameters/CustomShot/request = 0
+parameters/Custom/current_state = ""
+parameters/Custom/transition_request = ""
+parameters/Custom/current_index = -1
 
 [node name="DirectionLabel" type="Label" parent="CharacterAnimation" unique_id=1222267919]
 offset_right = 40.0
