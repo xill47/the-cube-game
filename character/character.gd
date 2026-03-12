@@ -2,7 +2,9 @@ class_name Character
 extends CharacterBody2D
 
 var state: CharacterState
+var direction: Vector2
 
+@onready var animation: CharacterAnimation = $CharacterAnimation
 
 func _on_state_provider_state_resolved() -> void:
 	state.forcibly_moved.connect(_on_force_movement)
@@ -20,8 +22,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if state.can_move():
-		velocity = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down") \
-			* CharacterState.SPEED
+		direction = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
+		velocity = direction * CharacterState.SPEED
+		if state.CharacterStance.MOVEMENT or state.CharacterStance.RUNNING:
+			animation.character_direction = direction.round()
 		move_and_slide()
 		state.move(global_position)
 

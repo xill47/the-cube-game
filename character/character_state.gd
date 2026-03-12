@@ -4,7 +4,7 @@ extends State
 signal forcibly_moved
 
 enum CharacterStance {
-	IDLE, MOVEMENT, AIMING, ANIMATION
+	IDLE, MOVEMENT, RUNNING, AIMING, ANIMATION
 }
 
 const FIRE_COOLDOWN := 1.5
@@ -32,12 +32,14 @@ func can_move() -> bool:
 	return stance != CharacterStance.AIMING and stance != CharacterStance.ANIMATION
 
 func move(new_position: Vector2) -> void:
+	var prev_stance: CharacterStance = stance
 	if position.is_equal_approx(new_position):
 		stance = CharacterStance.IDLE
 	else:
 		stance = CharacterStance.MOVEMENT
 	position = new_position
-	on_changed()
+	if prev_stance != stance:
+		on_changed()
 
 func force_movement(new_position: Vector2) -> void:
 	stance = CharacterStance.IDLE
