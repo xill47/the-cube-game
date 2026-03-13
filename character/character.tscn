@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://e4umg78m5gwi" path="res://character/assets/animation-tests/idle-test.png" id="5_o6jyn"]
 [ext_resource type="Texture2D" uid="uid://ri22tuvguurr" path="res://character/assets/animation-tests/aim-test.png" id="6_wy5t8"]
 [ext_resource type="Texture2D" uid="uid://bvjeq66not32j" path="res://character/assets/animation-tests/run-test.png" id="8_b4qc5"]
+[ext_resource type="Texture2D" uid="uid://ducnlkcblp3lp" path="res://character/assets/animation-tests/interact-test.png" id="8_hd715"]
 [ext_resource type="Texture2D" uid="uid://bxigs2a2eqau6" path="res://character/assets/animation-tests/shoot-test.png" id="8_qkjfd"]
 [ext_resource type="AnimationLibrary" uid="uid://dse6blkeettjx" path="res://character/assets/animation-tests/animation_res/idle.res" id="10_hd715"]
 [ext_resource type="AnimationLibrary" uid="uid://n6cy2y1dj5w5" path="res://character/assets/animation-tests/animation_res/shoot.res" id="10_qkjfd"]
@@ -242,6 +243,98 @@ _data = {
 &"wake-up": SubResource("Animation_6kuvt")
 }
 
+[sub_resource type="Animation" id="Animation_6610h"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_0shic"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interact:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mbhnd"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interact:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wlm6a"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0nog"]
+_data = {
+&"down": SubResource("Animation_6610h"),
+&"left": SubResource("Animation_0shic"),
+&"right": SubResource("Animation_mbhnd"),
+&"up": SubResource("Animation_wlm6a")
+}
+
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_dy06j"]
 input_0/name = "left"
 input_0/auto_advance = false
@@ -366,6 +459,10 @@ input_1/name = "damaged"
 input_1/auto_advance = false
 input_1/break_loop_at_end = false
 input_1/reset = true
+input_2/name = "interact"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_hd715"]
 
@@ -383,6 +480,24 @@ input_2/auto_advance = false
 input_2/break_loop_at_end = false
 input_2/reset = true
 input_3/name = "down"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_hd715"]
+input_0/name = "up"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "down"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "left"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "right"
 input_3/auto_advance = false
 input_3/break_loop_at_end = false
 input_3/reset = true
@@ -460,10 +575,6 @@ input_3/name = "aim"
 input_3/auto_advance = false
 input_3/break_loop_at_end = false
 input_3/reset = true
-input_4/name = "custom"
-input_4/auto_advance = false
-input_4/break_loop_at_end = false
-input_4/reset = true
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_tgjim"]
 input_0/name = "left"
@@ -486,6 +597,18 @@ input_3/reset = true
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iaewr"]
 animation = &"custom/damaged"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yp81j"]
+animation = &"interact/down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cx1fd"]
+animation = &"interact/left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xka47"]
+animation = &"interact/right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oxui7"]
+animation = &"interact/up"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wy5t8"]
 animation = &"walk/left"
 
@@ -493,7 +616,7 @@ animation = &"walk/left"
 animation = &"custom/wake-up"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dy06j"]
-graph_offset = Vector2(-310.80322, 402.12115)
+graph_offset = Vector2(-174.05127, -97.91162)
 nodes/output/position = Vector2(760, 20)
 nodes/wa/node = SubResource("AnimationNodeAnimation_wy5t8")
 nodes/wa/position = Vector2(-1000, -100)
@@ -568,12 +691,22 @@ nodes/OneShot/position = Vector2(-140, 600)
 nodes/CustomShot/node = SubResource("AnimationNodeOneShot_hd715")
 nodes/CustomShot/position = Vector2(540, -20)
 nodes/Custom/node = SubResource("AnimationNodeTransition_b4qc5")
-nodes/Custom/position = Vector2(380, 540)
+nodes/Custom/position = Vector2(860, 580)
 nodes/damaged/node = SubResource("AnimationNodeAnimation_iaewr")
-nodes/damaged/position = Vector2(160, 700)
+nodes/damaged/position = Vector2(580, 620)
 nodes/wake-up/node = SubResource("AnimationNodeAnimation_5tbnp")
-nodes/wake-up/position = Vector2(160, 500)
-node_connections = [&"output", 0, &"CustomShot", &"Walk", 0, &"wa", &"Walk", 1, &"Animation", &"Walk", 2, &"Animation 2", &"Walk", 3, &"Animation 3", &"Stance", 0, &"Idle", &"Stance", 1, &"Walk", &"Stance", 2, &"Run", &"Stance", 3, &"OneShot", &"Idle", 0, &"Animation 6", &"Idle", 1, &"Animation 5", &"Idle", 2, &"Animation 4", &"Idle", 3, &"Animation 7", &"Run", 0, &"Animation 25", &"Run", 1, &"Animation 26", &"Run", 2, &"Animation 24", &"Run", 3, &"Animation 27", &"Aim", 0, &"Animation 11", &"Aim", 1, &"Animation 12", &"Aim", 2, &"Animation 8", &"Aim", 3, &"Animation 15", &"Aim", 4, &"Animation 9", &"Aim", 5, &"Animation 10", &"Aim", 6, &"Animation 14", &"Aim", 7, &"Animation 13", &"Shoot", 0, &"Animation 19", &"Shoot", 1, &"Animation 20", &"Shoot", 2, &"Animation 16", &"Shoot", 3, &"Animation 23", &"Shoot", 4, &"Animation 17", &"Shoot", 5, &"Animation 18", &"Shoot", 6, &"Animation 22", &"Shoot", 7, &"Animation 21", &"OneShot", 0, &"Aim", &"OneShot", 1, &"Shoot", &"CustomShot", 0, &"Stance", &"CustomShot", 1, &"Custom", &"Custom", 0, &"wake-up", &"Custom", 1, &"damaged"]
+nodes/wake-up/position = Vector2(580, 440)
+nodes/Interact/node = SubResource("AnimationNodeTransition_hd715")
+nodes/Interact/position = Vector2(620, 840)
+nodes/up/node = SubResource("AnimationNodeAnimation_oxui7")
+nodes/up/position = Vector2(300, 760)
+nodes/left/node = SubResource("AnimationNodeAnimation_cx1fd")
+nodes/left/position = Vector2(200, 940)
+nodes/right/node = SubResource("AnimationNodeAnimation_xka47")
+nodes/right/position = Vector2(400, 940)
+nodes/down/node = SubResource("AnimationNodeAnimation_yp81j")
+nodes/down/position = Vector2(300, 1120)
+node_connections = [&"output", 0, &"CustomShot", &"Walk", 0, &"wa", &"Walk", 1, &"Animation", &"Walk", 2, &"Animation 2", &"Walk", 3, &"Animation 3", &"Stance", 0, &"Idle", &"Stance", 1, &"Walk", &"Stance", 2, &"Run", &"Stance", 3, &"OneShot", &"Idle", 0, &"Animation 6", &"Idle", 1, &"Animation 5", &"Idle", 2, &"Animation 4", &"Idle", 3, &"Animation 7", &"Run", 0, &"Animation 25", &"Run", 1, &"Animation 26", &"Run", 2, &"Animation 24", &"Run", 3, &"Animation 27", &"Aim", 0, &"Animation 11", &"Aim", 1, &"Animation 12", &"Aim", 2, &"Animation 8", &"Aim", 3, &"Animation 15", &"Aim", 4, &"Animation 9", &"Aim", 5, &"Animation 10", &"Aim", 6, &"Animation 14", &"Aim", 7, &"Animation 13", &"Shoot", 0, &"Animation 19", &"Shoot", 1, &"Animation 20", &"Shoot", 2, &"Animation 16", &"Shoot", 3, &"Animation 23", &"Shoot", 4, &"Animation 17", &"Shoot", 5, &"Animation 18", &"Shoot", 6, &"Animation 22", &"Shoot", 7, &"Animation 21", &"OneShot", 0, &"Aim", &"OneShot", 1, &"Shoot", &"CustomShot", 0, &"Stance", &"CustomShot", 1, &"Custom", &"Custom", 0, &"wake-up", &"Custom", 1, &"damaged", &"Custom", 2, &"Interact", &"Interact", 0, &"up", &"Interact", 1, &"down", &"Interact", 2, &"left", &"Interact", 3, &"right"]
 
 [node name="Character" type="CharacterBody2D" unique_id=337287904]
 collision_layer = 3
@@ -620,6 +753,7 @@ Vector2(-1, -1): "up-left",
 Vector2(-1, 0): "left",
 Vector2(-1, 1): "down-left",
 Vector2(0, -1): "up",
+Vector2(0, 0): "right",
 Vector2(0, 1): "down",
 Vector2(1, -1): "up-right",
 Vector2(1, 0): "right",
@@ -650,6 +784,34 @@ texture = ExtResource("4_0rvpn")
 hframes = 8
 vframes = 3
 frame = 9
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+}
+}
+
+[node name="Interact" type="Sprite2D" parent="CharacterAnimation" unique_id=637566692]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("8_hd715")
+hframes = 2
+vframes = 3
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "pending_changes": {
@@ -732,6 +894,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 libraries/ = ExtResource("10_hd715")
 libraries/aim = SubResource("AnimationLibrary_0shic")
 libraries/custom = SubResource("AnimationLibrary_6610h")
+libraries/interact = SubResource("AnimationLibrary_c0nog")
 libraries/run = ExtResource("11_hq3og")
 libraries/shoot = ExtResource("10_qkjfd")
 libraries/walk = ExtResource("13_orckd")
@@ -764,8 +927,11 @@ parameters/CustomShot/active = false
 parameters/CustomShot/internal_active = false
 parameters/CustomShot/request = 0
 parameters/Custom/current_state = ""
-parameters/Custom/transition_request = ""
+parameters/Custom/transition_request = "interact"
 parameters/Custom/current_index = -1
+parameters/Interact/current_state = ""
+parameters/Interact/transition_request = "right"
+parameters/Interact/current_index = -1
 
 [node name="DirectionLabel" type="Label" parent="CharacterAnimation" unique_id=1222267919]
 offset_right = 40.0

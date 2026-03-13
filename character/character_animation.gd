@@ -15,6 +15,8 @@ var state_name :String
 @onready var run_sprite := $Run
 @onready var aim_sprite := $Aim
 @onready var shoot_sprite := $Shoot
+@onready var interact_sprite := $Interact
+@onready var custom_sprite := $Custom
 
 func _ready() -> void:
 	state.changed.connect(_on_state_changed)
@@ -76,9 +78,26 @@ func _on_dir_change():
 	animation_tree.set("parameters/Walk/transition_request", state_name_four)
 	animation_tree.set("parameters/Run/transition_request", state_name_four)
 
+func interact():
+	interact_sprite.show()
+	var anim_dir = _eight_to_four_direction()
+	var state_name_four = directions[anim_dir]
+	state_name = directions[character_direction]
+	animation_tree.set("parameters/Interact/transition_request", state_name_four)
+	animation_tree.set("parameters/Custom/transition_request", "interact")
+	animation_tree.set("parameters/CustomShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	await get_tree().create_timer(state.INTERACT_TIME).timeout
+	interact_sprite.hide()
+
 func damaged():
+	custom_sprite.show()
 	animation_tree.set("parameters/Custom/transition_request", "damaged")
 	animation_tree.set("parameters/CustomShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	await get_tree().create_timer(animation_player.get_animation("custom/damaged").get_length()).timeout
+	custom_sprite.hide()
 
 func cutscene(req_cutscene: String):
+	custom_sprite.show()
 	animation_tree.set("parameters/Custom/transition_request", req_cutscene)
+	await get_tree().create_timer(animation_player.get_animation("custom/wake-up").get_length()).timeout
+	custom_sprite.hide()
