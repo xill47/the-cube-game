@@ -16,8 +16,9 @@ func _on_force_movement() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action(&"interact") and state.can_interact():
-		state.interact()
+	if event.is_action_pressed(&"interact") and state.can_interact():
+		state.interact(get_tree())
+		animation.interact()
 	if event.is_action_pressed(&"aim") and state.can_aim():
 		state.start_aiming()
 	if event.is_action_released(&"aim") and state.stance == state.CharacterStance.AIMING:
