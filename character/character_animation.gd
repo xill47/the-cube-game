@@ -93,11 +93,13 @@ func damaged():
 	custom_sprite.show()
 	animation_tree.set("parameters/Custom/transition_request", "damaged")
 	animation_tree.set("parameters/CustomShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	await get_tree().create_timer(animation_player.get_animation("custom/damaged").get_length()).timeout
+	await get_tree().create_timer(animation_player.get_animation("custom/damaged")\
+	.get_length()).timeout
 	custom_sprite.hide()
 
 func cutscene(req_cutscene: String):
 	custom_sprite.show()
 	animation_tree.set("parameters/Custom/transition_request", req_cutscene)
-	await get_tree().create_timer(animation_player.get_animation("custom/wake-up").get_length()).timeout
+	await get_tree().create_timer(animation_player.get_animation("custom/wake-up")\
+	.get_length()).timeout
 	custom_sprite.hide()
