@@ -122,6 +122,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SafeBack/Fuze:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 257)]
+}
 
 [sub_resource type="Animation" id="Animation_hm2f7"]
 resource_name = "error"
@@ -141,7 +153,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mmac5"]
 resource_name = "safe_opening"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -237,6 +248,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-64.171, 0), Vector2(-92, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SafeBack/Fuze:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 257), Vector2(0, 174.945), Vector2(0, 760)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k464b"]
@@ -460,6 +483,7 @@ bus = &"Sound"
 [node name="TurningSound" type="AudioStreamPlayer" parent="." unique_id=407536264]
 bus = &"Sound"
 
+[connection signal="animation_finished" from="SafeAnimation" to="." method="_on_safe_animation_animation_finished"]
 [connection signal="area_entered" from="SafeBack/Back/Knob/KnobSprite/PointerArea" to="." method="_on_pointer_area_area_entered"]
 [connection signal="area_entered" from="SafeBack/Back/Area1" to="." method="_on_area_entered" flags=18 binds= [1]]
 [connection signal="area_entered" from="SafeBack/Back/Area2" to="." method="_on_area_entered" flags=18 binds= [2]]
