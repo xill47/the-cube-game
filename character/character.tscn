@@ -15,12 +15,11 @@
 [ext_resource type="AnimationLibrary" uid="uid://dxyoy86qvsmj" path="res://character/assets/animation-tests/animation_res/run.res" id="11_hq3og"]
 [ext_resource type="AnimationLibrary" uid="uid://cm43fbus4h4lg" path="res://character/assets/animation-tests/animation_res/walk.res" id="13_orckd"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hd715"]
-radius = 17.0
-height = 78.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf0e5"]
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ugqs2"]
-radius = 50.01
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_gx66j"]
 resource_name = "idle-down"
@@ -617,7 +616,7 @@ animation = &"walk/left"
 animation = &"custom/wake-up"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dy06j"]
-graph_offset = Vector2(-884.46576, 1081.8096)
+graph_offset = Vector2(-174.05127, -97.91162)
 nodes/output/position = Vector2(760, 20)
 nodes/wa/node = SubResource("AnimationNodeAnimation_wy5t8")
 nodes/wa/position = Vector2(-1000, -100)
@@ -709,9 +708,6 @@ nodes/down/node = SubResource("AnimationNodeAnimation_yp81j")
 nodes/down/position = Vector2(300, 1120)
 node_connections = [&"output", 0, &"CustomShot", &"Walk", 0, &"wa", &"Walk", 1, &"Animation", &"Walk", 2, &"Animation 2", &"Walk", 3, &"Animation 3", &"Stance", 0, &"Idle", &"Stance", 1, &"Walk", &"Stance", 2, &"Run", &"Stance", 3, &"OneShot", &"Idle", 0, &"Animation 6", &"Idle", 1, &"Animation 5", &"Idle", 2, &"Animation 4", &"Idle", 3, &"Animation 7", &"Run", 0, &"Animation 25", &"Run", 1, &"Animation 26", &"Run", 2, &"Animation 24", &"Run", 3, &"Animation 27", &"Aim", 0, &"Animation 11", &"Aim", 1, &"Animation 12", &"Aim", 2, &"Animation 8", &"Aim", 3, &"Animation 15", &"Aim", 4, &"Animation 9", &"Aim", 5, &"Animation 10", &"Aim", 6, &"Animation 14", &"Aim", 7, &"Animation 13", &"Shoot", 0, &"Animation 19", &"Shoot", 1, &"Animation 20", &"Shoot", 2, &"Animation 16", &"Shoot", 3, &"Animation 23", &"Shoot", 4, &"Animation 17", &"Shoot", 5, &"Animation 18", &"Shoot", 6, &"Animation 22", &"Shoot", 7, &"Animation 21", &"OneShot", 0, &"Aim", &"OneShot", 1, &"Shoot", &"CustomShot", 0, &"Stance", &"CustomShot", 1, &"Custom", &"Custom", 0, &"wake-up", &"Custom", 1, &"damaged", &"Custom", 2, &"Interact", &"Interact", 0, &"up", &"Interact", 1, &"down", &"Interact", 2, &"left", &"Interact", 3, &"right"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hd715"]
-radius = 21.095022
-
 [node name="Character" type="CharacterBody2D" unique_id=337287904]
 collision_layer = 3
 collision_mask = 3
@@ -724,8 +720,7 @@ prefer_existing = true
 metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386120881]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_hd715")
+shape = SubResource("CircleShape2D_yf0e5")
 
 [node name="StanceLabel" type="Label" parent="." unique_id=330398775]
 anchors_preset = 7
@@ -752,7 +747,6 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_ugqs2")
 
 [node name="CharacterAnimation" type="Node2D" parent="." unique_id=54665230]
-position = Vector2(0, -68)
 script = ExtResource("4_o6jyn")
 directions = {
 Vector2(-1, -1): "up-left",
@@ -942,15 +936,6 @@ parameters/Interact/current_index = -1
 [node name="DirectionLabel" type="Label" parent="CharacterAnimation" unique_id=1222267919]
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="CameraArea" type="Area2D" parent="." unique_id=1684838451]
-collision_layer = 128
-collision_mask = 128
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraArea" unique_id=1847356966]
-shape = SubResource("CircleShape2D_hd715")
-debug_color = Color(0.8541428, 0.3693576, 0, 0.41960785)
 
 [connection signal="state_resolved" from="StateProvider" to="." method="_on_state_provider_state_resolved"]
 [connection signal="area_entered" from="InteractableArea" to="." method="_on_interactable_area_area_entered"]
