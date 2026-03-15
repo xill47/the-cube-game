@@ -17,6 +17,6 @@ func move_to_room(room: RoomState, spawn: Vector2) -> void:
 	character.move_room()
 	current_room = room
 	current_room.request_transition.connect(_on_room_request_transition)
-
+	current_room.request_connections()
 func _on_room_request_transition(door: DoorState) -> void:
 	request_transition.emit(door)

@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://be4c68yl4631g"]
+
+[ext_resource type="Script" uid="uid://3x0xy6f7dug8" path="res://rooms/wake_room/wake_room.gd" id="1_1ould"]
+[ext_resource type="Texture2D" uid="uid://ctj3pon86hrv1" path="res://rooms/wake_room/back-ground.png" id="2_424ld"]
+[ext_resource type="PackedScene" uid="uid://bhnp0vc2wfcld" path="res://interactables/doors/door.tscn" id="4_gxk0u"]
+[ext_resource type="Script" uid="uid://b2fvajebrxrbk" path="res://rooms/wake_room/interactables_order.gd" id="4_tq3ax"]
+[ext_resource type="Texture2D" uid="uid://008vb4obkgwp" path="res://rooms/wake_room/door_puzzle/cube_stand.png" id="5_l5pag"]
+[ext_resource type="Script" uid="uid://d4m8bjftscc26" path="res://rooms/wake_room/door_puzzle/wall_button.gd" id="6_u1hbi"]
+[ext_resource type="Texture2D" uid="uid://m73vvt8h8swt" path="res://rooms/wake_room/door_puzzle/button_atlas.png" id="8_ooyrn"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="8_pgs6l"]
+[ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="9_omtqs"]
+[ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="10_ei2me"]
+[ext_resource type="Script" uid="uid://cfsobcastosrm" path="res://rooms/camera_logic.gd" id="12_opppr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
+size = Vector2(60.5, 447)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv27j"]
+size = Vector2(383, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0owk"]
+size = Vector2(38.5, 289)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le7kl"]
+size = Vector2(395, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5epc"]
+size = Vector2(21.5, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq3ax"]
+size = Vector2(15, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rus38"]
+size = Vector2(10, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emj7d"]
+size = Vector2(386, 256)
+
+[node name="WakeRoom" type="Node2D" unique_id=1590841663]
+script = ExtResource("1_1ould")
+
+[node name="ArtLayers" type="Node2D" parent="." unique_id=625979313]
+
+[node name="Background" type="Sprite2D" parent="ArtLayers" unique_id=834635258]
+position = Vector2(302, 480)
+scale = Vector2(4, 4)
+texture = ExtResource("2_424ld")
+
+[node name="Foreground" type="Sprite2D" parent="ArtLayers" unique_id=298916730]
+z_index = 1
+position = Vector2(302, 480)
+scale = Vector2(4, 4)
+
+[node name="Walls" type="Node2D" parent="." unique_id=1963081063]
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=403527801]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=933203999]
+position = Vector2(80, 416.5)
+shape = SubResource("RectangleShape2D_1o30x")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=2098338785]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=460252831]
+position = Vector2(302.5, 368)
+shape = SubResource("RectangleShape2D_bv27j")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=9782177]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=290973380]
+position = Vector2(513.25, 496.5)
+shape = SubResource("RectangleShape2D_e0owk")
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls" unique_id=258527065]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=686858636]
+position = Vector2(301.5, 655)
+shape = SubResource("RectangleShape2D_le7kl")
+
+[node name="Objects" type="Node2D" parent="Walls" unique_id=1447700754]
+
+[node name="Doors" type="Node2D" parent="." unique_id=1943176176]
+
+[node name="Door" parent="Doors" unique_id=1059506860 instance=ExtResource("4_gxk0u")]
+position = Vector2(302, 292)
+starts_locked = true
+starting_leads_to = "res://rooms/test_chamber/test_chamber.tscn"
+leads_to_spawn = "%Spawn"
+
+[node name="Interactables" type="Node2D" parent="." unique_id=135537337 node_paths=PackedStringArray("character")]
+script = ExtResource("4_tq3ax")
+character = NodePath("../Character")
+
+[node name="Safe" type="Area2D" parent="Interactables" unique_id=1013690776]
+position = Vector2(303, 510)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("6_u1hbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Safe" unique_id=1296697469]
+shape = SubResource("RectangleShape2D_g5epc")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/Safe" unique_id=185750920]
+position = Vector2(0, -7.5)
+texture = ExtResource("5_l5pag")
+hframes = 3
+
+[node name="StateProvider" type="Node" parent="Interactables/Safe" unique_id=458044866]
+script = ExtResource("8_pgs6l")
+prefer_existing = true
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="Collision" type="StaticBody2D" parent="Interactables/Safe" unique_id=1041388748]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Safe/Collision" unique_id=1410478254]
+shape = SubResource("RectangleShape2D_tq3ax")
+
+[node name="WallButton1" type="Area2D" parent="Interactables" unique_id=963415479]
+position = Vector2(150, 354)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("6_u1hbi")
+code = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallButton1" unique_id=1801597475]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_rus38")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallButton1" unique_id=41061905]
+position = Vector2(0, -7.5)
+texture = ExtResource("8_ooyrn")
+hframes = 2
+vframes = 4
+
+[node name="StateProvider" type="Node" parent="Interactables/WallButton1" unique_id=645986249]
+script = ExtResource("8_pgs6l")
+prefer_existing = true
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="WallButton2" type="Area2D" parent="Interactables" unique_id=1615029873]
+position = Vector2(206, 354)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("6_u1hbi")
+code = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallButton2" unique_id=1430733288]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_rus38")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallButton2" unique_id=1764734809]
+position = Vector2(0, -7.5)
+texture = ExtResource("8_ooyrn")
+hframes = 2
+vframes = 4
+frame = 2
+
+[node name="StateProvider" type="Node" parent="Interactables/WallButton2" unique_id=1820232550]
+script = ExtResource("8_pgs6l")
+prefer_existing = true
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="WallButton3" type="Area2D" parent="Interactables" unique_id=828155425]
+position = Vector2(398, 354)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("6_u1hbi")
+code = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallButton3" unique_id=104432139]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_rus38")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallButton3" unique_id=1425026364]
+position = Vector2(0, -7.5)
+texture = ExtResource("8_ooyrn")
+hframes = 2
+vframes = 4
+frame = 4
+
+[node name="StateProvider" type="Node" parent="Interactables/WallButton3" unique_id=1242053724]
+script = ExtResource("8_pgs6l")
+prefer_existing = true
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="WallButton4" type="Area2D" parent="Interactables" unique_id=1665833427]
+position = Vector2(454, 354)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("6_u1hbi")
+code = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallButton4" unique_id=970646762]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_rus38")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallButton4" unique_id=1805771106]
+position = Vector2(0, -7.5)
+texture = ExtResource("8_ooyrn")
+hframes = 2
+vframes = 4
+frame = 6
+
+[node name="StateProvider" type="Node" parent="Interactables/WallButton4" unique_id=2024874150]
+script = ExtResource("8_pgs6l")
+prefer_existing = true
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
+unique_name_in_owner = true
+position = Vector2(399, 243)
+
+[node name="Spawn2" type="Marker2D" parent="." unique_id=441376481]
+unique_name_in_owner = true
+position = Vector2(399, 790)
+
+[node name="StateProvider" type="Node" parent="." unique_id=199642382]
+script = ExtResource("8_pgs6l")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="StateScope" type="Node" parent="." unique_id=1230836305]
+script = ExtResource("9_omtqs")
+metadata/_custom_type_script = "uid://dmmo0yy6ig2lo"
+
+[node name="Character" parent="." unique_id=337287904 instance=ExtResource("10_ei2me")]
+unique_name_in_owner = true
+position = Vector2(320, 382)
+
+[node name="CameraLogic" type="Node2D" parent="." unique_id=255117468]
+script = ExtResource("12_opppr")
+
+[node name="Camera2D" type="Camera2D" parent="CameraLogic" unique_id=1560808972]
+position = Vector2(301, 482)
+
+[node name="Positions" type="Node2D" parent="CameraLogic" unique_id=564659675]
+
+[node name="Pos1" type="Area2D" parent="CameraLogic/Positions" unique_id=1428389072]
+position = Vector2(301, 482)
+collision_layer = 128
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLogic/Positions/Pos1" unique_id=1737013668]
+position = Vector2(1, 28)
+shape = SubResource("RectangleShape2D_emj7d")
+debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
+
+[connection signal="area_entered" from="CameraLogic/Positions/Pos1" to="CameraLogic" method="_on_pos_area_entered" flags=18]

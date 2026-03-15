@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blbii3vfwvnlw"]
 
 [ext_resource type="Script" uid="uid://i0cuo6x83cux" path="res://world/world.gd" id="1_4717r"]
-[ext_resource type="PackedScene" uid="uid://bb1x6wxo7jay6" path="res://rooms/test_chamber/test_chamber.tscn" id="2_h5o24"]
+[ext_resource type="PackedScene" uid="uid://be4c68yl4631g" path="res://rooms/wake_room/wake_room.tscn" id="2_sc4t8"]
 [ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="3_4717r"]
 [ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="4_h5o24"]
 [ext_resource type="Script" uid="uid://db4ry2vnd0epc" path="res://addons/state_scopes/state_consumer.gd" id="5_mmdvd"]
@@ -10,7 +10,7 @@
 
 [node name="World" type="Node2D" unique_id=2118948260]
 script = ExtResource("1_4717r")
-starting_room_scene = ExtResource("2_h5o24")
+starting_room_scene = ExtResource("2_sc4t8")
 
 [node name="StateScope" type="Node" parent="." unique_id=1901825925]
 script = ExtResource("4_h5o24")
