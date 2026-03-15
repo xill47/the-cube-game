@@ -4,6 +4,3 @@ extends Node2D
 
 @abstract
 func get_state() -> RoomState
-
-func request_connections() -> void:
-	pass
