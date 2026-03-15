@@ -13,7 +13,7 @@ func get_state() -> InteractableState:
 	return state
 
 func open_holder():
-	state.unlock()
+	state.unlock_stand()
 
 func _on_holder_opened():
 	sprite.frame_coords.x = 1

@@ -11,11 +11,10 @@ static func create(_safe: CubeHolder) -> CubeHolderState:
 	var state := CubeHolderState.new()
 	return state
 
-func unlock():
+func unlock_stand():
 	locked = false
 	on_changed()
 	holder_opened.emit()
-	
 
 func interact() -> void:
 	if not locked:

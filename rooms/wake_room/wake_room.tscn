@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://b2fvajebrxrbk" path="res://rooms/wake_room/interactables_order.gd" id="4_tq3ax"]
 [ext_resource type="Texture2D" uid="uid://008vb4obkgwp" path="res://rooms/wake_room/door_puzzle/cube_stand.png" id="5_l5pag"]
 [ext_resource type="Script" uid="uid://d4m8bjftscc26" path="res://rooms/wake_room/door_puzzle/wall_button.gd" id="6_u1hbi"]
-[ext_resource type="Texture2D" uid="uid://m73vvt8h8swt" path="res://rooms/wake_room/door_puzzle/button_atlas.png" id="8_ooyrn"]
 [ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="8_pgs6l"]
 [ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="9_omtqs"]
 [ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="10_ei2me"]
@@ -30,14 +29,36 @@ size = Vector2(21.5, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq3ax"]
 size = Vector2(15, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooyrn"]
+size = Vector2(10, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tq3ax"]
+load_path = "res://.godot/imported/button_atlas.png-439aca4f49933d5bcb7ddbb4ee66adca.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bxmu"]
+size = Vector2(10, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ooyrn"]
+load_path = "res://.godot/imported/button_atlas.png-439aca4f49933d5bcb7ddbb4ee66adca.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54twq"]
+size = Vector2(10, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rus38"]
+load_path = "res://.godot/imported/button_atlas.png-439aca4f49933d5bcb7ddbb4ee66adca.ctex"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rus38"]
 size = Vector2(10, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2bxmu"]
+load_path = "res://.godot/imported/button_atlas.png-439aca4f49933d5bcb7ddbb4ee66adca.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emj7d"]
 size = Vector2(386, 256)
 
-[node name="WakeRoom" type="Node2D" unique_id=1590841663]
+[node name="WakeRoom" type="Node2D" unique_id=1590841663 node_paths=PackedStringArray("buttons")]
 script = ExtResource("1_1ould")
+buttons = [NodePath("Interactables/WallButton1"), NodePath("Interactables/WallButton2"), NodePath("Interactables/WallButton3"), NodePath("Interactables/WallButton4")]
 
 [node name="ArtLayers" type="Node2D" parent="." unique_id=625979313]
 
@@ -99,32 +120,32 @@ leads_to_spawn = "%Spawn"
 script = ExtResource("4_tq3ax")
 character = NodePath("../Character")
 
-[node name="Safe" type="Area2D" parent="Interactables" unique_id=1013690776]
+[node name="CubeStand" type="Area2D" parent="Interactables" unique_id=1013690776]
 position = Vector2(303, 510)
 scale = Vector2(4, 4)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("6_u1hbi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Safe" unique_id=1296697469]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CubeStand" unique_id=1296697469]
 shape = SubResource("RectangleShape2D_g5epc")
 debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
 
-[node name="Sprite" type="Sprite2D" parent="Interactables/Safe" unique_id=185750920]
+[node name="Sprite" type="Sprite2D" parent="Interactables/CubeStand" unique_id=185750920]
 position = Vector2(0, -7.5)
 texture = ExtResource("5_l5pag")
 hframes = 3
 
-[node name="StateProvider" type="Node" parent="Interactables/Safe" unique_id=458044866]
+[node name="StateProvider" type="Node" parent="Interactables/CubeStand" unique_id=458044866]
 script = ExtResource("8_pgs6l")
 prefer_existing = true
 metadata/_custom_type_script = "uid://dalnoy50favch"
 
-[node name="Collision" type="StaticBody2D" parent="Interactables/Safe" unique_id=1041388748]
+[node name="Collision" type="StaticBody2D" parent="Interactables/CubeStand" unique_id=1041388748]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Safe/Collision" unique_id=1410478254]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CubeStand/Collision" unique_id=1410478254]
 shape = SubResource("RectangleShape2D_tq3ax")
 
 [node name="WallButton1" type="Area2D" parent="Interactables" unique_id=963415479]
@@ -137,18 +158,17 @@ code = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallButton1" unique_id=1801597475]
 position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_rus38")
+shape = SubResource("RectangleShape2D_ooyrn")
 debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
 
 [node name="Sprite" type="Sprite2D" parent="Interactables/WallButton1" unique_id=41061905]
 position = Vector2(0, -7.5)
-texture = ExtResource("8_ooyrn")
+texture = SubResource("CompressedTexture2D_tq3ax")
 hframes = 2
 vframes = 4
 
 [node name="StateProvider" type="Node" parent="Interactables/WallButton1" unique_id=645986249]
 script = ExtResource("8_pgs6l")
-prefer_existing = true
 metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="WallButton2" type="Area2D" parent="Interactables" unique_id=1615029873]
@@ -161,19 +181,18 @@ code = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallButton2" unique_id=1430733288]
 position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_rus38")
+shape = SubResource("RectangleShape2D_2bxmu")
 debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
 
 [node name="Sprite" type="Sprite2D" parent="Interactables/WallButton2" unique_id=1764734809]
 position = Vector2(0, -7.5)
-texture = ExtResource("8_ooyrn")
+texture = SubResource("CompressedTexture2D_ooyrn")
 hframes = 2
 vframes = 4
 frame = 2
 
 [node name="StateProvider" type="Node" parent="Interactables/WallButton2" unique_id=1820232550]
 script = ExtResource("8_pgs6l")
-prefer_existing = true
 metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="WallButton3" type="Area2D" parent="Interactables" unique_id=828155425]
@@ -186,19 +205,18 @@ code = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallButton3" unique_id=104432139]
 position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_rus38")
+shape = SubResource("RectangleShape2D_54twq")
 debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
 
 [node name="Sprite" type="Sprite2D" parent="Interactables/WallButton3" unique_id=1425026364]
 position = Vector2(0, -7.5)
-texture = ExtResource("8_ooyrn")
+texture = SubResource("CompressedTexture2D_rus38")
 hframes = 2
 vframes = 4
 frame = 4
 
 [node name="StateProvider" type="Node" parent="Interactables/WallButton3" unique_id=1242053724]
 script = ExtResource("8_pgs6l")
-prefer_existing = true
 metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="WallButton4" type="Area2D" parent="Interactables" unique_id=1665833427]
@@ -216,14 +234,13 @@ debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
 
 [node name="Sprite" type="Sprite2D" parent="Interactables/WallButton4" unique_id=1805771106]
 position = Vector2(0, -7.5)
-texture = ExtResource("8_ooyrn")
+texture = SubResource("CompressedTexture2D_2bxmu")
 hframes = 2
 vframes = 4
 frame = 6
 
 [node name="StateProvider" type="Node" parent="Interactables/WallButton4" unique_id=2024874150]
 script = ExtResource("8_pgs6l")
-prefer_existing = true
 metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
