@@ -1,7 +1,7 @@
 class_name WallButtonState
 extends InteractableState
 
-var pressed := false 
+var pressed := false
 
 static func create(_button: WallButton) -> WallButtonState:
 	var state := WallButtonState.new()
