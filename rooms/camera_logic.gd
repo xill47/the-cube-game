@@ -1,7 +1,5 @@
 extends Node2D
 
-var camera_position: Vector2
-
 @onready var camera := $Camera2D
 
 func camera_move(destination):

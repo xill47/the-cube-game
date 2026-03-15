@@ -5,7 +5,6 @@ extends Interactable
 @export_file_path("*.tscn") var starting_leads_to: String
 @export var leads_to_spawn: String
 
-var unknown: bool = true
 var state: DoorState
 
 @onready var sprite := $Icon
