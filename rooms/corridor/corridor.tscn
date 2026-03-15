@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://b62bfgys5olpt"]
+
+[ext_resource type="Script" uid="uid://bnkhlbpl2x0h7" path="res://rooms/corridor/corridor_room.gd" id="1_kmdbj"]
+[ext_resource type="Texture2D" uid="uid://dgvx4wuqoi584" path="res://rooms/corridor/back-ground.png" id="2_s68qe"]
+[ext_resource type="PackedScene" uid="uid://bhnp0vc2wfcld" path="res://interactables/doors/door.tscn" id="3_u71y5"]
+[ext_resource type="PackedScene" uid="uid://bfr0pfebm0wx4" path="res://interactables/doors/door_bottom.tscn" id="3_uypk8"]
+[ext_resource type="Script" uid="uid://b2fvajebrxrbk" path="res://rooms/interactables_order.gd" id="4_e6boc"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="7_62s2l"]
+[ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="8_blndx"]
+[ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="9_awkeb"]
+[ext_resource type="Script" uid="uid://cfsobcastosrm" path="res://rooms/camera_logic.gd" id="10_wu4ij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
+size = Vector2(60.5, 447)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv27j"]
+size = Vector2(1151, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0owk"]
+size = Vector2(38.5, 362)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le7kl"]
+size = Vector2(1151, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emj7d"]
+size = Vector2(476, 117)
+
+[node name="Corridor" type="Node2D" unique_id=1590841663]
+script = ExtResource("1_kmdbj")
+
+[node name="ArtLayers" type="Node2D" parent="." unique_id=625979313]
+
+[node name="Background" type="Sprite2D" parent="ArtLayers" unique_id=834635258]
+position = Vector2(302, 480)
+scale = Vector2(4, 4)
+texture = ExtResource("2_s68qe")
+
+[node name="Foreground" type="Sprite2D" parent="ArtLayers" unique_id=298916730]
+z_index = 1
+position = Vector2(302, 480)
+scale = Vector2(4, 4)
+
+[node name="Walls" type="Node2D" parent="." unique_id=1963081063]
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=403527801]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=933203999]
+position = Vector2(-305, 480)
+shape = SubResource("RectangleShape2D_1o30x")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=2098338785]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=460252831]
+position = Vector2(300.5, 463)
+shape = SubResource("RectangleShape2D_bv27j")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=9782177]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=290973380]
+position = Vector2(896, 468)
+shape = SubResource("RectangleShape2D_e0owk")
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls" unique_id=258527065]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=686858636]
+position = Vector2(301.5, 612)
+shape = SubResource("RectangleShape2D_le7kl")
+
+[node name="Objects" type="Node2D" parent="Walls" unique_id=1447700754]
+
+[node name="Doors" type="Node2D" parent="." unique_id=1943176176]
+
+[node name="DoorBottom" parent="Doors" unique_id=1059506860 instance=ExtResource("3_uypk8")]
+position = Vector2(590, 629)
+starting_leads_to = "res://rooms/wake_room/wake_room.tscn"
+leads_to_spawn = "%Spawn2"
+
+[node name="Door" parent="Doors" unique_id=1464274016 instance=ExtResource("3_u71y5")]
+position = Vector2(302, 387)
+starts_locked = true
+starting_leads_to = "res://rooms/test_chamber/test_chamber.tscn"
+leads_to_spawn = "%Spawn"
+
+[node name="Interactables" type="Node2D" parent="." unique_id=135537337 node_paths=PackedStringArray("character")]
+script = ExtResource("4_e6boc")
+character = NodePath("../Character")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
+unique_name_in_owner = true
+position = Vector2(589, 571)
+
+[node name="Spawn2" type="Marker2D" parent="." unique_id=441376481]
+unique_name_in_owner = true
+position = Vector2(399, 790)
+
+[node name="StateProvider" type="Node" parent="." unique_id=199642382]
+script = ExtResource("7_62s2l")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="StateScope" type="Node" parent="." unique_id=1230836305]
+script = ExtResource("8_blndx")
+metadata/_custom_type_script = "uid://dmmo0yy6ig2lo"
+
+[node name="Character" parent="." unique_id=337287904 instance=ExtResource("9_awkeb")]
+unique_name_in_owner = true
+position = Vector2(320, 545)
+
+[node name="CameraLogic" type="Node2D" parent="." unique_id=255117468]
+script = ExtResource("10_wu4ij")
+
+[node name="Camera2D" type="Camera2D" parent="CameraLogic" unique_id=1560808972]
+position = Vector2(301, 482)
+
+[node name="Positions" type="Node2D" parent="CameraLogic" unique_id=564659675]
+
+[node name="Pos1" type="Area2D" parent="CameraLogic/Positions" unique_id=1428389072]
+position = Vector2(592, 500)
+collision_layer = 128
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLogic/Positions/Pos1" unique_id=1737013668]
+position = Vector2(46, 37.5)
+shape = SubResource("RectangleShape2D_emj7d")
+debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
+
+[node name="Pos2" type="Area2D" parent="CameraLogic/Positions" unique_id=436966415]
+position = Vector2(-81, 500)
+collision_layer = 128
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLogic/Positions/Pos2" unique_id=1676955867]
+position = Vector2(46, 37.5)
+shape = SubResource("RectangleShape2D_emj7d")
+debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
+
+[connection signal="area_entered" from="CameraLogic/Positions/Pos1" to="CameraLogic" method="_on_pos_area_entered" flags=18]
+[connection signal="area_entered" from="CameraLogic/Positions/Pos2" to="CameraLogic" method="_on_pos_area_entered" flags=18]

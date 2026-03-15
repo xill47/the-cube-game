@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1qa84dxrcgiu"
-path="res://.godot/imported/safe-world.png-b7b47aa0fee124a844eaedeb72af3f69.ctex"
+uid="uid://dgvx4wuqoi584"
+path="res://.godot/imported/back-ground.png-2e78bbefa3be7a40e9c2cfa1d6283337.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rooms/wake_room/safe-world.png"
-dest_files=["res://.godot/imported/safe-world.png-b7b47aa0fee124a844eaedeb72af3f69.ctex"]
+source_file="res://rooms/corridor/back-ground.png"
+dest_files=["res://.godot/imported/back-ground.png-2e78bbefa3be7a40e9c2cfa1d6283337.ctex"]
 
 [params]
 
