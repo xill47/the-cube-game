@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dgvx4wuqoi584" path="res://rooms/corridor/back-ground.png" id="2_s68qe"]
 [ext_resource type="PackedScene" uid="uid://bhnp0vc2wfcld" path="res://interactables/doors/door.tscn" id="3_u71y5"]
 [ext_resource type="PackedScene" uid="uid://bfr0pfebm0wx4" path="res://interactables/doors/door_bottom.tscn" id="3_uypk8"]
-[ext_resource type="Script" uid="uid://b2fvajebrxrbk" path="res://rooms/interactables_order.gd" id="4_e6boc"]
 [ext_resource type="PackedScene" uid="uid://c0rjmr1tk6owj" path="res://interactables/doors/door_right.tscn" id="5_5ntyu"]
 [ext_resource type="PackedScene" uid="uid://rm602dwu2tyv" path="res://interactables/doors/door_left.tscn" id="6_mo0kl"]
 [ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="7_62s2l"]
@@ -147,9 +146,7 @@ starts_locked = true
 [node name="DoorLeft" parent="Doors" unique_id=137525744 instance=ExtResource("6_mo0kl")]
 position = Vector2(-326, 448)
 
-[node name="Interactables" type="Node2D" parent="." unique_id=135537337 node_paths=PackedStringArray("character")]
-script = ExtResource("4_e6boc")
-character = NodePath("../Character")
+[node name="Interactables" type="Node2D" parent="." unique_id=135537337]
 
 [node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
 unique_name_in_owner = true
