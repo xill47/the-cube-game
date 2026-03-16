@@ -1,3 +1,4 @@
+class_name LockerRoom
 extends Room
 
 var locker_room_state: LockerRoomState
