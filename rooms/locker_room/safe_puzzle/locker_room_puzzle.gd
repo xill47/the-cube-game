@@ -3,6 +3,7 @@ extends Node2D
 
 @export var code: Array[int]
 @export var labels: Array[Label]
+
 var solved: bool = false
 var cur_input: int = 0
 var rotating: bool
@@ -10,12 +11,17 @@ var mouse_offset: Vector2
 var cur_number: int
 var max_number: int = -16
 var cur_code: Array
+var safe: Node
 
 @onready var animation_player: AnimationPlayer = $SafeAnimation
 @onready var area_zero: Area2D = $SafeBack/Back/Area0
 @onready var knob = %Knob
 
-#There should be mouse_offset, but i am too stupid
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		hide()
+
 func _process(_delta: float) -> void:
 	if rotating and not solved:
 		var angle = knob.get_angle_to(knob.get_global_mouse_position()) + (TAU / 4)
@@ -49,6 +55,7 @@ func _puzzle_solved():
 	animation_player.play("safe_opening")
 	$OpeningSound.play()
 	solved = true
+	safe.state.unlock()
 
 
 func _safe_reset():
@@ -79,3 +86,8 @@ func _on_pointer_area_area_entered(area: Area2D) -> void:
 	if area == area_zero and max_number != -16:
 		$NumberClickSound.play()
 		_on_dial_reset()
+
+
+func _on_safe_animation_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "safe_opening":
+		hide()
