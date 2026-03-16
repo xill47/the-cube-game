@@ -5,7 +5,7 @@ extends Interactable
 
 var state: SafeState
 
-@onready var sprite = $Sprite
+@onready var sprite := $Sprite
 
 func _ready() -> void:
 	state.changed.connect(_on_state_changed)
