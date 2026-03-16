@@ -49,7 +49,7 @@ func force_movement(new_position: Vector2) -> void:
 	on_changed()
 
 func can_aim() -> bool:
-	return stance != CharacterStance.ANIMATION
+	return stance == CharacterStance.IDLE
 
 func start_aiming() -> void:
 	stance = CharacterStance.AIMING
