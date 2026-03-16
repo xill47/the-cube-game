@@ -25,13 +25,13 @@ func _input(event: InputEvent) -> void:
 				cube.on_screen = not cube.on_screen
 
 func _appear_cube_animation():
-	var tween = create_tween()
-	tween.tween_property(cube,"position",last_cube_position, 0.25)
+	var tween := create_tween()
+	tween.tween_property(cube, "position", last_cube_position, 0.25)
 	tween.parallel()
-	tween.tween_property(cube,"scale",Vector2(1,1), 0.25)
+	tween.tween_property(cube, "scale", Vector2(1, 1), 0.25)
 
 func _disappear_cube_animation():
-	var tween = create_tween()
-	tween.tween_property(cube,"position",cube_button.position, 0.25)
+	var tween := create_tween()
+	tween.tween_property(cube, "position", cube_button.position, 0.25)
 	tween.parallel()
-	tween.tween_property(cube,"scale",Vector2(0.5,0.5), 0.25)
+	tween.tween_property(cube, "scale", Vector2(0.5, 0.5), 0.25)

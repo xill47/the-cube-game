@@ -7,13 +7,14 @@ var state: WallButtonState
 
 @onready var sprite = $Sprite
 
+func _ready() -> void:
+	state.changed.connect(_on_pressed)
+
 func get_state() -> InteractableState:
 	return state
 
 func _on_pressed():
 	if state.pressed:
-		#Unpressed state of the button
-		sprite.frame_coords.x = 0
-	else:
-		#Pressed state of the button
 		sprite.frame_coords.x = 1
+	else:
+		sprite.frame_coords.x = 0

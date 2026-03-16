@@ -3,8 +3,9 @@ extends SubViewportContainer
 
 @export var rotation_time: float
 
-var cube_controls = ["move_up","move_down","move_left",
-"move_right","rotate_ccw","rotate_cw","open_map"]
+var cube_controls := ["move_up","move_down","move_left","move_right",
+	"rotate_ccw","rotate_cw",
+	"open_map", "toggle_cube"]
 var being_dragged: bool = false
 var mouse_offset:Vector2
 var on_screen: bool = true
@@ -15,28 +16,49 @@ var rotate_direction: Vector3
 var start_basis: Basis = Basis.IDENTITY
 var target_basis: Basis
 var last_position: Basis
-var sudoku_tiles: Array
+
+var character: CharacterState
+var cube_stand: CubeHolderState
+
+# null or Callable
+var _on_next_hide: Variant = null
 
 @onready var cube_3d: MeshInstance3D = %Cube3D
 @onready var map: Node3D = %Map
+@onready var sudoku_tiles: Array[Node] = %Sudoku.get_children()
 
 func _ready() -> void:
-	sudoku_tiles = %Sudoku.get_children()
+	if cube_stand != null:
+		cube_stand.show_cube_requested.connect(_on_show_cube_request)
+
+
+func _on_show_cube_request(on_next_hide: Callable) -> void:
+	_on_next_hide = on_next_hide
+	# TODO call something that shows the cube
+	visible = true
+	_toggle_map()
+
 
 func _process(_delta: float) -> void:
 	if being_dragged:
 		_follow_mouse()
 
+
 func _follow_mouse():
 	position = get_global_mouse_position() - mouse_offset
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and rotatable and on_screen:
 		if event.is_pressed() and _event_check(event):
 			rotatable = false
-			if event.is_action("open_map"):
-				toggle_map()
+			if event.is_action("open_map") and (character.can_use_cube or visible):
+				_toggle_map()
 				return
+			if not visible:
+				rotatable = true
+				return
+			get_viewport().set_input_as_handled()
 			if event.is_action("rotate_ccw"):
 				rotate_direction = Vector3( 0, 0, 1)
 			elif event.is_action("rotate_cw"):
@@ -53,7 +75,6 @@ func _input(event: InputEvent) -> void:
 			last_position = target_basis
 			await _rotation_animation()
 			rotatable = true
-			get_viewport().set_input_as_handled()
 
 func _event_check(event: InputEvent) -> bool:
 	for known_event in cube_controls:
@@ -61,13 +82,20 @@ func _event_check(event: InputEvent) -> bool:
 			return true
 	return false
 
-func toggle_map():
+func _toggle_map():
 	if map_opened:
 		target_basis = last_position
 	else:
 		target_basis = Basis.IDENTITY.rotated(Vector3.DOWN, TAU / 4)
 	map_opened = not map_opened
+	visible = true
 	await _rotation_animation()
+	if not map_opened:
+		visible = false
+		# TODO Move to "when cube is hidden, after hide animation finished"
+		if _on_next_hide != null:
+			_on_next_hide.call()
+			_on_next_hide = null
 	rotatable = true
 
 func _rotation_animation() -> bool:
@@ -80,7 +108,6 @@ func _rotation_animation() -> bool:
 	rotating = false
 	_sudoku_rotate()
 	start_basis = cube_3d.basis
-#	print(start_basis)
 	return true
 
 func _interpolate(weight: float):

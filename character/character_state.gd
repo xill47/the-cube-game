@@ -19,6 +19,8 @@ var moved_rooms: int
 var live_ammo: int
 var is_fire_cooldown: bool
 
+var can_use_cube: bool
+
 var interactable_in_range: InteractableState
 
 static func create(character: Character) -> CharacterState:
@@ -81,14 +83,17 @@ func set_interactable_in_range(interactable: InteractableState) -> void:
 func can_interact() -> bool:
 	return interactable_in_range != null and stance == CharacterStance.IDLE
 
-func interact(tree) -> void:
-	interactable_in_range.interact()
+func interact() -> void:
 	stance = CharacterStance.ANIMATION
 	on_changed()
-	await tree.create_timer(INTERACT_TIME).timeout
+	await interactable_in_range.interact()
 	stance = CharacterStance.IDLE
 	on_changed()
 
 func move_room() -> void:
 	moved_rooms += 1
+	on_changed()
+
+func take_cube() -> void:
+	can_use_cube = true
 	on_changed()

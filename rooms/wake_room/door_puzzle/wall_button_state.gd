@@ -7,5 +7,14 @@ static func create(_button: WallButton) -> WallButtonState:
 	var state := WallButtonState.new()
 	return state
 
+
+func unpress() -> void:
+	pressed = false
+	on_changed()
+
+
 func interact() -> void:
-	pressed = not pressed
+	if pressed:
+		return
+	pressed = true
+	on_changed()

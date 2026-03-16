@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://drv7q7mjck8se" path="res://cube/map_assets/DoorClosed.png" id="18_jkg2a"]
 [ext_resource type="Script" uid="uid://63j61im7dyd5" path="res://cube/sudoku_tile.gd" id="19_4vqgp"]
 [ext_resource type="Texture2D" uid="uid://d3htsywnm8m7v" path="res://cube/map_assets/DoorOpen.png" id="19_a8u54"]
+[ext_resource type="Script" uid="uid://db4ry2vnd0epc" path="res://addons/state_scopes/state_consumer.gd" id="20_xoipa"]
 [ext_resource type="Texture2D" uid="uid://cyevvdborljox" path="res://cube/map_assets/DoorUnknown.png" id="21_5i508"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
@@ -728,3 +729,7 @@ size = 1.935
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D" unique_id=613921110]
 transform = Transform3D(0.97584057, 0.07958121, -0.20347491, 0, 0.931304, 0.36424294, 0.21848388, -0.35544303, 0.9088042, -0.6799257, 1.7103736, 2.3295145)
+
+[node name="StateConsumer" type="Node" parent="." unique_id=1317842708]
+script = ExtResource("20_xoipa")
+metadata/_custom_type_script = "uid://db4ry2vnd0epc"
