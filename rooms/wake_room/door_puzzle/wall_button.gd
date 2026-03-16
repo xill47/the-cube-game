@@ -1,23 +1,27 @@
 class_name WallButton
 extends Interactable
 
+signal on_pressed()
+
 @export var code: int
 
 var state: WallButtonState
+var pressed := false
 
 @onready var sprite = $Sprite
 
 func _ready() -> void:
-	state.on_pressed.connect(_on_state_changed)
-	state.unpressed.connect(_on_state_changed)
+	state.pressed.connect(_on_pressed)
 
 func get_state() -> InteractableState:
 	return state
 
-func _on_state_changed(_code_number, toggle):
-	if toggle:
-		sprite.frame_coords.x = 1
-		state.pressed = true
-	else:
+func _on_pressed():
+	if pressed:
 		sprite.frame_coords.x = 0
-		state.pressed = false
+		on_pressed.emit(code)
+		pressed = false
+	else:
+		sprite.frame_coords.x = 1
+		on_pressed.emit(code)
+		pressed = true
