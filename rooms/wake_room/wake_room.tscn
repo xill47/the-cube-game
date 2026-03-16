@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3x0xy6f7dug8" path="res://rooms/wake_room/wake_room.gd" id="1_1ould"]
 [ext_resource type="Texture2D" uid="uid://ctj3pon86hrv1" path="res://rooms/wake_room/back-ground.png" id="2_424ld"]
 [ext_resource type="PackedScene" uid="uid://bhnp0vc2wfcld" path="res://interactables/doors/door.tscn" id="4_gxk0u"]
-[ext_resource type="Script" uid="uid://b2fvajebrxrbk" path="res://rooms/wake_room/interactables_order.gd" id="4_tq3ax"]
+[ext_resource type="Script" uid="uid://b2fvajebrxrbk" path="res://rooms/interactables_order.gd" id="4_tq3ax"]
 [ext_resource type="Texture2D" uid="uid://008vb4obkgwp" path="res://rooms/wake_room/door_puzzle/cube_stand.png" id="5_l5pag"]
 [ext_resource type="Script" uid="uid://d4m8bjftscc26" path="res://rooms/wake_room/door_puzzle/wall_button.gd" id="6_u1hbi"]
 [ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="8_pgs6l"]
@@ -111,8 +111,7 @@ shape = SubResource("RectangleShape2D_le7kl")
 
 [node name="Door" parent="Doors" unique_id=1059506860 instance=ExtResource("4_gxk0u")]
 position = Vector2(302, 292)
-starts_locked = true
-starting_leads_to = "res://rooms/test_chamber/test_chamber.tscn"
+starting_leads_to = "res://rooms/corridor/corridor.tscn"
 leads_to_spawn = "%Spawn"
 
 [node name="Interactables" type="Node2D" parent="." unique_id=135537337 node_paths=PackedStringArray("character")]
@@ -244,11 +243,11 @@ metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
 unique_name_in_owner = true
-position = Vector2(399, 243)
+position = Vector2(163, 598)
 
 [node name="Spawn2" type="Marker2D" parent="." unique_id=441376481]
 unique_name_in_owner = true
-position = Vector2(399, 790)
+position = Vector2(303, 413)
 
 [node name="StateProvider" type="Node" parent="." unique_id=199642382]
 script = ExtResource("8_pgs6l")
