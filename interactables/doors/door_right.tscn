@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c0rjmr1tk6owj"]
+
+[ext_resource type="Script" uid="uid://drl15u35ajgsi" path="res://interactables/doors/door.gd" id="1_dwtpu"]
+[ext_resource type="Texture2D" uid="uid://b4r2flaukd2i8" path="res://interactables/doors/door-right-sheet.png" id="2_dwtpu"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="3_ulc7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufcu1"]
+size = Vector2(27, 117)
+
+[node name="DoorRight" type="Area2D" unique_id=1059506860]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_dwtpu")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=108543606]
+scale = Vector2(4, 4)
+texture = ExtResource("2_dwtpu")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=920290342]
+position = Vector2(-52.5, 114)
+shape = SubResource("RectangleShape2D_ufcu1")
+
+[node name="StateProvider" type="Node" parent="." unique_id=1540425789]
+script = ExtResource("3_ulc7v")
+metadata/_custom_type_script = "uid://dalnoy50favch"
