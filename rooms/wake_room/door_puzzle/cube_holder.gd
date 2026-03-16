@@ -20,4 +20,5 @@ func _on_holder_opened():
 
 func _cube_taken():
 	#Allow player to use Cube
+	#Open the door
 	sprite.frame_coords.x = 2

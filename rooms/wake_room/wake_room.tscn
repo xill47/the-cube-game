@@ -56,9 +56,8 @@ load_path = "res://.godot/imported/button_atlas.png-439aca4f49933d5bcb7ddbb4ee66
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emj7d"]
 size = Vector2(386, 256)
 
-[node name="WakeRoom" type="Node2D" unique_id=1590841663 node_paths=PackedStringArray("buttons")]
+[node name="WakeRoom" type="Node2D" unique_id=1590841663]
 script = ExtResource("1_1ould")
-buttons = [NodePath("Interactables/WallButton1"), NodePath("Interactables/WallButton2"), NodePath("Interactables/WallButton3"), NodePath("Interactables/WallButton4")]
 
 [node name="ArtLayers" type="Node2D" parent="." unique_id=625979313]
 
