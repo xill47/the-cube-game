@@ -35,3 +35,12 @@ func _on_check_box_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if not toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "open-options":
+		anim_player.play("idle-options")
+	if anim_name == "open-exit":
+		anim_player.play("idle-exit")
+	if anim_name == "close-options" or anim_name == "close-exit":
+		anim_player.play("start")
