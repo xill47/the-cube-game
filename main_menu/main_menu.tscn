@@ -1,0 +1,923 @@
+[gd_scene format=3 uid="uid://cwif5tv3ig726"]
+
+[ext_resource type="Script" uid="uid://dsnt154r4l17q" path="res://main_menu/main_menu.gd" id="1_bws42"]
+[ext_resource type="Texture2D" uid="uid://n2wead6hqjtr" path="res://main_menu/menu_cube_test.png" id="2_bws42"]
+[ext_resource type="Shader" uid="uid://d2iykbhlqblwm" path="res://main_menu/holo.gdshader" id="2_d3a7t"]
+[ext_resource type="Texture2D" uid="uid://bdfdva5xlkeqt" path="res://ui_assets/hologram_uv.png" id="3_3f7m4"]
+
+[sub_resource type="Animation" id="Animation_cgbph"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.43633226, 0.785398, 0.43633226)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../OptionMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../ExitMenu:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%Cube3D/MeshInstance3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.9802317e-08, -2.9802322e-08, 5.9604645e-08)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%Cube3D/MeshInstance3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bws42"]
+resource_name = "close-exit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.019198623, 11.58375, -3.106686), Vector3(-0.17453292, -0.7853982, 0.17453292)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../OptionMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../ExitMenu:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cube3D/MeshInstance3D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_blfsh"]
+resource_name = "close-options"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3, -2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.579523, -2.2724187, 0.69464105), Vector3(-0.17453292, -0.7853982, 0.17453292)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../OptionMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cube3D/MeshInstance3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_6tl50"]
+resource_name = "idle-exit"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.019198623, -2.5534167, -3.106686)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../OptionMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../ExitMenu:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cube3D/MeshInstance3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.9802317e-08, -2.9802322e-08, 5.9604645e-08), Vector3(0, 6.2831855, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cube3D/MeshInstance3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3f7m4"]
+resource_name = "idle-options"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.579523, -2.2724187, 0.69464105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../OptionMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Cube3D/MeshInstance3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cube3D/MeshInstance3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.9802317e-08, -2.9802322e-08, 5.9604645e-08), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3shxk"]
+resource_name = "open-exit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.17453292, -0.7853982, 0.17453292), Vector3(-0.019198623, -2.5534167, -3.106686)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../OptionMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../ExitMenu:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cube3D/MeshInstance3D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3tvgl"]
+resource_name = "open-options"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.17453292, -0.7853982, 0.17453292), Vector3(-1.579523, -2.2724187, 0.69464105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../OptionMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Cube3D/MeshInstance3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_e8qoe"]
+resource_name = "start"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.17453292, -0.7853982, 0.17453292)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../BasicMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Cube3D/MeshInstance3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.9802317e-08, -2.9802322e-08, 5.9604645e-08), Vector3(0, 6.2831855, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cube3D/MeshInstance3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8qoe"]
+_data = {
+&"RESET": SubResource("Animation_cgbph"),
+&"close-exit": SubResource("Animation_bws42"),
+&"close-options": SubResource("Animation_blfsh"),
+&"idle-exit": SubResource("Animation_6tl50"),
+&"idle-options": SubResource("Animation_3f7m4"),
+&"open-exit": SubResource("Animation_3shxk"),
+&"open-options": SubResource("Animation_3tvgl"),
+&"start": SubResource("Animation_e8qoe")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+transparency = 1
+albedo_texture = ExtResource("2_bws42")
+metallic = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
+material = SubResource("StandardMaterial3D_5vw27")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tl50"]
+transparency = 1
+albedo_texture = ExtResource("3_3f7m4")
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t6bnd"]
+lightmap_size_hint = Vector2i(17, 11)
+material = SubResource("StandardMaterial3D_6tl50")
+flip_faces = true
+height = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3shxk"]
+shader = ExtResource("2_d3a7t")
+shader_parameter/lines = 100
+shader_parameter/color1 = Color(0.58056563, 0.71801317, 1, 1)
+shader_parameter/color2 = Color(0.1882353, 0.35686275, 0.7137255, 1)
+shader_parameter/speed = 0.01999999955296
+shader_parameter/alpha = 0.749999983236
+shader_parameter/noise_amount = 0.0
+shader_parameter/effect_factor = 0.499999988824
+
+[sub_resource type="Theme" id="Theme_3f7m4"]
+default_font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_3shxk"]
+font_size = 48
+
+[node name="MainMenu" type="Control" unique_id=696745420]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_bws42")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=412522485]
+root_node = NodePath("../CubeControls/SubViewport/Node3D")
+libraries/ = SubResource("AnimationLibrary_e8qoe")
+autoplay = &"start"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=757711432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CubeControls" type="SubViewportContainer" parent="." unique_id=1219466798]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -378.0
+offset_right = 640.0
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(379.5, 378)
+mouse_filter = 0
+
+[node name="SubViewport" type="SubViewport" parent="CubeControls" unique_id=1916281275]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="CubeControls/SubViewport" unique_id=756525788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.046578288)
+
+[node name="Cube3D" type="MeshInstance3D" parent="CubeControls/SubViewport/Node3D" unique_id=777229215]
+unique_name_in_owner = true
+transform = Transform3D(0.76715, -0.027998712, 0.6408562, 0.38302213, 0.8213937, -0.42261815, -0.5145625, 0.5696737, 0.64085644, 0, 0, 0)
+mesh = SubResource("BoxMesh_lquwl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CubeControls/SubViewport/Node3D/Cube3D" unique_id=2126703859]
+transform = Transform3D(0.5000001, -2.980233e-08, -1.4901165e-08, 2.980233e-08, 0.5000001, 1.4901161e-08, 1.4901163e-08, -1.4901163e-08, 0.5000001, 0.022721503, -0.6281115, 0.023072004)
+mesh = SubResource("CylinderMesh_t6bnd")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="CubeControls/SubViewport/Node3D/Cube3D/MeshInstance3D" unique_id=474551231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20562804, 0)
+light_color = Color(0.5686275, 1, 1, 1)
+light_energy = 0.8
+light_indirect_energy = 0.0
+omni_range = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CubeControls/SubViewport/Node3D" unique_id=202975429]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.159018)
+rotation_edit_mode = 2
+fov = 60.0
+size = 1.935
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CubeControls/SubViewport/Node3D" unique_id=613921110]
+transform = Transform3D(0.97584057, 0.07958121, -0.20347491, 0, 0.931304, 0.36424294, 0.21848388, -0.35544303, 0.9088042, -0.6799257, 1.7103736, 2.3295145)
+light_color = Color(0.7647059, 1, 1, 1)
+light_energy = 0.6
+light_indirect_energy = 0.1
+sky_mode = 1
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="CubeControls/SubViewport/Node3D" unique_id=515312106]
+transform = Transform3D(0.1205138, -0.7232796, 0.6799581, 0.043520804, 0.6881411, 0.72427046, -0.99175733, -0.05769236, 0.11440821, 4.359331, 4.697796, 0.4668884)
+light_color = Color(0.56078434, 0.3372549, 1, 1)
+light_energy = 0.082
+
+[node name="BasicMenu" type="VBoxContainer" parent="." unique_id=1942616764]
+material = SubResource("ShaderMaterial_3shxk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = 128.0
+offset_right = 31.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3f7m4")
+
+[node name="PlayLabel" type="Button" parent="BasicMenu" unique_id=1557487588]
+use_parent_material = true
+layout_mode = 2
+text = "Play"
+flat = true
+
+[node name="OptionLabel" type="Button" parent="BasicMenu" unique_id=1719679003]
+use_parent_material = true
+layout_mode = 2
+text = "Option"
+flat = true
+
+[node name="ExitLabel" type="Button" parent="BasicMenu" unique_id=799746644]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+text = "Exit"
+flat = true
+
+[node name="OptionMenu" type="VBoxContainer" parent="." unique_id=661935216]
+visible = false
+material = SubResource("ShaderMaterial_3shxk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = 89.0
+offset_right = 87.5
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="OptionMenu" unique_id=1585736720]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Labels" type="VBoxContainer" parent="OptionMenu/VBoxContainer" unique_id=1228350959]
+use_parent_material = true
+layout_mode = 2
+alignment = 1
+
+[node name="MasterLabel" type="Label" parent="OptionMenu/VBoxContainer/Labels" unique_id=685016309]
+use_parent_material = true
+layout_mode = 2
+text = "Master"
+
+[node name="MusicLabel" type="Label" parent="OptionMenu/VBoxContainer/Labels" unique_id=1166673622]
+use_parent_material = true
+layout_mode = 2
+text = "Music"
+
+[node name="SoundLabel" type="Label" parent="OptionMenu/VBoxContainer/Labels" unique_id=1992358537]
+use_parent_material = true
+layout_mode = 2
+text = "Sound"
+
+[node name="FullScreen" type="Label" parent="OptionMenu/VBoxContainer/Labels" unique_id=1603438549]
+use_parent_material = true
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Check" type="VBoxContainer" parent="OptionMenu/VBoxContainer" unique_id=2001647979]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="OptionMenu/VBoxContainer/Check" unique_id=455486822]
+unique_name_in_owner = true
+use_parent_material = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicSlider" type="HSlider" parent="OptionMenu/VBoxContainer/Check" unique_id=1024118507]
+unique_name_in_owner = true
+use_parent_material = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SoundSlider" type="HSlider" parent="OptionMenu/VBoxContainer/Check" unique_id=1104819778]
+unique_name_in_owner = true
+use_parent_material = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="CheckBox" type="CheckBox" parent="OptionMenu/VBoxContainer/Check" unique_id=1169133382]
+use_parent_material = true
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="OptionMenu" unique_id=253809498]
+use_parent_material = true
+layout_mode = 2
+text = "Back"
+
+[node name="ExitMenu" type="VBoxContainer" parent="." unique_id=1968543967]
+visible = false
+material = SubResource("ShaderMaterial_3shxk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -37.0
+offset_right = 90.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfirmLabel" type="Label" parent="ExitMenu" unique_id=719152305]
+use_parent_material = true
+layout_mode = 2
+text = "Are you sure?"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ExitMenu" unique_id=594384883]
+use_parent_material = true
+layout_mode = 2
+
+[node name="NoButton" type="Button" parent="ExitMenu/VBoxContainer" unique_id=647250636]
+use_parent_material = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+text = "Return"
+
+[node name="YesButton" type="Button" parent="ExitMenu/VBoxContainer" unique_id=246594844]
+use_parent_material = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+text = "Exit"
+
+[node name="Label" type="Label" parent="." unique_id=1319479065]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 45.0
+offset_right = 20.0
+offset_bottom = 68.0
+grow_horizontal = 2
+text = "THE CUBE GAME"
+label_settings = SubResource("LabelSettings_3shxk")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="BasicMenu/OptionLabel" to="." method="_on_option_label_pressed"]
+[connection signal="pressed" from="BasicMenu/ExitLabel" to="." method="_on_exit_label_pressed"]
+[connection signal="value_changed" from="OptionMenu/VBoxContainer/Check/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="OptionMenu/VBoxContainer/Check/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="OptionMenu/VBoxContainer/Check/SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="toggled" from="OptionMenu/VBoxContainer/Check/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="OptionMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ExitMenu/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="ExitMenu/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
