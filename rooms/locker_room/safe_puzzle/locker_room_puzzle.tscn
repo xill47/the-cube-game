@@ -339,6 +339,7 @@ height = 90.34442
 radius = 256.0
 
 [node name="LockerRoomPuzzle" type="Node2D" unique_id=1411646334 node_paths=PackedStringArray("labels")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_4ckw7")
 code = Array[int]([3, -6, 4, -2])
 labels = [NodePath("SafeBack/SafeDoor/VBoxContainer/Number1"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number2"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number3"), NodePath("SafeBack/SafeDoor/VBoxContainer/Number4")]

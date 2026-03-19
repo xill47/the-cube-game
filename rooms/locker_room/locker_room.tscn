@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2vcdttd2310" path="res://rooms/locker_room/safe-world.png" id="6_apjf5"]
 [ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="7_gx2v6"]
 [ext_resource type="PackedScene" uid="uid://b38lxcifmqdl1" path="res://rooms/locker_room/safe_puzzle/locker_room_puzzle.tscn" id="8_vyeeh"]
-[ext_resource type="Script" uid="uid://cfsobcastosrm" path="res://rooms/camera_logic.gd" id="9_4pssc"]
+[ext_resource type="Script" path="res://rooms/camera_logic.gd" id="9_4pssc"]
 [ext_resource type="PackedScene" uid="uid://bfr0pfebm0wx4" path="res://interactables/doors/door_bottom.tscn" id="11_76ll3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
@@ -204,7 +204,6 @@ position = Vector2(320, 382)
 [node name="LockerRoomPuzzle" parent="Puzzle" unique_id=1411646334 instance=ExtResource("8_vyeeh")]
 visible = false
 position = Vector2(446, 331)
-scale = Vector2(0.5, 0.5)
 
 [node name="CameraLogic" type="Node2D" parent="." unique_id=255117468]
 script = ExtResource("9_4pssc")
