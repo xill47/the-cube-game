@@ -7,6 +7,3 @@ var wake_room_state: WakeRoomState
 
 func get_state() -> WakeRoomState:
 	return wake_room_state
-
-#All buttons pressed in the right order - open the CubeStand
-#If button unpressed - reset puzzle

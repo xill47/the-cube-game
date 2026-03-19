@@ -1,11 +1,10 @@
 class_name CubeControl
-extends SubViewportContainer
+extends Control
 
 @export var rotation_time: float
 
 var cube_controls := ["move_up","move_down","move_left","move_right",
-	"rotate_ccw","rotate_cw",
-	"open_map", "toggle_cube"]
+	"rotate_ccw","rotate_cw"]
 var being_dragged: bool = false
 var mouse_offset:Vector2
 var on_screen: bool = true
@@ -16,6 +15,8 @@ var rotate_direction: Vector3
 var start_basis: Basis = Basis.IDENTITY
 var target_basis: Basis
 var last_position: Basis
+var last_screen_position: Vector2
+var ui_position: Vector2
 
 var character: CharacterState
 var cube_stand: CubeHolderState
@@ -23,11 +24,14 @@ var cube_stand: CubeHolderState
 # null or Callable
 var _on_next_hide: Variant = null
 
+@onready var cube_control := %Cube
 @onready var cube_3d: MeshInstance3D = %Cube3D
 @onready var map: Node3D = %Map
 @onready var sudoku_tiles: Array[Node] = %Sudoku.get_children()
+@onready var hide_spot_pos: Vector2 = %HideSpot.position
 
 func _ready() -> void:
+	last_screen_position = cube_control.position
 	if cube_stand != null:
 		cube_stand.show_cube_requested.connect(_on_show_cube_request)
 
@@ -49,16 +53,23 @@ func _follow_mouse():
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_pressed() and character.can_use_cube and not being_dragged:
+		if event.is_action("toggle_cube") or event.is_action("open_map"):
+			if event.is_action("open_map"):
+				_toggle_map()
+				if on_screen:
+					return
+			if on_screen:
+				_disappear_cube_animation()
+			else:
+				_appear_cube_animation()
+			on_screen = not on_screen
 	if event is InputEventKey and rotatable and on_screen:
 		if event.is_pressed() and _event_check(event):
 			rotatable = false
-			if event.is_action("open_map") and (character.can_use_cube or visible):
-				_toggle_map()
-				return
 			if not visible:
 				rotatable = true
 				return
-			get_viewport().set_input_as_handled()
 			if event.is_action("rotate_ccw"):
 				rotate_direction = Vector3( 0, 0, 1)
 			elif event.is_action("rotate_cw"):
@@ -75,6 +86,7 @@ func _input(event: InputEvent) -> void:
 			last_position = target_basis
 			await _rotation_animation()
 			rotatable = true
+			get_viewport().set_input_as_handled()
 
 func _event_check(event: InputEvent) -> bool:
 	for known_event in cube_controls:
@@ -88,15 +100,7 @@ func _toggle_map():
 	else:
 		target_basis = Basis.IDENTITY.rotated(Vector3.DOWN, TAU / 4)
 	map_opened = not map_opened
-	visible = true
 	await _rotation_animation()
-	if not map_opened:
-		visible = false
-		# TODO Move to "when cube is hidden, after hide animation finished"
-		if _on_next_hide != null:
-			_on_next_hide.call()
-			_on_next_hide = null
-	rotatable = true
 
 func _rotation_animation() -> bool:
 	rotating = true
@@ -119,8 +123,21 @@ func _on_gui_input(event: InputEvent) -> void:
 			mouse_offset = get_local_mouse_position()
 			being_dragged = true
 		if event.is_released():
+			last_screen_position = position
 			being_dragged = false
 
 func _sudoku_rotate():
 	for tile in sudoku_tiles:
 		tile.sudoku_opened(cube_3d)
+
+func _appear_cube_animation():
+	var tween := create_tween()
+	tween.tween_property(self, "position", last_screen_position, 0.25)
+	tween.parallel()
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
+
+func _disappear_cube_animation():
+	var tween := create_tween()
+	tween.tween_property(self, "position", hide_spot_pos, 0.25)
+	tween.parallel()
+	tween.tween_property(self, "scale", Vector2(0.5, 0.5), 0.25)
