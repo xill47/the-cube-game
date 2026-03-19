@@ -764,6 +764,7 @@ text = "Option"
 flat = true
 
 [node name="ExitLabel" type="Button" parent="BasicMenu" unique_id=799746644]
+unique_name_in_owner = true
 use_parent_material = true
 layout_mode = 2
 text = "Exit"
