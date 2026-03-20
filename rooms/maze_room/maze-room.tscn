@@ -384,6 +384,7 @@ script = ExtResource("10_vjfhm")
 position = Vector2(404, 546)
 
 [node name="Positions" type="Node2D" parent="CameraLogic" unique_id=564659675]
+visible = false
 
 [node name="Pos1" type="Area2D" parent="CameraLogic/Positions" unique_id=1428389072]
 position = Vector2(-168, 701)
