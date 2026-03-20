@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://bgdcye2l3tv67"
+path="res://.godot/imported/maze-work-file_puzzle-gate.ase_layer_tex-418c2dec1600715bf9f4a72643453447.res"
+
+[deps]
+
+source_file="res://rooms/maze_room/assets/maze-work-file_puzzle-gate.ase_layer_tex"
+dest_files=["res://.godot/imported/maze-work-file_puzzle-gate.ase_layer_tex-418c2dec1600715bf9f4a72643453447.res"]
+
+[params]
+
