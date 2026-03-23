@@ -66,7 +66,6 @@ func _eight_to_four_direction() -> Vector2:
 		anim_dir_calc = Vector2.LEFT
 	if character_direction.x == 1:
 		anim_dir_calc = Vector2.RIGHT
-	$DirectionLabel.text = str(anim_dir_calc)
 	return anim_dir_calc
 
 func _on_dir_change():
@@ -74,9 +73,10 @@ func _on_dir_change():
 	var state_name_four = directions[anim_dir]
 	state_name = directions[character_direction]
 	animation_tree.set("parameters/Aim/transition_request", state_name)
-	animation_tree.set("parameters/Idle/transition_request", state_name_four)
+	animation_tree.set("parameters/Idle/transition_request", state_name)
 	animation_tree.set("parameters/Walk/transition_request", state_name_four)
 	animation_tree.set("parameters/Run/transition_request", state_name_four)
+	$DirectionLabel.text = str(character_direction)
 
 func interact():
 	interact_sprite.show()
