@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="9_fatf2"]
 [ext_resource type="Texture2D" uid="uid://bxa04g8xfe11o" path="res://rooms/maze_room/assets/maze-work-file_wall-7.ase_layer_tex" id="10_oiel4"]
 [ext_resource type="Script" uid="uid://cfsobcastosrm" path="res://rooms/camera_logic.gd" id="10_vjfhm"]
+[ext_resource type="Script" uid="uid://jdyjm5yfge1g" path="res://rooms/maze_room/mini_door/wall_lever.gd" id="15_wswkr"]
+[ext_resource type="Texture2D" uid="uid://uqtq7ll5i484" path="res://rooms/maze_room/assets/maze-work-file_lever.ase_layer_tex" id="16_6wqy2"]
+[ext_resource type="PackedScene" uid="uid://wwa68l1f6cg5" path="res://rooms/maze_room/mini_door/mini_door.tscn" id="17_rm5ha"]
+[ext_resource type="PackedScene" uid="uid://cwxgqls1kkf0o" path="res://rooms/maze_room/mini_door/mini_door_ver.tscn" id="18_wswkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
 size = Vector2(60.5, 447)
@@ -103,6 +107,9 @@ size = Vector2(256.5, 71.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0wch"]
 size = Vector2(159.25, 71.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drc8e"]
+size = Vector2(10, 25.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxfv2"]
 size = Vector2(582, 340.5)
@@ -263,7 +270,7 @@ texture = ExtResource("6_g345g")
 
 [node name="MazeWorkFileWall4" type="Sprite2D" parent="Walls/Objects" unique_id=344313230]
 y_sort_enabled = true
-position = Vector2(736, 708)
+position = Vector2(736, 712)
 scale = Vector2(4, 4)
 texture = ExtResource("7_g345g")
 
@@ -353,7 +360,145 @@ leads_to_spawn = "%Spawn2"
 position = Vector2(-737, 788)
 
 [node name="Interactables" type="Node2D" parent="." unique_id=135537337]
+y_sort_enabled = true
 position = Vector2(754, 288)
+
+[node name="MiniDoor" parent="Interactables" unique_id=366037591 instance=ExtResource("17_rm5ha")]
+y_sort_enabled = true
+position = Vector2(398, -28)
+starts_locked = true
+
+[node name="MiniDoor2" parent="Interactables" unique_id=48597125 instance=ExtResource("18_wswkr")]
+y_sort_enabled = true
+position = Vector2(971, 498)
+starts_locked = true
+
+[node name="MiniDoor3" parent="Interactables" unique_id=961427512 instance=ExtResource("17_rm5ha")]
+y_sort_enabled = true
+position = Vector2(402, 736)
+starts_locked = true
+
+[node name="MiniDoor7" parent="Interactables" unique_id=1571320625 instance=ExtResource("17_rm5ha")]
+y_sort_enabled = true
+position = Vector2(-410, 968)
+starts_locked = true
+door_number = 7
+
+[node name="MiniDoor4" parent="Interactables" unique_id=1895695214 instance=ExtResource("18_wswkr")]
+y_sort_enabled = true
+position = Vector2(-285, 1039)
+starts_locked = true
+door_number = 4
+
+[node name="MiniDoor8" parent="Interactables" unique_id=385062483 instance=ExtResource("18_wswkr")]
+y_sort_enabled = true
+position = Vector2(-174, 502)
+door_number = 8
+
+[node name="MiniDoor5" parent="Interactables" unique_id=1590315228 instance=ExtResource("18_wswkr")]
+y_sort_enabled = true
+position = Vector2(612, 1034)
+starts_locked = true
+
+[node name="MiniDoor6" parent="Interactables" unique_id=2059489102 instance=ExtResource("17_rm5ha")]
+y_sort_enabled = true
+position = Vector2(398, 356)
+
+[node name="WallLever" type="Area2D" parent="Interactables" unique_id=665070793 node_paths=PackedStringArray("door1", "door2", "door3")]
+y_sort_enabled = true
+position = Vector2(14, -20)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("15_wswkr")
+door1 = NodePath("../MiniDoor8")
+door2 = NodePath("../MiniDoor2")
+door3 = NodePath("../MiniDoor3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallLever" unique_id=1885595290]
+position = Vector2(0, 8.125)
+shape = SubResource("RectangleShape2D_drc8e")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallLever" unique_id=507027649]
+texture = ExtResource("16_6wqy2")
+hframes = 2
+
+[node name="StateProvider" type="Node" parent="Interactables/WallLever" unique_id=497837023]
+script = ExtResource("7_1ddoc")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="WallLever2" type="Area2D" parent="Interactables" unique_id=309690885 node_paths=PackedStringArray("door1", "door2", "door3")]
+y_sort_enabled = true
+position = Vector2(670, -20)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("15_wswkr")
+door1 = NodePath("../MiniDoor2")
+door2 = NodePath("../MiniDoor5")
+door3 = NodePath("../MiniDoor6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallLever2" unique_id=784502924]
+position = Vector2(0, 8.125)
+shape = SubResource("RectangleShape2D_drc8e")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallLever2" unique_id=652367544]
+texture = ExtResource("16_6wqy2")
+hframes = 2
+
+[node name="StateProvider" type="Node" parent="Interactables/WallLever2" unique_id=770092246]
+script = ExtResource("7_1ddoc")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="WallLever3" type="Area2D" parent="Interactables" unique_id=1330332605 node_paths=PackedStringArray("door1", "door2", "door3")]
+y_sort_enabled = true
+position = Vector2(783, 745)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("15_wswkr")
+door1 = NodePath("../MiniDoor6")
+door2 = NodePath("../MiniDoor")
+door3 = NodePath("../MiniDoor7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallLever3" unique_id=491271024]
+position = Vector2(0, 8.125)
+shape = SubResource("RectangleShape2D_drc8e")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallLever3" unique_id=395734133]
+texture = ExtResource("16_6wqy2")
+hframes = 2
+
+[node name="StateProvider" type="Node" parent="Interactables/WallLever3" unique_id=1451916925]
+script = ExtResource("7_1ddoc")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="WallLever4" type="Area2D" parent="Interactables" unique_id=2053205620 node_paths=PackedStringArray("door1", "door2", "door3")]
+y_sort_enabled = true
+position = Vector2(63, 745)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("15_wswkr")
+door1 = NodePath("../MiniDoor4")
+door2 = NodePath("../MiniDoor8")
+door3 = NodePath("../MiniDoor5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallLever4" unique_id=1439371707]
+position = Vector2(0, 8.125)
+shape = SubResource("RectangleShape2D_drc8e")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/WallLever4" unique_id=1685898019]
+texture = ExtResource("16_6wqy2")
+hframes = 2
+
+[node name="StateProvider" type="Node" parent="Interactables/WallLever4" unique_id=1985100079]
+script = ExtResource("7_1ddoc")
+metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
 unique_name_in_owner = true
@@ -384,7 +529,6 @@ script = ExtResource("10_vjfhm")
 position = Vector2(404, 546)
 
 [node name="Positions" type="Node2D" parent="CameraLogic" unique_id=564659675]
-visible = false
 
 [node name="Pos1" type="Area2D" parent="CameraLogic/Positions" unique_id=1428389072]
 position = Vector2(-168, 701)
@@ -430,13 +574,13 @@ shape = SubResource("RectangleShape2D_rf1qa")
 debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
 
 [node name="Pos6" type="Area2D" parent="CameraLogic/Positions" unique_id=1951358425]
-position = Vector2(404, 546)
+position = Vector2(462, 546)
 collision_layer = 128
 collision_mask = 128
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLogic/Positions/Pos6" unique_id=60125017]
-position = Vector2(183.75, 38)
+position = Vector2(115, 38)
 shape = SubResource("RectangleShape2D_a1sde")
 debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
 

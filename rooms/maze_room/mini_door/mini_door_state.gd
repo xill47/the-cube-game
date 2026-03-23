@@ -1,23 +1,26 @@
-class_name DoorState
+class_name MiniDoorState
 extends InteractableState
 
-signal door_entered()
-
 var locked: bool
-var leads_to: PackedScene
-var spawn_point: NodePath
+var door_number: int 
 
-static func create(door: Door) -> DoorState:
-	var state := DoorState.new()
+static func create(door: MiniDoor) -> MiniDoorState:
+	var state := MiniDoorState.new()
 	state.locked = door.starts_locked
-	state.leads_to = load(door.starting_leads_to)
-	state.spawn_point = NodePath(door.leads_to_spawn)
+	state.door_number = door.door_number
 	return state
+
+func change_state():
+	locked = not locked
+	on_changed()
 
 func unlock():
 	locked = false
 	on_changed()
 
+func lock():
+	locked = true
+	on_changed()
+
 func interact() -> void:
-	if not locked:
-		door_entered.emit()
+	pass

@@ -1,22 +1,22 @@
-[gd_scene format=3 uid="uid://wwa68l1f6cg5"]
+[gd_scene format=3 uid="uid://cwxgqls1kkf0o"]
 
-[ext_resource type="Script" uid="uid://dikqf2mgy0f06" path="res://rooms/maze_room/mini_door/mini_door.gd" id="1_to10m"]
-[ext_resource type="Texture2D" uid="uid://bgdcye2l3tv67" path="res://rooms/maze_room/assets/maze-work-file_puzzle-gate.ase_layer_tex" id="2_to10m"]
-[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="3_32sxj"]
+[ext_resource type="Script" uid="uid://dikqf2mgy0f06" path="res://rooms/maze_room/mini_door/mini_door.gd" id="1_4ebrr"]
+[ext_resource type="Texture2D" uid="uid://dyvl8a8l6r75w" path="res://rooms/maze_room/assets/maze-work-file_puzzle-gate-ver.ase_layer_tex" id="2_4ebrr"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="3_syprv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufcu1"]
-size = Vector2(128, 24)
+size = Vector2(22, 227)
 
 [node name="MiniDoor" type="Area2D" unique_id=366037591]
-script = ExtResource("1_to10m")
+script = ExtResource("1_4ebrr")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=108543606]
 scale = Vector2(4, 4)
-texture = ExtResource("2_to10m")
+texture = ExtResource("2_4ebrr")
 hframes = 2
 
 [node name="StateProvider" type="Node" parent="." unique_id=1540425789]
-script = ExtResource("3_32sxj")
+script = ExtResource("3_syprv")
 metadata/_custom_type_script = "uid://dalnoy50favch"
 
 [node name="Collision" type="StaticBody2D" parent="." unique_id=675113135]
@@ -24,7 +24,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=920290342]
-position = Vector2(0, 48)
+position = Vector2(0, 33.5)
 shape = SubResource("RectangleShape2D_ufcu1")
 
 [node name="OpenCloseSound" type="AudioStreamPlayer2D" parent="." unique_id=1004683884]
