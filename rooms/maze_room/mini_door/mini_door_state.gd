@@ -2,7 +2,7 @@ class_name MiniDoorState
 extends InteractableState
 
 var locked: bool
-var door_number: int 
+var door_number: int
 
 static func create(door: MiniDoor) -> MiniDoorState:
 	var state := MiniDoorState.new()
