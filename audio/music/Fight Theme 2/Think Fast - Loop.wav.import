@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1532sotl7pdx"
+path="res://.godot/imported/Think Fast - Loop.wav-5de23b8e63e25afb9fe9d3cb0dee303e.sample"
+
+[deps]
+
+source_file="res://audio/music/Fight Theme 2/Think Fast - Loop.wav"
+dest_files=["res://.godot/imported/Think Fast - Loop.wav-5de23b8e63e25afb9fe9d3cb0dee303e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

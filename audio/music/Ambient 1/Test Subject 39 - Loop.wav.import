@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxt2qdpvfc0vs"
+path="res://.godot/imported/Test Subject 39 - Loop.wav-182d1e2fa99e551cd82fa470a3d7c55e.sample"
+
+[deps]
+
+source_file="res://audio/music/Ambient 1/Test Subject 39 - Loop.wav"
+dest_files=["res://.godot/imported/Test Subject 39 - Loop.wav-182d1e2fa99e551cd82fa470a3d7c55e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
