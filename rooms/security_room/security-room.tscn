@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://cpn4xdv0wxm8n"]
+
+[ext_resource type="Script" uid="uid://bnkhlbpl2x0h7" path="res://rooms/corridor/corridor_room.gd" id="1_y41vl"]
+[ext_resource type="Texture2D" uid="uid://cww2knhlc4xfl" path="res://rooms/security_room/assets/background.png" id="2_dx227"]
+[ext_resource type="Texture2D" uid="uid://ds1bqgi4xckyn" path="res://rooms/security_room/assets/foreground.png" id="3_esan3"]
+[ext_resource type="PackedScene" uid="uid://c0rjmr1tk6owj" path="res://interactables/doors/door_right.tscn" id="5_esan3"]
+[ext_resource type="PackedScene" uid="uid://bfr0pfebm0wx4" path="res://interactables/doors/door_bottom.tscn" id="11_aqs10"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="13_b8khc"]
+[ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="14_142mu"]
+[ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="15_acpbs"]
+[ext_resource type="Script" uid="uid://cfsobcastosrm" path="res://rooms/camera_logic.gd" id="16_ovbwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
+size = Vector2(60.5, 390.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv27j"]
+size = Vector2(252, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0owk"]
+size = Vector2(38.5, 236)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le7kl"]
+size = Vector2(321, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abmf8"]
+size = Vector2(59, 109.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whw2n"]
+size = Vector2(129.5, 109.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71rvp"]
+size = Vector2(113, 31.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhq87"]
+size = Vector2(169.5, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxfv2"]
+size = Vector2(382, 349)
+
+[node name="SecurityRoom" type="Node2D" unique_id=1590841663]
+y_sort_enabled = true
+script = ExtResource("1_y41vl")
+
+[node name="ArtLayers" type="Node2D" parent="." unique_id=625979313]
+
+[node name="Background" type="Sprite2D" parent="ArtLayers" unique_id=834635258]
+position = Vector2(384, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("2_dx227")
+
+[node name="Foreground" type="Sprite2D" parent="ArtLayers" unique_id=298916730]
+z_index = 1
+position = Vector2(416, 416)
+scale = Vector2(4, 4)
+texture = ExtResource("3_esan3")
+
+[node name="Walls" type="Node2D" parent="." unique_id=1963081063]
+y_sort_enabled = true
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=403527801]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=933203999]
+position = Vector2(230, 414.75)
+shape = SubResource("RectangleShape2D_1o30x")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=2098338785]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=460252831]
+position = Vector2(386, 272)
+shape = SubResource("RectangleShape2D_bv27j")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=9782177]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=290973380]
+position = Vector2(661, 434)
+shape = SubResource("RectangleShape2D_e0owk")
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls" unique_id=258527065]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=686858636]
+position = Vector2(417, 684)
+shape = SubResource("RectangleShape2D_le7kl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=987936353]
+position = Vector2(290.5, 614.25)
+shape = SubResource("RectangleShape2D_abmf8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=913549422]
+position = Vector2(541, 614.25)
+shape = SubResource("RectangleShape2D_abmf8")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=762483308]
+position = Vector2(576.25, 305)
+shape = SubResource("RectangleShape2D_whw2n")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=625834904]
+position = Vector2(584.5, 375.875)
+shape = SubResource("RectangleShape2D_71rvp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=853671076]
+position = Vector2(596.25, 568)
+shape = SubResource("RectangleShape2D_dhq87")
+
+[node name="Objects" type="Node2D" parent="Walls" unique_id=1447700754]
+y_sort_enabled = true
+
+[node name="Doors" type="Node2D" parent="." unique_id=1943176176]
+position = Vector2(754, 288)
+
+[node name="DoorBottom" parent="Doors" unique_id=1059506860 instance=ExtResource("11_aqs10")]
+position = Vector2(-338, 408)
+starting_leads_to = "res://rooms/wake_room/wake_room.tscn"
+leads_to_spawn = "%Spawn2"
+
+[node name="DoorRight" parent="Doors" unique_id=1031291659 instance=ExtResource("5_esan3")]
+position = Vector2(-58, 136)
+
+[node name="Interactables" type="Node2D" parent="." unique_id=135537337]
+position = Vector2(754, 288)
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
+unique_name_in_owner = true
+position = Vector2(600, 472)
+
+[node name="Spawn2" type="Marker2D" parent="." unique_id=441376481]
+unique_name_in_owner = true
+position = Vector2(415, 608)
+
+[node name="StateProvider" type="Node" parent="." unique_id=199642382]
+script = ExtResource("13_b8khc")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="StateScope" type="Node" parent="." unique_id=1230836305]
+script = ExtResource("14_142mu")
+metadata/_custom_type_script = "uid://dmmo0yy6ig2lo"
+
+[node name="Character" parent="." unique_id=337287904 instance=ExtResource("15_acpbs")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(438, 488)
+
+[node name="CameraLogic" type="Node2D" parent="." unique_id=255117468]
+position = Vector2(754, 288)
+script = ExtResource("16_ovbwf")
+
+[node name="Camera2D" type="Camera2D" parent="CameraLogic" unique_id=1560808972]
+position = Vector2(404, 546)
+
+[node name="Positions" type="Node2D" parent="CameraLogic" unique_id=564659675]
+visible = false
+
+[node name="Pos1" type="Area2D" parent="CameraLogic/Positions" unique_id=1428389072]
+position = Vector2(-350, 112)
+collision_layer = 128
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLogic/Positions/Pos1" unique_id=1737013668]
+position = Vector2(46, 68.5)
+shape = SubResource("RectangleShape2D_hxfv2")
+debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
+
+[connection signal="area_entered" from="CameraLogic/Positions/Pos1" to="CameraLogic" method="_on_pos_area_entered" flags=18]
