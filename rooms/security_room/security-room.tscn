@@ -4,11 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://cww2knhlc4xfl" path="res://rooms/security_room/assets/background.png" id="2_dx227"]
 [ext_resource type="Texture2D" uid="uid://ds1bqgi4xckyn" path="res://rooms/security_room/assets/foreground.png" id="3_esan3"]
 [ext_resource type="PackedScene" uid="uid://c0rjmr1tk6owj" path="res://interactables/doors/door_right.tscn" id="5_esan3"]
+[ext_resource type="Script" uid="uid://c8b8tneog7t5" path="res://rooms/security_room/key_maker.gd" id="6_e5jqm"]
+[ext_resource type="Texture2D" uid="uid://cr1qjlmu4y3cl" path="res://rooms/security_room/assets/top-laser.png" id="10_dhq87"]
+[ext_resource type="Script" uid="uid://tqs60atffufu" path="res://rooms/security_room/key_puzzle.gd" id="10_ig0v7"]
+[ext_resource type="Texture2D" uid="uid://x7l58ggkvui6" path="res://rooms/security_room/assets/code-base.png" id="10_wh6k0"]
 [ext_resource type="PackedScene" uid="uid://bfr0pfebm0wx4" path="res://interactables/doors/door_bottom.tscn" id="11_aqs10"]
+[ext_resource type="Texture2D" uid="uid://wlap1r7m4jdm" path="res://rooms/security_room/assets/right-laser.png" id="11_dg5jp"]
+[ext_resource type="Texture2D" uid="uid://degct6sqxdv4u" path="res://rooms/security_room/assets/code.png" id="11_ig0v7"]
+[ext_resource type="Texture2D" uid="uid://d26o0kipgxhc7" path="res://rooms/security_room/assets/bottom-laser.png" id="12_wh6k0"]
 [ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="13_b8khc"]
+[ext_resource type="Texture2D" uid="uid://dhprsl3t4me4x" path="res://rooms/security_room/assets/left-laser.png" id="13_ig0v7"]
 [ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="14_142mu"]
 [ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="15_acpbs"]
 [ext_resource type="Script" uid="uid://cfsobcastosrm" path="res://rooms/camera_logic.gd" id="16_ovbwf"]
+[ext_resource type="Texture2D" uid="uid://cyemyglerpqen" path="res://rooms/security_room/assets/console-button.png" id="17_7aasw"]
+[ext_resource type="Texture2D" uid="uid://dqma6s5entfot" path="res://rooms/security_room/assets/right-button.png" id="17_42owd"]
+[ext_resource type="Texture2D" uid="uid://cy53lvdie51xd" path="res://rooms/security_room/assets/conferm-button.png" id="18_yfg7y"]
+[ext_resource type="Texture2D" uid="uid://dtxyyxdf633a7" path="res://rooms/security_room/assets/reset-button.png" id="19_e5jqm"]
+[ext_resource type="Texture2D" uid="uid://dxepkhyuyf83g" path="res://rooms/security_room/assets/finish_button.png" id="20_yfg7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
 size = Vector2(60.5, 390.5)
@@ -34,8 +47,166 @@ size = Vector2(113, 31.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhq87"]
 size = Vector2(169.5, 31)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5epc"]
+size = Vector2(21.5, 34)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxfv2"]
 size = Vector2(382, 349)
+
+[sub_resource type="Animation" id="Animation_7aasw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back/TopForm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Back/RightForm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Back/BottomForm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Back/LeftForm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-34, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yfg7y"]
+resource_name = "press"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back/TopForm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -34), Vector2(0, -30), Vector2(0, -34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Back/RightForm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(34, 0), Vector2(30, 0), Vector2(34, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Back/BottomForm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 34), Vector2(0, 30), Vector2(0, 34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Back/LeftForm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-34, 0), Vector2(-30, 0), Vector2(-34, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5jqm"]
+_data = {
+&"RESET": SubResource("Animation_7aasw"),
+&"press": SubResource("Animation_yfg7y")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh6k0"]
+atlas = ExtResource("11_ig0v7")
+region = Rect2(0, 12, 46, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig0v7"]
+atlas = ExtResource("11_ig0v7")
+region = Rect2(0, 9, 46, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42owd"]
+atlas = ExtResource("11_ig0v7")
+region = Rect2(0, 6, 46, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63vyy"]
+atlas = ExtResource("11_ig0v7")
+region = Rect2(0, 3, 46, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vb3n"]
+atlas = ExtResource("11_ig0v7")
+region = Rect2(0, 0, 46, 3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5jqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh6k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig0v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42owd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63vyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vb3n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SecurityRoom" type="Node2D" unique_id=1590841663]
 y_sort_enabled = true
@@ -126,6 +297,24 @@ position = Vector2(-58, 136)
 [node name="Interactables" type="Node2D" parent="." unique_id=135537337]
 position = Vector2(754, 288)
 
+[node name="KeyMaker" type="Area2D" parent="Interactables" unique_id=1010067400 node_paths=PackedStringArray("puzzle")]
+position = Vector2(-514, 128)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("6_e5jqm")
+puzzle = NodePath("../../CanvasLayer/KeyPuzzle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/KeyMaker" unique_id=730999088]
+position = Vector2(2, 7)
+shape = SubResource("RectangleShape2D_g5epc")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="StateProvider" type="Node" parent="Interactables/KeyMaker" unique_id=537194354]
+script = ExtResource("13_b8khc")
+prefer_existing = true
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
 [node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
 unique_name_in_owner = true
 position = Vector2(600, 472)
@@ -168,4 +357,189 @@ position = Vector2(46, 68.5)
 shape = SubResource("RectangleShape2D_hxfv2")
 debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1965532923]
+
+[node name="KeyPuzzle" type="Control" parent="CanvasLayer" unique_id=488912857]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="Sprite2D" parent="CanvasLayer/KeyPuzzle" unique_id=1946086745 node_paths=PackedStringArray("code_sprites")]
+position = Vector2(360, 280)
+scale = Vector2(4, 4)
+script = ExtResource("10_ig0v7")
+code_sprites = [NodePath("Base/Top"), NodePath("Base/Right"), NodePath("Base/Bottom"), NodePath("Base/Left")]
+correct_code = Array[int]([0, 1, 2, 5])
+operation_array = Array[int]([3, -2, 1, -1])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/KeyPuzzle/Back" unique_id=44942730]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_e5jqm")
+
+[node name="Base" type="Sprite2D" parent="CanvasLayer/KeyPuzzle/Back" unique_id=104497166]
+texture = ExtResource("10_wh6k0")
+
+[node name="Top" type="AnimatedSprite2D" parent="CanvasLayer/KeyPuzzle/Back/Base" unique_id=2098041835]
+position = Vector2(0, -27.5)
+sprite_frames = SubResource("SpriteFrames_e5jqm")
+frame = 1
+
+[node name="Right" type="AnimatedSprite2D" parent="CanvasLayer/KeyPuzzle/Back/Base" unique_id=21537524]
+position = Vector2(27.5, 0)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_e5jqm")
+frame = 1
+
+[node name="Bottom" type="AnimatedSprite2D" parent="CanvasLayer/KeyPuzzle/Back/Base" unique_id=889062150]
+position = Vector2(0, 27.5)
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_e5jqm")
+frame = 1
+
+[node name="Left" type="AnimatedSprite2D" parent="CanvasLayer/KeyPuzzle/Back/Base" unique_id=1270075825]
+position = Vector2(-27.5, 0)
+rotation = 4.712389
+sprite_frames = SubResource("SpriteFrames_e5jqm")
+frame = 1
+
+[node name="TopForm" type="Sprite2D" parent="CanvasLayer/KeyPuzzle/Back" unique_id=642797527]
+position = Vector2(0, -34)
+texture = ExtResource("10_dhq87")
+
+[node name="RightForm" type="Sprite2D" parent="CanvasLayer/KeyPuzzle/Back" unique_id=1829983233]
+position = Vector2(34, 0)
+texture = ExtResource("11_dg5jp")
+
+[node name="BottomForm" type="Sprite2D" parent="CanvasLayer/KeyPuzzle/Back" unique_id=1629711521]
+position = Vector2(0, 34)
+texture = ExtResource("12_wh6k0")
+
+[node name="LeftForm" type="Sprite2D" parent="CanvasLayer/KeyPuzzle/Back" unique_id=90690515]
+position = Vector2(-34, 0)
+texture = ExtResource("13_ig0v7")
+
+[node name="LeftRotateButton" type="TextureButton" parent="CanvasLayer/KeyPuzzle" unique_id=2016638282]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 292.0
+offset_top = 457.0
+offset_right = 336.0
+offset_bottom = 501.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("17_7aasw")
+stretch_mode = 4
+flip_h = true
+
+[node name="RightRotateButton" type="TextureButton" parent="CanvasLayer/KeyPuzzle" unique_id=1660069674]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 348.0
+offset_top = 457.0
+offset_right = 430.0
+offset_bottom = 501.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("17_7aasw")
+stretch_mode = 4
+
+[node name="ConfirmButton" type="TextureButton" parent="CanvasLayer/KeyPuzzle" unique_id=674793238]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_left = 344.0
+offset_top = 525.0
+offset_right = 461.0
+offset_bottom = 569.0
+texture_normal = ExtResource("18_yfg7y")
+stretch_mode = 4
+
+[node name="ResetButton" type="TextureButton" parent="CanvasLayer/KeyPuzzle" unique_id=1733397292]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 396.0
+offset_top = 505.0
+offset_right = 513.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("19_e5jqm")
+stretch_mode = 4
+
+[node name="EjectButton" type="TextureButton" parent="CanvasLayer/KeyPuzzle" unique_id=1720361205]
+custom_minimum_size = Vector2(184, 44)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 457.0
+offset_right = 628.0
+offset_bottom = 501.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("20_yfg7y")
+stretch_mode = 4
+
+[node name="CodeInput" type="HBoxContainer" parent="CanvasLayer/KeyPuzzle" unique_id=1747457802]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 262.0
+offset_top = 432.0
+offset_right = 458.0
+offset_bottom = 472.0
+
+[node name="Label" type="TextureRect" parent="CanvasLayer/KeyPuzzle/CodeInput" unique_id=1139372752]
+visible = false
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("17_42owd")
+
+[node name="Label2" type="TextureRect" parent="CanvasLayer/KeyPuzzle/CodeInput" unique_id=794436483]
+visible = false
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("17_42owd")
+
+[node name="Label3" type="TextureRect" parent="CanvasLayer/KeyPuzzle/CodeInput" unique_id=1153406288]
+visible = false
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("17_42owd")
+
+[node name="Label4" type="TextureRect" parent="CanvasLayer/KeyPuzzle/CodeInput" unique_id=1186794631]
+visible = false
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("17_42owd")
+
+[node name="Label5" type="TextureRect" parent="CanvasLayer/KeyPuzzle/CodeInput" unique_id=1667353929]
+visible = false
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("17_42owd")
+
 [connection signal="area_entered" from="CameraLogic/Positions/Pos1" to="CameraLogic" method="_on_pos_area_entered" flags=18]
+[connection signal="pressed" from="CanvasLayer/KeyPuzzle/LeftRotateButton" to="CanvasLayer/KeyPuzzle/Back" method="_on_left_rotate_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KeyPuzzle/RightRotateButton" to="CanvasLayer/KeyPuzzle/Back" method="_on_right_rotate_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KeyPuzzle/ConfirmButton" to="CanvasLayer/KeyPuzzle/Back" method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KeyPuzzle/ResetButton" to="CanvasLayer/KeyPuzzle/Back" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KeyPuzzle/EjectButton" to="CanvasLayer/KeyPuzzle/Back" method="_on_eject_button_pressed"]
