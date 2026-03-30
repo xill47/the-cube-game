@@ -1,11 +1,11 @@
-class_name MiniDoorState
+class_name TunnelDoorState
 extends InteractableState
 
 var locked: bool
 var door_number: int
 
-static func create(door: MiniDoor) -> MiniDoorState:
-	var state := MiniDoorState.new()
+static func create(door: TunnelDoor) -> TunnelDoorState:
+	var state := TunnelDoorState.new()
 	state.locked = door.starts_locked
 	state.door_number = door.door_number
 	return state
