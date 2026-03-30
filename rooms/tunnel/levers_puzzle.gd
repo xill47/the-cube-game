@@ -1,8 +1,8 @@
 extends Node2D
 
-var levers: Array
-
 @export var level_lever: Area2D
+
+var levers: Array
 
 func _ready() -> void:
 	levers = get_children()
