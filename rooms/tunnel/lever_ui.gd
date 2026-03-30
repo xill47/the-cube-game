@@ -1,8 +1,8 @@
 extends Sprite2D
 
-@export var changing: Array[Sprite2D]
+var state : bool = false
 
-@onready var state : bool = false
+@export var changing: Array[Sprite2D]
 
 func change_state():
 	state = not state
