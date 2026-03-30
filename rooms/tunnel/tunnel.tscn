@@ -1,0 +1,470 @@
+[gd_scene format=3 uid="uid://bprux26rpp4q8"]
+
+[ext_resource type="Script" uid="uid://bnkhlbpl2x0h7" path="res://rooms/corridor/corridor_room.gd" id="1_s3tcn"]
+[ext_resource type="Texture2D" uid="uid://cm2wo18gx7g4u" path="res://rooms/tunnel/assets/background.png" id="2_aulxa"]
+[ext_resource type="Texture2D" uid="uid://cx25p1x7mqs1j" path="res://rooms/tunnel/assets/foreground.png" id="3_ousdg"]
+[ext_resource type="PackedScene" uid="uid://bhnp0vc2wfcld" path="res://interactables/doors/door.tscn" id="4_b5vfa"]
+[ext_resource type="PackedScene" uid="uid://dnikd8ani1dgc" path="res://rooms/tunnel/tunnel_door/tunnel_door.tscn" id="6_vnohp"]
+[ext_resource type="Script" uid="uid://bnua4gw1ng0ll" path="res://rooms/tunnel/tunnel_door/tunnel_lever.gd" id="7_vvt5h"]
+[ext_resource type="Texture2D" uid="uid://c75ba8448nw50" path="res://rooms/tunnel/assets/lever.png" id="8_vnohp"]
+[ext_resource type="PackedScene" uid="uid://rm602dwu2tyv" path="res://interactables/doors/door_left.tscn" id="12_60ud6"]
+[ext_resource type="Texture2D" uid="uid://ddwd5hgnthw1q" path="res://rooms/tunnel/assets/panel-back.png" id="13_7pqh5"]
+[ext_resource type="Texture2D" uid="uid://cyafn3q1rntuh" path="res://rooms/tunnel/assets/light-green.png" id="14_kyb3l"]
+[ext_resource type="Texture2D" uid="uid://c64ntbag8te0l" path="res://rooms/tunnel/assets/light-red.png" id="15_y0gtc"]
+[ext_resource type="Script" uid="uid://d0e7mjc8efqjy" path="res://rooms/tunnel/levers_puzzle.gd" id="16_1ots0"]
+[ext_resource type="Texture2D" uid="uid://bmmysj3jdm6av" path="res://rooms/tunnel/assets/lever-ui.png" id="16_y0gtc"]
+[ext_resource type="Script" uid="uid://c2ewl13tx122k" path="res://rooms/tunnel/lever_ui.gd" id="17_1ots0"]
+[ext_resource type="Script" uid="uid://dalnoy50favch" path="res://addons/state_scopes/state_provider.gd" id="17_pbrsg"]
+[ext_resource type="Script" uid="uid://dmmo0yy6ig2lo" path="res://addons/state_scopes/state_scope.gd" id="18_eiorh"]
+[ext_resource type="PackedScene" uid="uid://cwqv27swe8kg0" path="res://character/character.tscn" id="19_sn2mq"]
+[ext_resource type="Script" uid="uid://cfsobcastosrm" path="res://rooms/camera_logic.gd" id="20_m23h3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o30x"]
+size = Vector2(62.25, 1088.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv27j"]
+size = Vector2(246.75, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyb3l"]
+size = Vector2(206.375, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0gtc"]
+size = Vector2(25.1875, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dci8d"]
+size = Vector2(627.375, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0owk"]
+size = Vector2(38.5, 192.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnohp"]
+size = Vector2(39.25, 806.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aulxa"]
+size = Vector2(39.25, 99.25781)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le7kl"]
+size = Vector2(268, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvt5h"]
+size = Vector2(814, 39.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drc8e"]
+size = Vector2(24, 25.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pqh5"]
+size = Vector2(207, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxfv2"]
+size = Vector2(1019, 420.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emj7d"]
+size = Vector2(232, 573)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ots0"]
+size = Vector2(20, 19)
+
+[node name="Tunnel" type="Node2D" unique_id=1590841663]
+y_sort_enabled = true
+script = ExtResource("1_s3tcn")
+
+[node name="ArtLayers" type="Node2D" parent="." unique_id=625979313]
+
+[node name="Background" type="Sprite2D" parent="ArtLayers" unique_id=834635258]
+position = Vector2(660, 652)
+scale = Vector2(4, 4)
+texture = ExtResource("2_aulxa")
+
+[node name="Foreground" type="Sprite2D" parent="ArtLayers" unique_id=298916730]
+z_index = 1
+position = Vector2(660, 652)
+scale = Vector2(4, 4)
+texture = ExtResource("3_ousdg")
+
+[node name="Walls" type="Node2D" parent="." unique_id=1963081063]
+y_sort_enabled = true
+position = Vector2(754, 376)
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=403527801]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=933203999]
+position = Vector2(-694, 352.625)
+shape = SubResource("RectangleShape2D_1o30x")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=2098338785]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=460252831]
+position = Vector2(-541.375, -112)
+shape = SubResource("RectangleShape2D_bv27j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/TopWall" unique_id=540165292]
+position = Vector2(-333.1875, -222)
+shape = SubResource("RectangleShape2D_kyb3l")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/TopWall" unique_id=1820919951]
+position = Vector2(-429.40625, -167.5)
+shape = SubResource("RectangleShape2D_y0gtc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/TopWall" unique_id=894891802]
+position = Vector2(-237, -167.5)
+shape = SubResource("RectangleShape2D_y0gtc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/TopWall" unique_id=1850346186]
+position = Vector2(63.3125, -112)
+shape = SubResource("RectangleShape2D_dci8d")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=9782177]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=290973380]
+position = Vector2(394, -32)
+shape = SubResource("RectangleShape2D_e0owk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/RightWall" unique_id=810773376]
+position = Vector2(-378, 506.9375)
+shape = SubResource("RectangleShape2D_vnohp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/RightWall" unique_id=311980904]
+position = Vector2(-406, 623)
+shape = SubResource("RectangleShape2D_aulxa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/RightWall" unique_id=1910356313]
+position = Vector2(-654, 624.6289)
+shape = SubResource("RectangleShape2D_aulxa")
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls" unique_id=258527065]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=686858636]
+position = Vector2(-532, 863)
+shape = SubResource("RectangleShape2D_le7kl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=1285667984]
+position = Vector2(10, 84)
+shape = SubResource("RectangleShape2D_vvt5h")
+
+[node name="Objects" type="Node2D" parent="Walls" unique_id=1447700754]
+y_sort_enabled = true
+
+[node name="Boxes" type="StaticBody2D" parent="Walls/Objects" unique_id=928465666]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Doors" type="Node2D" parent="." unique_id=1943176176]
+y_sort_enabled = true
+position = Vector2(754, 288)
+
+[node name="Door" parent="Doors" unique_id=1059506860 instance=ExtResource("4_b5vfa")]
+y_sort_enabled = true
+position = Vector2(-334, -208)
+
+[node name="DoorLeft" parent="Doors" unique_id=137525744 instance=ExtResource("12_60ud6")]
+position = Vector2(-718, 780)
+
+[node name="Interactables" type="Node2D" parent="." unique_id=135537337]
+y_sort_enabled = true
+position = Vector2(754, 288)
+
+[node name="MiniDoor" parent="Interactables" unique_id=366037591 instance=ExtResource("6_vnohp")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-530, 682)
+
+[node name="MiniDoor2" parent="Interactables" unique_id=393445636 instance=ExtResource("6_vnohp")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(-334, -86)
+
+[node name="Lever" type="Area2D" parent="Interactables" unique_id=5771866 node_paths=PackedStringArray("door1", "door2", "tunnel")]
+y_sort_enabled = true
+position = Vector2(210, -76)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("7_vvt5h")
+door1 = NodePath("../MiniDoor")
+door2 = NodePath("../MiniDoor2")
+tunnel = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Lever" unique_id=178448690]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_drc8e")
+debug_color = Color(0.26126418, 0.5232432, 9.62615e-08, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="Interactables/Lever" unique_id=743919337]
+texture = ExtResource("8_vnohp")
+hframes = 2
+
+[node name="StateProvider" type="Node" parent="Interactables/Lever" unique_id=1068473682]
+script = ExtResource("17_pbrsg")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="EnterArea" type="Area2D" parent="Interactables" unique_id=2089940444]
+position = Vector2(-333, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/EnterArea" unique_id=1800187789]
+position = Vector2(-1, 30)
+shape = SubResource("RectangleShape2D_7pqh5")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=988657247]
+unique_name_in_owner = true
+position = Vector2(420, 211)
+
+[node name="Spawn2" type="Marker2D" parent="." unique_id=441376481]
+unique_name_in_owner = true
+position = Vector2(133, 1085)
+
+[node name="StateProvider" type="Node" parent="." unique_id=199642382]
+script = ExtResource("17_pbrsg")
+metadata/_custom_type_script = "uid://dalnoy50favch"
+
+[node name="StateScope" type="Node" parent="." unique_id=1230836305]
+script = ExtResource("18_eiorh")
+metadata/_custom_type_script = "uid://dmmo0yy6ig2lo"
+
+[node name="Character" parent="." unique_id=337287904 instance=ExtResource("19_sn2mq")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(422, 219)
+
+[node name="CameraLogic" type="Node2D" parent="." unique_id=255117468]
+position = Vector2(754, 288)
+script = ExtResource("20_m23h3")
+
+[node name="Camera2D" type="Camera2D" parent="CameraLogic" unique_id=1560808972]
+position = Vector2(404, 546)
+
+[node name="Positions" type="Node2D" parent="CameraLogic" unique_id=564659675]
+position = Vector2(0, 144)
+
+[node name="Pos1" type="Area2D" parent="CameraLogic/Positions" unique_id=1428389072]
+position = Vector2(-114, -2)
+collision_layer = 128
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLogic/Positions/Pos1" unique_id=1737013668]
+position = Vector2(-29.5, -48.9375)
+shape = SubResource("RectangleShape2D_hxfv2")
+debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
+
+[node name="Pos2" type="Area2D" parent="CameraLogic/Positions" unique_id=436966415]
+position = Vector2(-530, 616)
+collision_layer = 128
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLogic/Positions/Pos2" unique_id=1676955867]
+position = Vector2(8, -118.5)
+shape = SubResource("RectangleShape2D_emj7d")
+debug_color = Color(0.7953148, 0.42528415, 0, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1714954131]
+
+[node name="PannelBack" type="Sprite2D" parent="CanvasLayer" unique_id=627605247]
+unique_name_in_owner = true
+visible = false
+position = Vector2(420, 288)
+scale = Vector2(4, 4)
+texture = ExtResource("13_7pqh5")
+
+[node name="LightGreen" type="Sprite2D" parent="CanvasLayer/PannelBack" unique_id=1054943550]
+position = Vector2(56, 27.5)
+texture = ExtResource("14_kyb3l")
+hframes = 2
+
+[node name="LightRed" type="Sprite2D" parent="CanvasLayer/PannelBack" unique_id=1988003125]
+position = Vector2(56, -12.5)
+texture = ExtResource("15_y0gtc")
+hframes = 2
+frame = 1
+
+[node name="Levers" type="Node2D" parent="CanvasLayer/PannelBack" unique_id=1609406325 node_paths=PackedStringArray("level_lever")]
+script = ExtResource("16_1ots0")
+level_lever = NodePath("../../../Interactables/Lever")
+
+[node name="LeverUi" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=763369204 node_paths=PackedStringArray("changing")]
+position = Vector2(-56, -21.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi3"), NodePath("../LeverUi8")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi" unique_id=1954359496]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi/Area2D" unique_id=386448888]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi2" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=311266149 node_paths=PackedStringArray("changing")]
+position = Vector2(-32, -21.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi6")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi2" unique_id=1531013640]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi2/Area2D" unique_id=1684851174]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi3" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=639304730 node_paths=PackedStringArray("changing")]
+position = Vector2(-8, -21.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi"), NodePath("../LeverUi5")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi3" unique_id=251145213]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi3/Area2D" unique_id=1780505531]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi4" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=1631559945 node_paths=PackedStringArray("changing")]
+position = Vector2(16, -21.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi7"), NodePath("../LeverUi11")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi4" unique_id=1709813616]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi4/Area2D" unique_id=1396771892]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi5" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=1833637768 node_paths=PackedStringArray("changing")]
+position = Vector2(-44, 2.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi"), NodePath("../LeverUi3"), NodePath("../LeverUi9")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi5" unique_id=1172641955]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi5/Area2D" unique_id=1287757163]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi6" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=529052629 node_paths=PackedStringArray("changing")]
+position = Vector2(-20, 2.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi2"), NodePath("../LeverUi8"), NodePath("../LeverUi10")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi6" unique_id=1376665185]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi6/Area2D" unique_id=2099945547]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi7" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=1077947722 node_paths=PackedStringArray("changing")]
+position = Vector2(4, 2.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi4"), NodePath("../LeverUi10")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi7" unique_id=332813673]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi7/Area2D" unique_id=570247310]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi8" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=916914664 node_paths=PackedStringArray("changing")]
+position = Vector2(-56, 26.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi6"), NodePath("../LeverUi"), NodePath("../LeverUi10")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi8" unique_id=1193613858]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi8/Area2D" unique_id=597476427]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi9" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=459451704 node_paths=PackedStringArray("changing")]
+position = Vector2(-32, 26.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi5")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi9" unique_id=1445776131]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi9/Area2D" unique_id=597912658]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi10" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=804053565 node_paths=PackedStringArray("changing")]
+position = Vector2(-8, 26.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi6"), NodePath("../LeverUi8"), NodePath("../LeverUi7")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi10" unique_id=554408030]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi10/Area2D" unique_id=443268213]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[node name="LeverUi11" type="Sprite2D" parent="CanvasLayer/PannelBack/Levers" unique_id=940172835 node_paths=PackedStringArray("changing")]
+position = Vector2(16, 26.5)
+texture = ExtResource("16_y0gtc")
+hframes = 2
+script = ExtResource("17_1ots0")
+changing = [NodePath("../LeverUi4")]
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PannelBack/Levers/LeverUi11" unique_id=744732038]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PannelBack/Levers/LeverUi11/Area2D" unique_id=1488399304]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1ots0")
+
+[connection signal="body_entered" from="Interactables/EnterArea" to="." method="_on_enter_area_body_entered"]
+[connection signal="area_entered" from="CameraLogic/Positions/Pos1" to="CameraLogic" method="_on_pos_area_entered" flags=18]
+[connection signal="area_entered" from="CameraLogic/Positions/Pos2" to="CameraLogic" method="_on_pos_area_entered" flags=18]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi2/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi2" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi3/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi3" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi4/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi4" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi5/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi5" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi6/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi6" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi7/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi7" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi8/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi8" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi9/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi9" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi10/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi10" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CanvasLayer/PannelBack/Levers/LeverUi11/Area2D" to="CanvasLayer/PannelBack/Levers/LeverUi11" method="_on_area_2d_input_event"]
