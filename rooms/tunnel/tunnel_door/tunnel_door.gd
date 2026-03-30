@@ -1,10 +1,10 @@
-class_name MiniDoor
+class_name TunnelDoor
 extends Interactable
 
 @export var starts_locked: bool = false
 @export var door_number: int
 
-var state: MiniDoorState
+var state: TunnelDoorState
 
 @onready var sprite := $Icon
 @onready var collision := $Collision/CollisionShape2D

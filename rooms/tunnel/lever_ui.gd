@@ -19,3 +19,4 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			return
 		for lever in changing:
 			lever.change_state()
+	get_parent().is_solved()
